@@ -1,0 +1,78 @@
+Fri Aug 22 22:25:35 +03 2025: Dev sunucu başlatılıyor...
+
+> lhamo-agency@1.0.0 dev
+> next dev --port 3003 --hostname 0.0.0.0
+
+   ▲ Next.js 15.5.0
+   - Local:        http://localhost:3003
+   - Network:      http://0.0.0.0:3003
+
+ ✓ Starting...
+ ✓ Ready in 1207ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1069ms (729 modules)
+ HEAD / 200 in 1460ms
+ HEAD / 200 in 233ms
+ GET / 200 in 257ms
+ GET / 200 in 237ms
+ ⚠ Cross origin request detected from adapters-pizza-highly-shuttle.trycloudflare.com to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 236ms
+ GET / 200 in 242ms
+[?25h
+Fri Aug 22 22:51:00 +03 2025: Dev sunucu başlatılıyor...
+
+> lhamo-agency@1.0.0 dev
+> next dev --port 3003 --hostname 0.0.0.0
+
+   ▲ Next.js 15.5.0
+   - Local:        http://localhost:3003
+   - Network:      http://0.0.0.0:3003
+
+ ✓ Starting...
+ ✓ Ready in 1303ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1294ms (729 modules)
+ HEAD / 200 in 1654ms
+ HEAD / 200 in 237ms
+ GET / 200 in 233ms
+ GET / 200 in 234ms
+ GET / 200 in 246ms
+ GET / 200 in 227ms
+ ⚠ Cross origin request detected from partnerships-madness-sen-guides.trycloudflare.com to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ✓ Compiled in 224ms (729 modules)
+ ✓ Compiled in 221ms (729 modules)
+ ✓ Compiled in 119ms (729 modules)
+ ✓ Compiled in 252ms (729 modules)
+ ✓ Compiled in 97ms (729 modules)
+ ✓ Compiled in 84ms (729 modules)
+ ✓ Compiled in 78ms (729 modules)
+ ✓ Compiled in 289ms (729 modules)
+ ✓ Compiled in 203ms (729 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/unicorn/Lhamo/.next/server/pages/index.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/unicorn/Lhamo/.next/server/pages/index.js',
+  page: '/'
+}
+ ✓ Compiled /_error in 492ms (826 modules)
+ GET / 500 in 687ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/unicorn/Lhamo/.next/server/pages/index.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/unicorn/Lhamo/.next/server/pages/index.js',
+  page: '/'
+}
+ GET / 500 in 26ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/unicorn/Lhamo/.next/server/pages/index.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/unicorn/Lhamo/.next/server/pages/index.js',
+  page: '/'
+}
+ GET / 500 in 48ms
+[?25h

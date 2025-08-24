@@ -1,0 +1,44 @@
+{
+  "site": {
+    "name": "LHAMO",
+    "title": "LHAMO - Divine Digital Marketing Agency",
+    "description": "Unleash your brand's divine power with LHAMO. Premium digital marketing agency specializing in creative campaigns, AI-powered marketing, and mystical brand transformation.",
+    "url": "https://lhamo.agency",
+    "logo": "/logo.svg",
+    "favicon": "/favicon.svg"
+  },
+  "contact": {
+    "email": "hello@lhamo.agency",
+    "phone": "+90 555 BRUTAL",
+    "address": "Istanbul, Turkey",
+    "workingHours": "24/7 BRUTALITY"
+  },
+  "social": {
+    "instagram": "https://instagram.com/lhamo.agency",
+    "twitter": "https://twitter.com/lhamoagency",
+    "linkedin": "https://linkedin.com/company/lhamo-agency",
+    "youtube": "https://youtube.com/@lhamoagency"
+  },
+  "seo": {
+    "defaultTitle": "LHAMO - Divine Digital Marketing Agency",
+    "titleTemplate": "%s | LHAMO",
+    "defaultDescription": "Unleash your brand's divine power with LHAMO. Premium digital marketing agency specializing in creative campaigns, AI-powered marketing, and mystical brand transformation.",
+    "keywords": ["digital marketing", "creative agency", "branding", "AI marketing", "video production", "social media", "advertising"],
+    "author": "LHAMO Agency",
+    "ogImage": "/og-image.jpg"
+  },
+  "theme": {
+    "primaryColor": "#FDE047",
+    "secondaryColor": "#DC2626", 
+    "accentColor": "#000000",
+    "backgroundColor": "#FFFFFF"
+  },
+  "features": {
+    "newsletter": true,
+    "blog": true,
+    "portfolio": true,
+    "careers": true,
+    "pwa": true,
+    "darkMode": false
+  }
+}

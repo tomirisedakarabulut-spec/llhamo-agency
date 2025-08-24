@@ -1,0 +1,100 @@
+{
+  "services": [
+    {
+      "id": "creative",
+      "title": "CREATIVE\nCAMPAIGNS",
+      "description": "WE SMASH BORING WITH BRUTAL CREATIVITY THAT MAKES YOUR BRAND LEGENDARY!",
+      "icon": "Palette",
+      "features": [
+        "BRAND STORYTELLING",
+        "VISUAL IDENTITY", 
+        "CAMPAIGN STRATEGY",
+        "CONTENT CREATION",
+        "CREATIVE DIRECTION"
+      ],
+      "price": "₺15,000",
+      "popular": false,
+      "color": "red"
+    },
+    {
+      "id": "digital-ads",
+      "title": "DIGITAL\nADVERTISING", 
+      "description": "PRECISION STRIKES ACROSS ALL PLATFORMS WITH AI-POWERED DESTRUCTION!",
+      "icon": "Target",
+      "features": [
+        "GOOGLE ADS",
+        "META ADVERTISING", 
+        "TIKTOK ADS",
+        "PERFORMANCE ANALYTICS",
+        "CONVERSION OPTIMIZATION"
+      ],
+      "price": "₺12,000",
+      "popular": true,
+      "color": "yellow"
+    },
+    {
+      "id": "branding",
+      "title": "BRAND\nIDENTITY",
+      "description": "TRANSFORM YOUR BRAND INTO AN UNSTOPPABLE VISUAL FORCE!",
+      "icon": "Crown",
+      "features": [
+        "LOGO DESIGN",
+        "BRAND GUIDELINES",
+        "VISUAL SYSTEMS", 
+        "BRAND STRATEGY",
+        "TRADEMARK SUPPORT"
+      ],
+      "price": "₺25,000",
+      "popular": false,
+      "color": "red"
+    },
+    {
+      "id": "video",
+      "title": "VIDEO\nPRODUCTION",
+      "description": "CINEMATIC BRUTALITY THAT CAPTURES HEARTS AND DESTROYS COMPETITION!",
+      "icon": "Video",
+      "features": [
+        "VIDEO PRODUCTION",
+        "CONTENT CREATION",
+        "POST-PRODUCTION",
+        "MOTION GRAPHICS",
+        "SOCIAL VIDEO"
+      ],
+      "price": "₺18,000",
+      "popular": false,
+      "color": "yellow"
+    },
+    {
+      "id": "ai",
+      "title": "AI\nMARKETING",
+      "description": "HARNESS THE POWER OF ARTIFICIAL INTELLIGENCE FOR TOTAL DOMINATION!",
+      "icon": "Brain",
+      "features": [
+        "AI ANALYTICS",
+        "AUTOMATION",
+        "PERSONALIZATION", 
+        "CHATBOTS",
+        "PREDICTIVE ANALYSIS"
+      ],
+      "price": "₺20,000",
+      "popular": false,
+      "color": "red"
+    },
+    {
+      "id": "growth",
+      "title": "GROWTH\nSTRATEGY",
+      "description": "DATA-DRIVEN WARFARE FOR SUSTAINABLE BUSINESS DESTRUCTION OF LIMITS!",
+      "icon": "TrendingUp",
+      "features": [
+        "GROWTH HACKING",
+        "CONVERSION OPTIMIZATION",
+        "ANALYTICS",
+        "A/B TESTING",
+        "FUNNEL OPTIMIZATION"
+      ],
+      "price": "₺16,000",
+      "popular": false,
+      "color": "yellow"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+/* Mobile-specific styles for LHAMO Agency */
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .neo-button:hover,
+  .neo-button-secondary:hover {
+    transform: none;
+    box-shadow: 4px 4px 0px 0px #000;
+  }
+  
+  .neo-card:hover {
+    transform: none;
+  }
+  
+  /* Larger touch targets */
+  .neo-button,
+  .neo-button-secondary {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Mobile viewport optimizations */
+@media screen and (max-width: 640px) {
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Optimize font sizes for mobile */
+  .mobile-text-responsive {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+  
+  /* Mobile-specific spacing */
+  .mobile-spacing {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  /* Ensure minimum touch target sizes */
+  button, 
+  a[role="button"],
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Optimize images for mobile */
+  .mobile-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+/* Tablet-specific styles */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  /* Tablet grid optimizations */
+  .tablet-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .tablet-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Tablet typography */
+  .tablet-text-lg {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  
+  /* Tablet spacing */
+  .tablet-padding {
+    padding: 2rem;
+  }
+}
+
+/* High DPI displays (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .neo-card {
+    border-width: 2px;
+  }
+  
+  .neo-button {
+    border-width: 2px;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .mobile-hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .mobile-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .ios-fix {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Fix for iOS Safari bounce */
+  .no-bounce {
+    overscroll-behavior: none;
+  }
+  
+  /* iOS safe area support */
+  .ios-safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .ios-safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .android-fix {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Touch device animations */
+@media (hover: none) {
+  .touch-animation {
+    transition: transform 0.1s ease;
+  }
+  
+  .touch-animation:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-animation {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Dark mode mobile optimizations */
+@media (prefers-color-scheme: dark) {
+  .mobile-dark-mode {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+/* Mobile-specific utility classes */
+.mobile-full-width {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.mobile-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-scroll-snap {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.mobile-scroll-snap-item {
+  scroll-snap-align: start;
+}
+
+/* Performance optimizations */
+.mobile-optimized {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Mobile form improvements */
+.mobile-form input,
+.mobile-form textarea,
+.mobile-form select {
+  font-size: 16px; /* Prevents zoom on iOS */
+  padding: 12px;
+  border: 2px solid #000;
+}
+
+/* Mobile modal improvements */
+.mobile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.mobile-modal-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 1rem;
+  max-height: 90vh;
+  overflow-y: auto;
+}

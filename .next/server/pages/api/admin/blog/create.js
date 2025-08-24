@@ -1,0 +1,17 @@
+"use strict";(()=>{var a={};a.id=494,a.ids=[494],a.modules={1803:(a,b,c)=>{c.r(b),c.d(b,{config:()=>o,default:()=>n,handler:()=>q});var d={};c.r(d),c.d(d,{default:()=>k});var e=c(9046),f=c(8667),g=c(3480),h=c(6435),i=c(9021),j=c(3873);async function k(a,b){if("POST"!==a.method)return b.status(405).json({message:"Method not allowed"});try{let c=a.body;if(!c.title||!c.content||!c.slug)return b.status(400).json({message:"Missing required fields"});let d=`---
+title: "${c.title}"
+excerpt: "${c.excerpt}"
+author: "${c.author}"
+date: "${c.date}"
+category: "${c.category}"
+readTime: "${c.readTime}"
+featured: ${c.featured}
+image: "${c.image}"
+tags: ${JSON.stringify(c.tags,null,2).replace(/\n/g,"\n  ")}
+seo:
+  metaTitle: "${c.seo?.metaTitle||c.title}"
+  metaDescription: "${c.seo?.metaDescription||c.excerpt}"
+  keywords: ${JSON.stringify(c.seo?.keywords||c.tags,null,2).replace(/\n/g,"\n    ")}
+---
+
+${c.content}`,e=j.join(process.cwd(),"content","blog");i.existsSync(e)||i.mkdirSync(e,{recursive:!0});let f=j.join(e,`${c.slug}.md`);if(i.existsSync(f))return b.status(409).json({message:"Post with this slug already exists"});i.writeFileSync(f,d,"utf8"),b.status(201).json({message:"Post created successfully",slug:c.slug,path:f})}catch(a){console.error("Error creating post:",a),b.status(500).json({message:"Internal server error"})}}var l=c(8112),m=c(6385);let n=(0,h.M)(d,"default"),o=(0,h.M)(d,"config"),p=new g.PagesAPIRouteModule({definition:{kind:f.A.PAGES_API,page:"/api/admin/blog/create",pathname:"/api/admin/blog/create",bundlePath:"",filename:""},userland:d,distDir:".next",relativeProjectDir:""});async function q(a,b,c){let d=await p.prepare(a,b,{srcPage:"/api/admin/blog/create"});if(!d){b.statusCode=400,b.end("Bad Request"),null==c.waitUntil||c.waitUntil.call(c,Promise.resolve());return}let{query:f,params:g,prerenderManifest:h,routerServerContext:i}=d;try{let c=a.method||"GET",d=(0,l.getTracer)(),e=d.getActiveScopeSpan(),j=p.instrumentationOnRequestError.bind(p),k=async e=>p.render(a,b,{query:{...f,...g},params:g,allowedRevalidateHeaderKeys:[],multiZoneDraftMode:!1,trustHostHeader:!1,previewProps:h.preview,propagateError:!1,dev:p.isDev,page:"/api/admin/blog/create",internalRevalidate:null==i?void 0:i.revalidate,onError:(...b)=>j(a,...b)}).finally(()=>{if(!e)return;e.setAttributes({"http.status_code":b.statusCode,"next.rsc":!1});let f=d.getRootSpanAttributes();if(!f)return;if(f.get("next.span_type")!==m.BaseServerSpan.handleRequest)return void console.warn(`Unexpected root span type '${f.get("next.span_type")}'. Please report this Next.js issue https://github.com/vercel/next.js`);let g=f.get("next.route");if(g){let a=`${c} ${g}`;e.setAttributes({"next.route":g,"http.route":g,"next.span_name":a}),e.updateName(a)}else e.updateName(`${c} ${a.url}`)});e?await k(e):await d.withPropagatedContext(a.headers,()=>d.trace(m.BaseServerSpan.handleRequest,{spanName:`${c} ${a.url}`,kind:l.SpanKind.SERVER,attributes:{"http.method":c,"http.target":a.url}},k))}catch(a){if(p.isDev)throw a;(0,e.sendError)(b,500,"Internal Server Error")}finally{null==c.waitUntil||c.waitUntil.call(c,Promise.resolve())}}},3873:a=>{a.exports=require("path")},5600:a=>{a.exports=require("next/dist/compiled/next-server/pages-api.runtime.prod.js")},9021:a=>{a.exports=require("fs")}};var b=require("../../../../webpack-api-runtime.js");b.C(a);var c=b.X(0,[169],()=>b(b.s=1803));module.exports=c})();
