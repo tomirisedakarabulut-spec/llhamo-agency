@@ -50,7 +50,7 @@ export default function Home() {
         {/* Additional SEO */}
         <link rel="canonical" href="https://lhamo.agency" />
         <link rel="icon" href="/favicon.svg" />
-        <link rel="apple-touch-icon" href="/logo-mandala.svg" />
+        <link rel="apple-touch-icon" href="/logo.png" />
         
         {/* Structured Data */}
         <script
@@ -61,7 +61,7 @@ export default function Home() {
               "@type": "Organization",
               "name": "LHAMO Agency",
               "url": "https://lhamo.agency",
-              "logo": "https://lhamo.agency/logo-mandala.svg",
+              "logo": "https://lhamo.agency/logo.png",
               "description": "Divine Digital Marketing Agency specializing in creative campaigns and AI-powered marketing",
               "address": {
                 "@type": "PostalAddress",

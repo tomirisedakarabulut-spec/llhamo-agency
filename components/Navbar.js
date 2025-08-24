@@ -78,7 +78,7 @@ export default function Navbar() {
           >
             <div className="w-20 h-20 bg-red-600 border-4 border-black shadow-[4px_4px_0px_0px_#000] flex items-center justify-center overflow-hidden">
               <img 
-                src="/logo-mandala.svg" 
+                src="/logo.png" 
                 alt="LHAMO Logo" 
                 className="w-full h-full object-contain p-1"
                 style={{ maxWidth: '100%', maxHeight: '100%' }}

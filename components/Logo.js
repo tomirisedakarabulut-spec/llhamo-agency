@@ -17,7 +17,7 @@ export default function Logo({
   return (
     <div className={`relative ${className}`}>
       <Image
-        src="/logo-mandala.svg"
+        src="/logo.png"
         alt="LHAMO Agency Logo"
         width={config.width}
         height={config.height}

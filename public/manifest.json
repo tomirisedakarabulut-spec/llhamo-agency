@@ -12,9 +12,9 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "/logo-mandala.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
@@ -40,9 +40,9 @@
       "url": "/contact",
       "icons": [
         {
-          "src": "/logo-mandala.svg",
-          "sizes": "any",
-          "type": "image/svg+xml"
+          "src": "/favicon-32x32.png",
+          "sizes": "32x32",
+          "type": "image/png"
         }
       ]
     },
@@ -53,9 +53,9 @@
       "url": "/services",
       "icons": [
         {
-          "src": "/logo-mandala.svg",
-          "sizes": "any",
-          "type": "image/svg+xml"
+          "src": "/favicon-32x32.png",
+          "sizes": "32x32",
+          "type": "image/png"
         }
       ]
     },
@@ -66,9 +66,9 @@
       "url": "/portfolio",
       "icons": [
         {
-          "src": "/logo-mandala.svg",
-          "sizes": "any",
-          "type": "image/svg+xml"
+          "src": "/favicon-32x32.png",
+          "sizes": "32x32",
+          "type": "image/png"
         }
       ]
     }
