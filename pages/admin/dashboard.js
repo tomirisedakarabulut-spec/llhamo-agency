@@ -23,7 +23,17 @@ import {
   Activity,
   Target,
   DollarSign,
-  MessageSquare
+  MessageSquare,
+  UserPlus,
+  Building,
+  Star,
+  MapPin,
+  Tag,
+  Filter,
+  Search,
+  MoreVertical,
+  PhoneCall,
+  Send
 } from 'lucide-react'
 import AdminLayout from '../../components/AdminLayout'
 import { getAllBlogPosts, getSiteConfig } from '../../lib/content'
@@ -46,6 +56,22 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
     database: 'online',
     email: 'online',
     backup: 'online'
+  })
+
+  const [crmData, setCrmData] = useState({
+    customers: [],
+    leads: [],
+    deals: [],
+    interactions: []
+  })
+
+  const [crmStats, setCrmStats] = useState({
+    totalCustomers: 0,
+    activeLeads: 0,
+    totalDeals: 0,
+    conversionRate: 0,
+    averageDealValue: 0,
+    monthlyRevenue: 0
   })
 
   useEffect(() => {
@@ -100,6 +126,126 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
         status: 'success'
       }
     ])
+
+    // Mock CRM data
+    const mockCustomers = [
+      {
+        id: 1,
+        name: 'TechCorp Solutions',
+        email: 'contact@techcorp.com',
+        phone: '+90 555 123 4567',
+        status: 'active',
+        value: 75000,
+        lastContact: '2024-01-15',
+        tags: ['Technology', 'Enterprise'],
+        source: 'Website'
+      },
+      {
+        id: 2,
+        name: 'Brutal Brands Inc',
+        email: 'hello@brutalbrands.com',
+        phone: '+90 555 987 6543',
+        status: 'prospect',
+        value: 45000,
+        lastContact: '2024-01-14',
+        tags: ['Startup', 'Branding'],
+        source: 'Referral'
+      },
+      {
+        id: 3,
+        name: 'Digital Warriors',
+        email: 'info@digitalwarriors.com',
+        phone: '+90 555 456 7890',
+        status: 'lead',
+        value: 25000,
+        lastContact: '2024-01-13',
+        tags: ['Agency', 'Digital'],
+        source: 'Social Media'
+      },
+      {
+        id: 4,
+        name: 'Creative Empire',
+        email: 'studio@creativeempire.com',
+        phone: '+90 555 321 0987',
+        status: 'active',
+        value: 120000,
+        lastContact: '2024-01-12',
+        tags: ['Creative', 'Premium'],
+        source: 'Cold Call'
+      }
+    ]
+
+    const mockLeads = [
+      {
+        id: 1,
+        name: 'Innovation Labs',
+        email: 'hello@innovationlabs.com',
+        phone: '+90 555 111 2222',
+        status: 'new',
+        value: 35000,
+        assignedTo: 'Admin',
+        source: 'Website',
+        notes: 'Interested in AI marketing solutions'
+      },
+      {
+        id: 2,
+        name: 'Global Ventures',
+        email: 'contact@globalventures.com',
+        phone: '+90 555 333 4444',
+        status: 'contacted',
+        value: 55000,
+        assignedTo: 'Admin',
+        source: 'LinkedIn',
+        notes: 'Looking for brand identity redesign'
+      }
+    ]
+
+    const mockDeals = [
+      {
+        id: 1,
+        customer: 'TechCorp Solutions',
+        title: 'Digital Marketing Campaign',
+        value: 75000,
+        stage: 'negotiation',
+        probability: 80,
+        expectedClose: '2024-02-15',
+        assignedTo: 'Admin'
+      },
+      {
+        id: 2,
+        customer: 'Creative Empire',
+        title: 'Brand Identity Package',
+        value: 120000,
+        stage: 'proposal',
+        probability: 60,
+        expectedClose: '2024-02-28',
+        assignedTo: 'Admin'
+      }
+    ]
+
+    setCrmData({
+      customers: mockCustomers,
+      leads: mockLeads,
+      deals: mockDeals,
+      interactions: []
+    })
+
+    // Calculate CRM stats
+    const totalCustomers = mockCustomers.length
+    const activeLeads = mockLeads.length
+    const totalDeals = mockDeals.length
+    const totalValue = mockDeals.reduce((sum, deal) => sum + deal.value, 0)
+    const conversionRate = Math.round((totalCustomers / (totalCustomers + activeLeads)) * 100)
+    const averageDealValue = totalDeals > 0 ? Math.round(totalValue / totalDeals) : 0
+
+    setCrmStats({
+      totalCustomers,
+      activeLeads,
+      totalDeals,
+      conversionRate,
+      averageDealValue,
+      monthlyRevenue: totalValue
+    })
   }, [blogPosts])
 
   const quickActions = [
@@ -264,6 +410,160 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                 </Link>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* CRM Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <h3 
+            className="text-2xl font-black text-black mb-6"
+            style={{ fontFamily: 'Space Grotesk' }}
+          >
+            CUSTOMER RELATIONSHIP MANAGEMENT
+          </h3>
+          
+          {/* CRM Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
+            {[
+              { title: 'CUSTOMERS', value: crmStats.totalCustomers, icon: Users, color: 'bg-yellow-300 text-black' },
+              { title: 'ACTIVE LEADS', value: crmStats.activeLeads, icon: UserPlus, color: 'bg-red-600 text-white' },
+              { title: 'TOTAL DEALS', value: crmStats.totalDeals, icon: Target, color: 'bg-black text-white' },
+              { title: 'CONVERSION', value: `${crmStats.conversionRate}%`, icon: TrendingUp, color: 'bg-yellow-300 text-black' },
+              { title: 'AVG DEAL', value: `₺${crmStats.averageDealValue.toLocaleString()}`, icon: DollarSign, color: 'bg-red-600 text-white' },
+              { title: 'PIPELINE', value: `₺${crmStats.monthlyRevenue.toLocaleString()}`, icon: BarChart3, color: 'bg-black text-white' }
+            ].map((stat, index) => (
+              <div key={stat.title} className={`neo-card p-4 ${stat.color} text-center`}>
+                <stat.icon className="w-6 h-6 mx-auto mb-2" />
+                <p className="text-sm font-bold opacity-75">{stat.title}</p>
+                <p className="text-lg font-black" style={{ fontFamily: 'Space Grotesk' }}>
+                  {stat.value}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CRM Tabs */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Customers */}
+            <div className="neo-card bg-white p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h4 className="text-lg font-black text-black" style={{ fontFamily: 'Space Grotesk' }}>
+                  CUSTOMERS
+                </h4>
+                <button className="p-2 bg-red-600 text-white border-2 border-black hover:bg-black transition-colors">
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+              
+              <div className="space-y-3">
+                {crmData.customers.slice(0, 3).map((customer) => (
+                  <div key={customer.id} className="p-3 bg-gray-50 border-2 border-black hover:shadow-[2px_2px_0px_0px_#000] transition-all duration-200">
+                    <div className="flex items-center justify-between mb-2">
+                      <h5 className="font-black text-sm text-black">{customer.name}</h5>
+                      <span className={`px-2 py-1 text-xs font-bold border border-black ${
+                        customer.status === 'active' ? 'bg-green-600 text-white' :
+                        customer.status === 'prospect' ? 'bg-yellow-300 text-black' :
+                        'bg-red-600 text-white'
+                      }`}>
+                        {customer.status.toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-xs font-bold text-gray-600 mb-2">
+                      <Mail className="w-3 h-3" />
+                      <span>{customer.email}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Tag className="w-3 h-3 text-red-600" />
+                        <span className="text-xs font-bold text-gray-600">{customer.tags[0]}</span>
+                      </div>
+                      <span className="text-xs font-bold text-black">₺{customer.value.toLocaleString()}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Leads */}
+            <div className="neo-card bg-yellow-300 p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h4 className="text-lg font-black text-black" style={{ fontFamily: 'Space Grotesk' }}>
+                  ACTIVE LEADS
+                </h4>
+                <button className="p-2 bg-black text-white border-2 border-black hover:bg-red-600 transition-colors">
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+              
+              <div className="space-y-3">
+                {crmData.leads.map((lead) => (
+                  <div key={lead.id} className="p-3 bg-white border-2 border-black hover:shadow-[2px_2px_0px_0px_#000] transition-all duration-200">
+                    <div className="flex items-center justify-between mb-2">
+                      <h5 className="font-black text-sm text-black">{lead.name}</h5>
+                      <span className={`px-2 py-1 text-xs font-bold border border-black ${
+                        lead.status === 'new' ? 'bg-green-600 text-white' : 'bg-yellow-300 text-black'
+                      }`}>
+                        {lead.status.toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-xs font-bold text-gray-600 mb-2">
+                      <Mail className="w-3 h-3" />
+                      <span>{lead.email}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <MapPin className="w-3 h-3 text-red-600" />
+                        <span className="text-xs font-bold text-gray-600">{lead.source}</span>
+                      </div>
+                      <span className="text-xs font-bold text-black">₺{lead.value.toLocaleString()}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Deals */}
+            <div className="neo-card bg-red-600 text-white p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h4 className="text-lg font-black" style={{ fontFamily: 'Space Grotesk' }}>
+                  ACTIVE DEALS
+                </h4>
+                <button className="p-2 bg-white text-black border-2 border-black hover:bg-yellow-300 transition-colors">
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+              
+              <div className="space-y-3">
+                {crmData.deals.map((deal) => (
+                  <div key={deal.id} className="p-3 bg-black border-2 border-white hover:shadow-[2px_2px_0px_0px_#FDE047] transition-all duration-200">
+                    <div className="flex items-center justify-between mb-2">
+                      <h5 className="font-black text-sm">{deal.title}</h5>
+                      <span className={`px-2 py-1 text-xs font-bold border border-white ${
+                        deal.stage === 'negotiation' ? 'bg-yellow-300 text-black' :
+                        deal.stage === 'proposal' ? 'bg-white text-black' : 'bg-red-600 text-white'
+                      }`}>
+                        {deal.stage.toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-xs font-bold text-gray-300 mb-2">
+                      <Building className="w-3 h-3" />
+                      <span>{deal.customer}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Target className="w-3 h-3 text-yellow-300" />
+                        <span className="text-xs font-bold text-gray-300">{deal.probability}%</span>
+                      </div>
+                      <span className="text-xs font-bold">₺{deal.value.toLocaleString()}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
 
