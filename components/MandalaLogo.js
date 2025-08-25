@@ -16,43 +16,43 @@ export default function MandalaLogo({
 }) {
   const sizeConfig = {
     xs: {
-      container: 'w-8 h-8',
-      center: 'w-2 h-2',
-      inner: 'w-1 h-1',
-      middle: 'w-1 h-2',
+      container: 'w-10 h-10',
+      center: 'w-2.5 h-2.5',
+      inner: 'w-1.5 h-1.5',
+      middle: 'w-1.5 h-2.5',
       outer: 'w-0.5 h-0.5',
       border: 'border-2'
     },
     sm: {
-      container: 'w-12 h-12',
-      center: 'w-3 h-3',
-      inner: 'w-2 h-2',
-      middle: 'w-2 h-3',
-      outer: 'w-1 h-1',
-      border: 'border-4'
-    },
-    md: {
       container: 'w-16 h-16',
       center: 'w-4 h-4',
       inner: 'w-3 h-3',
-      middle: 'w-2 h-4',
+      middle: 'w-3 h-4',
       outer: 'w-1.5 h-1.5',
       border: 'border-4'
     },
-    lg: {
-      container: 'w-24 h-24',
-      center: 'w-6 h-6',
+    md: {
+      container: 'w-20 h-20',
+      center: 'w-5 h-5',
       inner: 'w-4 h-4',
-      middle: 'w-3 h-6',
+      middle: 'w-3 h-5',
       outer: 'w-2 h-2',
+      border: 'border-4'
+    },
+    lg: {
+      container: 'w-28 h-28',
+      center: 'w-7 h-7',
+      inner: 'w-5 h-5',
+      middle: 'w-4 h-7',
+      outer: 'w-2.5 h-2.5',
       border: 'border-6'
     },
     xl: {
-      container: 'w-32 h-32',
-      center: 'w-8 h-8',
-      inner: 'w-6 h-6',
-      middle: 'w-4 h-8',
-      outer: 'w-3 h-3',
+      container: 'w-40 h-40',
+      center: 'w-10 h-10',
+      inner: 'w-8 h-8',
+      middle: 'w-5 h-10',
+      outer: 'w-4 h-4',
       border: 'border-8'
     }
   }
