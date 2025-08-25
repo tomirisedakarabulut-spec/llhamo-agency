@@ -13,7 +13,17 @@ import {
   Plus,
   BarChart3,
   Calendar,
-  Crown
+  Crown,
+  Mail,
+  Phone,
+  Globe,
+  Clock,
+  AlertCircle,
+  CheckCircle,
+  Activity,
+  Target,
+  DollarSign,
+  MessageSquare
 } from 'lucide-react'
 import AdminLayout from '../../components/AdminLayout'
 import { getAllBlogPosts, getSiteConfig } from '../../lib/content'
@@ -23,16 +33,73 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
     totalPosts: 0,
     publishedPosts: 0,
     draftPosts: 0,
-    totalViews: 0
+    totalViews: 0,
+    totalContacts: 0,
+    totalProjects: 0,
+    conversionRate: 0,
+    monthlyRevenue: 0
+  })
+
+  const [recentActivity, setRecentActivity] = useState([])
+  const [systemStatus, setSystemStatus] = useState({
+    server: 'online',
+    database: 'online',
+    email: 'online',
+    backup: 'online'
   })
 
   useEffect(() => {
+    // Enhanced stats calculation
+    const totalViews = blogPosts.reduce((sum, post) => sum + (post.views || 0), 0)
+    const publishedPosts = blogPosts.filter(post => post.published !== false).length
+    const draftPosts = blogPosts.filter(post => post.published === false).length
+    
     setStats({
       totalPosts: blogPosts.length,
-      publishedPosts: blogPosts.length,
-      draftPosts: 0,
-      totalViews: Math.floor(Math.random() * 50000) + 10000 // Mock data
+      publishedPosts,
+      draftPosts,
+      totalViews: totalViews || Math.floor(Math.random() * 50000) + 10000,
+      totalContacts: Math.floor(Math.random() * 100) + 25,
+      totalProjects: Math.floor(Math.random() * 50) + 10,
+      conversionRate: Math.floor(Math.random() * 15) + 5,
+      monthlyRevenue: Math.floor(Math.random() * 100000) + 50000
     })
+
+    // Mock recent activity
+    setRecentActivity([
+      {
+        id: 1,
+        type: 'blog',
+        action: 'New blog post published',
+        title: 'Brutal Marketing Secrets',
+        time: '2 hours ago',
+        status: 'success'
+      },
+      {
+        id: 2,
+        type: 'contact',
+        action: 'New contact form submission',
+        title: 'Potential client inquiry',
+        time: '4 hours ago',
+        status: 'pending'
+      },
+      {
+        id: 3,
+        type: 'project',
+        action: 'Project status updated',
+        title: 'Brand Identity Project',
+        time: '1 day ago',
+        status: 'success'
+      },
+      {
+        id: 4,
+        type: 'system',
+        action: 'Backup completed',
+        title: 'Daily backup successful',
+        time: '1 day ago',
+        status: 'success'
+      }
+    ])
   }, [blogPosts])
 
   const quickActions = [
@@ -102,26 +169,58 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { title: 'TOTAL POSTS', value: stats.totalPosts, icon: FileText, color: 'bg-yellow-300 text-black' },
-            { title: 'PUBLISHED', value: stats.publishedPosts, icon: Eye, color: 'bg-black text-white' },
-            { title: 'DRAFTS', value: stats.draftPosts, icon: Edit, color: 'bg-red-600 text-white' },
-            { title: 'TOTAL VIEWS', value: stats.totalViews.toLocaleString(), icon: TrendingUp, color: 'bg-yellow-300 text-black' }
+            { title: 'TOTAL POSTS', value: stats.totalPosts, icon: FileText, color: 'bg-yellow-300 text-black', trend: '+12%' },
+            { title: 'PUBLISHED', value: stats.publishedPosts, icon: Eye, color: 'bg-black text-white', trend: '+8%' },
+            { title: 'TOTAL VIEWS', value: stats.totalViews.toLocaleString(), icon: TrendingUp, color: 'bg-red-600 text-white', trend: '+25%' },
+            { title: 'CONTACTS', value: stats.totalContacts, icon: MessageSquare, color: 'bg-yellow-300 text-black', trend: '+15%' }
           ].map((stat, index) => (
             <motion.div
               key={stat.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`neo-card p-6 ${stat.color}`}
+              className={`neo-card p-6 ${stat.color} group hover:shadow-[8px_8px_0px_0px_#000] transition-all duration-200`}
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-2">
                 <div>
                   <p className="text-sm font-bold opacity-75">{stat.title}</p>
                   <p className="text-3xl font-black" style={{ fontFamily: 'Space Grotesk' }}>
                     {stat.value}
                   </p>
                 </div>
-                <stat.icon className="w-8 h-8" />
+                <stat.icon className="w-8 h-8 group-hover:scale-110 transition-transform duration-200" />
+              </div>
+              <div className="flex items-center space-x-2">
+                <TrendingUp className="w-4 h-4 text-green-600" />
+                <span className="text-sm font-bold text-green-600">{stat.trend}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Additional Stats Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { title: 'PROJECTS', value: stats.totalProjects, icon: Target, color: 'bg-black text-white', subtitle: 'Active Projects' },
+            { title: 'CONVERSION RATE', value: `${stats.conversionRate}%`, icon: Activity, color: 'bg-red-600 text-white', subtitle: 'This Month' },
+            { title: 'REVENUE', value: `₺${stats.monthlyRevenue.toLocaleString()}`, icon: DollarSign, color: 'bg-yellow-300 text-black', subtitle: 'Monthly' }
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: (index + 4) * 0.1 }}
+              className={`neo-card p-6 ${stat.color} group hover:shadow-[8px_8px_0px_0px_#000] transition-all duration-200`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <p className="text-sm font-bold opacity-75">{stat.title}</p>
+                  <p className="text-2xl font-black" style={{ fontFamily: 'Space Grotesk' }}>
+                    {stat.value}
+                  </p>
+                  <p className="text-xs font-bold opacity-75">{stat.subtitle}</p>
+                </div>
+                <stat.icon className="w-8 h-8 group-hover:scale-110 transition-transform duration-200" />
               </div>
             </motion.div>
           ))}
@@ -168,13 +267,13 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Recent Posts */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="neo-card bg-white p-6"
+            className="neo-card bg-white p-6 lg:col-span-2"
           >
             <div className="flex items-center justify-between mb-6">
               <h3 
@@ -195,7 +294,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
               {recentPosts.map((post) => (
                 <div
                   key={post.slug}
-                  className="flex items-center justify-between p-4 bg-gray-50 border-2 border-black"
+                  className="flex items-center justify-between p-4 bg-gray-50 border-2 border-black hover:shadow-[4px_4px_0px_0px_#000] transition-all duration-200"
                 >
                   <div className="flex-1">
                     <h4 className="font-black text-black text-sm mb-1">
@@ -211,6 +310,10 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                         'bg-yellow-300 text-black'
                       }`}>
                         {post.category}
+                      </span>
+                      <span className="flex items-center space-x-1">
+                        <Eye className="w-3 h-3" />
+                        <span>{post.views || Math.floor(Math.random() * 1000)} views</span>
                       </span>
                     </div>
                   </div>
@@ -232,7 +335,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
             </div>
           </motion.div>
 
-          {/* Site Overview */}
+          {/* System Status */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -243,16 +346,89 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
               className="text-xl font-black mb-6"
               style={{ fontFamily: 'Space Grotesk' }}
             >
+              SYSTEM STATUS
+            </h3>
+            
+            <div className="space-y-4">
+              {Object.entries(systemStatus).map(([service, status]) => (
+                <div key={service} className="flex items-center justify-between p-3 border-2 border-white">
+                  <div className="flex items-center space-x-3">
+                    {status === 'online' ? (
+                      <CheckCircle className="w-5 h-5 text-green-400" />
+                    ) : (
+                      <AlertCircle className="w-5 h-5 text-red-400" />
+                    )}
+                    <div>
+                      <p className="font-bold text-sm capitalize">{service}</p>
+                      <p className={`text-xs font-bold ${
+                        status === 'online' ? 'text-green-400' : 'text-red-400'
+                      }`}>
+                        {status.toUpperCase()}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Recent Activity & Site Overview */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Recent Activity */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+            className="neo-card bg-yellow-300 p-6"
+          >
+            <h3 
+              className="text-xl font-black text-black mb-6"
+              style={{ fontFamily: 'Space Grotesk' }}
+            >
+              RECENT ACTIVITY
+            </h3>
+            
+            <div className="space-y-4">
+              {recentActivity.map((activity) => (
+                <div
+                  key={activity.id}
+                  className="flex items-center space-x-4 p-3 bg-white border-2 border-black"
+                >
+                  <div className={`w-3 h-3 rounded-full ${
+                    activity.status === 'success' ? 'bg-green-600' : 'bg-yellow-600'
+                  }`}></div>
+                  <div className="flex-1">
+                    <p className="font-bold text-black text-sm">{activity.action}</p>
+                    <p className="text-xs font-bold text-gray-600">{activity.title}</p>
+                    <p className="text-xs font-bold text-gray-500">{activity.time}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Site Overview */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="neo-card bg-red-600 text-white p-6"
+          >
+            <h3 
+              className="text-xl font-black mb-6"
+              style={{ fontFamily: 'Space Grotesk' }}
+            >
               SITE OVERVIEW
             </h3>
             
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-red-600 border-2 border-white">
+              <div className="flex items-center justify-between p-4 bg-black border-2 border-white">
                 <div>
                   <p className="font-bold text-sm">SITE NAME</p>
                   <p className="font-black text-lg">{siteConfig.site.name}</p>
                 </div>
-                <Settings className="w-6 h-6" />
+                <Globe className="w-6 h-6" />
               </div>
               
               <div className="flex items-center justify-between p-4 bg-yellow-300 text-black border-2 border-black">
@@ -260,7 +436,15 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                   <p className="font-bold text-sm">CONTACT EMAIL</p>
                   <p className="font-black text-lg">{siteConfig.contact.email}</p>
                 </div>
-                <Users className="w-6 h-6" />
+                <Mail className="w-6 h-6" />
+              </div>
+              
+              <div className="flex items-center justify-between p-4 bg-white text-black border-2 border-black">
+                <div>
+                  <p className="font-bold text-sm">PHONE</p>
+                  <p className="font-black text-lg">{siteConfig.contact.phone || '+90 555 BRUTAL'}</p>
+                </div>
+                <Phone className="w-6 h-6" />
               </div>
               
               <div className="flex items-center justify-between p-4 border-2 border-white">
@@ -268,7 +452,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                   <p className="font-bold text-sm">LAST UPDATED</p>
                   <p className="font-black text-lg">{new Date().toLocaleDateString('tr-TR')}</p>
                 </div>
-                <BarChart3 className="w-6 h-6" />
+                <Clock className="w-6 h-6" />
               </div>
             </div>
           </motion.div>
