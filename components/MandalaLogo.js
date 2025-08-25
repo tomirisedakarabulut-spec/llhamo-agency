@@ -68,37 +68,114 @@ export default function MandalaLogo({
         ${colors.border} 
         ${colors.shadow} 
         flex items-center justify-center 
-        transform -rotate-3 
-        relative overflow-hidden 
+        transform -rotate-6 hover:rotate-12 
+        relative overflow-visible 
+        hover:scale-110 hover:shadow-[8px_8px_0px_0px_#000] 
+        transition-all duration-300 ease-out
         ${className}
       `}
     >
       {/* Neo Brutalist Mandala Pattern */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center group">
         {/* Center Circle */}
-        <div className={`${config.center} ${colors.center} border-2 ${colors.border} rounded-full absolute`}></div>
+        <motion.div 
+          className={`${config.center} ${colors.center} border-2 ${colors.border} rounded-full absolute`}
+          animate={{ 
+            scale: [1, 1.1, 1],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ 
+            duration: 4, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+        ></motion.div>
         
         {/* Inner Ring - 4 squares */}
-        <div className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute -top-2 left-1/2 transform -translate-x-1/2`}></div>
-        <div className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute -bottom-2 left-1/2 transform -translate-x-1/2`}></div>
-        <div className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute top-1/2 -left-2 transform -translate-y-1/2`}></div>
-        <div className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute top-1/2 -right-2 transform -translate-y-1/2`}></div>
+        <motion.div 
+          className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute -top-2 left-1/2 transform -translate-x-1/2`}
+          animate={{ rotate: [0, 90, 180, 270, 360] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute -bottom-2 left-1/2 transform -translate-x-1/2`}
+          animate={{ rotate: [0, -90, -180, -270, -360] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute top-1/2 -left-2 transform -translate-y-1/2`}
+          animate={{ rotate: [0, 90, 180, 270, 360] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.inner} ${colors.inner} border-2 ${colors.border} absolute top-1/2 -right-2 transform -translate-y-1/2`}
+          animate={{ rotate: [0, -90, -180, -270, -360] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
         
         {/* Middle Ring - 4 rotated rectangles */}
-        <div className={`${config.middle} ${colors.middle} border border-white absolute top-1 left-1/2 transform -translate-x-1/2 rotate-45`}></div>
-        <div className={`${config.middle} ${colors.middle} border border-white absolute bottom-1 left-1/2 transform -translate-x-1/2 rotate-45`}></div>
-        <div className={`h-2 ${config.middle.replace('h-4', 'w-4')} ${colors.middle} border border-white absolute top-1/2 left-1 transform -translate-y-1/2 rotate-45`}></div>
-        <div className={`h-2 ${config.middle.replace('h-4', 'w-4')} ${colors.middle} border border-white absolute top-1/2 right-1 transform -translate-y-1/2 rotate-45`}></div>
+        <motion.div 
+          className={`${config.middle} ${colors.middle} border border-white absolute top-1 left-1/2 transform -translate-x-1/2 rotate-45`}
+          animate={{ rotate: [45, 135, 225, 315, 405] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.middle} ${colors.middle} border border-white absolute bottom-1 left-1/2 transform -translate-x-1/2 rotate-45`}
+          animate={{ rotate: [45, -45, -135, -225, -315] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
+        <motion.div 
+          className={`h-2 ${config.middle.replace('h-4', 'w-4')} ${colors.middle} border border-white absolute top-1/2 left-1 transform -translate-y-1/2 rotate-45`}
+          animate={{ rotate: [45, 135, 225, 315, 405] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
+        <motion.div 
+          className={`h-2 ${config.middle.replace('h-4', 'w-4')} ${colors.middle} border border-white absolute top-1/2 right-1 transform -translate-y-1/2 rotate-45`}
+          animate={{ rotate: [45, -45, -135, -225, -315] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        ></motion.div>
         
         {/* Outer Ring - 8 small squares */}
-        <div className={`${config.outer} ${colors.outer} border border-white absolute top-0 left-1/2 transform -translate-x-1/2`}></div>
-        <div className={`${config.outer} ${colors.outer} border border-white absolute bottom-0 left-1/2 transform -translate-x-1/2`}></div>
-        <div className={`${config.outer} ${colors.outer} border border-white absolute top-1/2 left-0 transform -translate-y-1/2`}></div>
-        <div className={`${config.outer} ${colors.outer} border border-white absolute top-1/2 right-0 transform -translate-y-1/2`}></div>
-        <div className={`${config.outer} ${colors.outer} border border-white absolute top-1 left-1`}></div>
-        <div className={`${config.outer} ${colors.outer} border border-white absolute top-1 right-1`}></div>
-        <div className={`${config.outer} ${colors.outer} border border-white absolute bottom-1 left-1`}></div>
-        <div className={`${config.outer} ${colors.outer} border border-white absolute bottom-1 right-1`}></div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute top-0 left-1/2 transform -translate-x-1/2`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute bottom-0 left-1/2 transform -translate-x-1/2`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute top-1/2 left-0 transform -translate-y-1/2`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute top-1/2 right-0 transform -translate-y-1/2`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute top-1 left-1`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.25 }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute top-1 right-1`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.75 }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute bottom-1 left-1`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.25 }}
+        ></motion.div>
+        <motion.div 
+          className={`${config.outer} ${colors.outer} border border-white absolute bottom-1 right-1`}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.75 }}
+        ></motion.div>
       </div>
     </div>
   )
@@ -106,8 +183,25 @@ export default function MandalaLogo({
   if (animate) {
     return (
       <motion.div
-        whileHover={{ scale: 1.1, rotate: 15 }}
-        whileTap={{ scale: 0.9 }}
+        initial={{ scale: 0.8, rotate: -10, opacity: 0 }}
+        animate={{ scale: 1, rotate: -6, opacity: 1 }}
+        whileHover={{ 
+          scale: 1.15, 
+          rotate: 12, 
+          y: -5,
+          transition: { 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 10 
+          }
+        }}
+        whileTap={{ scale: 0.95, rotate: -3 }}
+        transition={{ 
+          duration: 0.6, 
+          ease: "easeOut",
+          type: "spring",
+          stiffness: 200
+        }}
         className="relative"
       >
         {LogoComponent}
