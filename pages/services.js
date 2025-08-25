@@ -10,8 +10,10 @@ import {
   ArrowRight,
   Zap,
   CheckCircle,
-  Star
+  Star,
+  ChevronUp
 } from 'lucide-react'
+import { FloatingBackButton } from '../components/BackButton'
 
 const services = [
   {
@@ -77,6 +79,13 @@ const services = [
 ]
 
 export default function Services() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     in: { opacity: 1, y: 0 },
@@ -97,6 +106,7 @@ export default function Services() {
       variants={pageVariants}
       transition={pageTransition}
     >
+      <FloatingBackButton />
       <Head>
         <title>BRUTAL SERVICES | LHAMO - Marketing Warfare Arsenal</title>
         <meta name="description" content="Discover LHAMO's brutal marketing services. From creative campaigns to AI-powered strategies, we destroy boring marketing with divine precision." />
@@ -273,6 +283,72 @@ export default function Services() {
           </motion.div>
         </div>
       </section>
+
+      {/* Newsletter Signup Section */}
+      <section className="bg-yellow-300 py-16 border-b-4 border-black">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="neo-badge inline-flex items-center space-x-2 mb-8 bg-red-600 text-white">
+              <Zap className="w-5 h-5" />
+              <span>JOIN THE BRUTALITY</span>
+            </div>
+            
+            <h2 
+              className="text-4xl lg:text-6xl font-black text-black mb-6 leading-none"
+              style={{ fontFamily: 'Space Grotesk' }}
+            >
+              GET BRUTAL
+              <br />
+              <span className="bg-red-600 text-white px-4 py-2 border-4 border-black shadow-[8px_8px_0px_0px_#000] inline-block transform rotate-1">
+                MARKETING INSIGHTS
+              </span>
+            </h2>
+            
+            <p className="text-xl font-bold text-black mb-8 max-w-2xl mx-auto">
+              RECEIVE WEEKLY DESTRUCTION STRATEGIES & EXCLUSIVE CONTENT FOR MARKETING WARFARE!
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+              <input
+                type="email"
+                placeholder="YOUR EMAIL FOR DESTRUCTION..."
+                className="neo-input flex-1 bg-white text-black border-black placeholder:text-gray-600 uppercase font-bold"
+              />
+              <motion.button
+                whileHover={{ x: -2, y: -2 }}
+                whileTap={{ x: 0, y: 0 }}
+                className="bg-black text-white border-4 border-black font-bold px-6 py-3 shadow-[4px_4px_0px_0px_#DC2626] hover:shadow-[6px_6px_0px_0px_#DC2626] transition-all duration-200 uppercase tracking-wide flex items-center justify-center space-x-2 whitespace-nowrap"
+              >
+                <span>DESTROY INBOX</span>
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+            </div>
+            
+            <p className="text-sm font-bold text-black mt-4 opacity-75">
+              🔥 NO SPAM, ONLY BRUTAL MARKETING WARFARE! 🔥
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Floating Menu Button */}
+      <motion.button
+        onClick={scrollToTop}
+        className="fixed bottom-6 right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 bg-red-600 text-white border-2 sm:border-4 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center group"
+        whileHover={{ scale: 1.1, y: -2 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <ChevronUp className="w-6 h-6 sm:w-7 sm:h-7 group-hover:animate-bounce" />
+      </motion.button>
     </motion.div>
   )
 }
