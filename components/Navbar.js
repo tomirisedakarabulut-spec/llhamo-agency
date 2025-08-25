@@ -124,20 +124,20 @@ export default function Navbar() {
           : 'bg-yellow-300'
       }`}
     >
-      <nav className="container mx-auto px-3 sm:px-4 flex items-center justify-between h-16 sm:h-18 lg:h-20 max-w-6xl">
+      <nav className="container mx-auto px-3 sm:px-4 flex items-center justify-between h-16 sm:h-20 max-w-6xl">
         {/* LHAMO Logo - Responsive with Hover */}
         <Link href="/" className="flex items-center space-x-2 sm:space-x-3 group">
           <motion.div
             whileHover={{ scale: 1.05, rotate: 5 }}
             whileTap={{ scale: 0.95 }}
-            className="relative -mt-1 sm:-mt-1 lg:-mt-2"
+            className="relative"
           >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white border-2 sm:border-3 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[3px_3px_0px_0px_#000] group-hover:shadow-[3px_3px_0px_0px_#000] sm:group-hover:shadow-[4px_4px_0px_0px_#000] transition-all duration-200 flex items-center justify-center overflow-visible transform -translate-y-0.5 sm:-translate-y-1 lg:-translate-y-1.5 p-1">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white border-2 sm:border-4 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] group-hover:shadow-[4px_4px_0px_0px_#000] sm:group-hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center overflow-hidden p-1">
               <NavbarLogo />
             </div>
           </motion.div>
           <div className="hidden sm:block">
-            <div className="font-black text-lg sm:text-xl text-black transition-colors duration-200 group-hover:text-red-600" style={{ fontFamily: 'Space Grotesk' }}>
+            <div className="font-black text-xl sm:text-2xl text-black transition-colors duration-200 group-hover:text-red-600" style={{ fontFamily: 'Space Grotesk' }}>
               LHAMO
             </div>
             <div className="text-xs font-bold text-red-600 tracking-widest transition-colors duration-200 group-hover:text-black">
