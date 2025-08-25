@@ -125,44 +125,38 @@ export default function Navbar() {
       }`}
     >
       <nav className="container mx-auto px-3 sm:px-4 flex items-center justify-between h-16 sm:h-20 max-w-6xl">
-        {/* LHAMO Logo - Divine Goddess Design */}
+        {/* LHAMO Logo - Clean Divine Design */}
         <Link href="/" className="flex items-center space-x-2 sm:space-x-3 group">
           <motion.div
-            whileHover={{ scale: 1.1, rotate: 8, y: -2 }}
+            whileHover={{ scale: 1.05, rotate: 3 }}
             whileTap={{ scale: 0.95 }}
             className="relative"
           >
-            {/* Divine Aura Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-red-600 to-yellow-300 rounded-full blur-sm opacity-60 group-hover:opacity-80 transition-opacity duration-300 animate-pulse"></div>
+            {/* Subtle Aura Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-red-600 rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
             
             {/* Main Logo Container */}
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-white via-yellow-50 to-white border-2 sm:border-4 border-black shadow-[4px_4px_0px_0px_#000] sm:shadow-[6px_6px_0px_0px_#000] group-hover:shadow-[6px_6px_0px_0px_#000] sm:group-hover:shadow-[8px_8px_0px_0px_#000] transition-all duration-300 flex items-center justify-center overflow-hidden p-1 rounded-sm">
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white border-2 sm:border-4 border-black shadow-[3px_3px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] group-hover:shadow-[4px_4px_0px_0px_#000] sm:group-hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-300 flex items-center justify-center overflow-hidden p-1">
               <NavbarLogo />
               
-              {/* Divine Sparkles */}
-              <div className="absolute top-1 right-1 w-2 h-2 bg-yellow-300 border border-black rounded-full animate-ping"></div>
-              <div className="absolute bottom-1 left-1 w-1.5 h-1.5 bg-red-600 border border-white rounded-full animate-pulse"></div>
+              {/* Single Sparkle */}
+              <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-yellow-300 border border-black rounded-full animate-pulse"></div>
             </div>
             
-            {/* Crown Effect */}
-            <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-6 h-3 sm:w-8 sm:h-4 lg:w-10 lg:h-5 bg-gradient-to-b from-yellow-300 to-red-600 border-2 border-black shadow-[2px_2px_0px_0px_#000] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {/* Simple Crown Effect */}
+            <div className="absolute -top-0.5 left-1/2 transform -translate-x-1/2 w-4 h-2 sm:w-5 sm:h-2.5 lg:w-6 lg:h-3 bg-yellow-300 border border-black shadow-[1px_1px_0px_0px_#000] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="w-full h-full flex items-center justify-center">
-                <Crown className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-black" />
+                <Crown className="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 text-black" />
               </div>
             </div>
           </motion.div>
           
           <div className="hidden sm:block">
-            <div className="font-black text-xl sm:text-2xl text-black transition-all duration-300 group-hover:text-red-600 group-hover:scale-105" style={{ fontFamily: 'Space Grotesk' }}>
-              <span className="bg-gradient-to-r from-black via-red-600 to-black bg-clip-text text-transparent group-hover:from-red-600 group-hover:via-black group-hover:to-red-600">
-                LHAMO
-              </span>
+            <div className="font-black text-xl sm:text-2xl text-black transition-all duration-300 group-hover:text-red-600" style={{ fontFamily: 'Space Grotesk' }}>
+              LHAMO
             </div>
-            <div className="text-xs font-bold text-red-600 tracking-widest transition-all duration-300 group-hover:text-black group-hover:tracking-wider">
-              <span className="relative">
-                GODDESS.COGO
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></div>
-              </span>
+            <div className="text-xs font-bold text-red-600 tracking-widest transition-all duration-300 group-hover:text-black">
+              GODDESS.COGO
             </div>
           </div>
         </Link>
