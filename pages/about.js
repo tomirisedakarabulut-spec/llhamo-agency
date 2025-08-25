@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { Crown, Users, Target, Heart, Zap, Award, Globe, Shield, ChevronUp } from 'lucide-react'
-import MandalaLogo from '../components/MandalaLogo'
+import { HeroLogo } from '../components/Logo'
 import { FloatingBackButton } from '../components/BackButton'
 
 const pageVariants = {
@@ -147,18 +147,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex justify-center mb-12"
             >
-              <MandalaLogo 
-                size="xl" 
-                colors={{
-                  background: 'bg-black',
-                  border: 'border-black',
-                  shadow: 'shadow-[12px_12px_0px_0px_#DC2626]',
-                  center: 'bg-yellow-300',
-                  inner: 'bg-red-600',
-                  middle: 'bg-white',
-                  outer: 'bg-yellow-300'
-                }}
-              />
+              <HeroLogo />
             </motion.div>
           </motion.div>
         </div>
@@ -236,19 +225,7 @@ export default function About() {
               className="neo-card bg-black p-8 text-center"
             >
               <div className="mb-6">
-                <MandalaLogo 
-                  size="lg" 
-                  colors={{
-                    background: 'bg-red-600',
-                    border: 'border-white',
-                    shadow: 'shadow-[8px_8px_0px_0px_#FDE047]',
-                    center: 'bg-yellow-300',
-                    inner: 'bg-white',
-                    middle: 'bg-yellow-300',
-                    outer: 'bg-red-600'
-                  }}
-                  className="mx-auto"
-                />
+                <HeroLogo className="mx-auto" />
               </div>
               
               <h3 className="text-2xl font-black text-white mb-4" style={{ fontFamily: 'Space Grotesk' }}>
