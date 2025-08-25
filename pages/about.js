@@ -84,19 +84,6 @@ export default function About() {
       transition={pageTransition}
     >
       <FloatingBackButton />
-          transition: all 0.2s ease;
-        }
-        .back-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 6px 6px 0px 0px #000;
-        }
-      `}</style>
-      <button 
-        className="back-button"
-        onClick={() => window.history.back()}
-      >
-        ← GERİ
-      </button>
       <Head>
         <title>ABOUT THE GODDESSES | LHAMO - Brutal Marketing Army</title>
         <meta name="description" content="Meet the divine marketing goddesses of LHAMO. Discover our brutal story of transforming brands through mystical creativity and savage precision." />
