@@ -14,7 +14,7 @@ import {
   Mail,
   ArrowUp
 } from 'lucide-react'
-// import { NavbarLogo } from './Logo'
+import { NavbarLogo } from './Logo'
 
 const navigation = [
   { name: 'HOME', href: '/', icon: Home },
@@ -132,41 +132,8 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
             className="relative -mt-2 sm:-mt-3 lg:-mt-4"
           >
-            <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white border-2 sm:border-4 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] group-hover:shadow-[4px_4px_0px_0px_#000] sm:group-hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center overflow-visible transform -translate-y-1 sm:-translate-y-2 lg:-translate-y-3">
-              <svg 
-                viewBox="0 0 200 200" 
-                className="w-full h-full p-1 sm:p-2 transition-transform duration-200 group-hover:scale-110"
-                style={{ maxWidth: '100%', maxHeight: '100%' }}
-              >
-                {/* Ana mandala çerçevesi */}
-                <circle cx="100" cy="100" r="95" stroke="#DC2626" strokeWidth="8" fill="none"/>
-                <circle cx="100" cy="100" r="85" stroke="#111827" strokeWidth="6" fill="none"/>
-                <circle cx="100" cy="100" r="75" stroke="#FDE047" strokeWidth="4" fill="none"/>
-                
-                {/* İç geometrik katmanlar */}
-                <polygon points="100,20 120,40 140,60 140,80 120,100 100,120 80,100 60,80 60,60 80,40" 
-                         fill="#DC2626" stroke="#111827" strokeWidth="2"/>
-                
-                <polygon points="100,35 115,50 125,65 125,80 115,95 100,110 85,95 75,80 75,65 85,50" 
-                         fill="#111827" stroke="#FDE047" strokeWidth="1"/>
-                
-                {/* Merkez LHAMO yazısı */}
-                <rect x="70" y="85" width="60" height="30" fill="#111827" rx="2"/>
-                <text x="100" y="105" fontSize="16" fontFamily="Arial, Helvetica, sans-serif" 
-                      fill="#FDE047" textAnchor="middle" fontWeight="bold">LHAMO</text>
-                
-                {/* Köşe dekoratif elementler */}
-                <rect x="15" y="15" width="12" height="12" fill="#DC2626" transform="rotate(45 21 21)"/>
-                <rect x="173" y="15" width="12" height="12" fill="#DC2626" transform="rotate(45 179 21)"/>
-                <rect x="15" y="173" width="12" height="12" fill="#DC2626" transform="rotate(45 21 179)"/>
-                <rect x="173" y="173" width="12" height="12" fill="#DC2626" transform="rotate(45 179 179)"/>
-                
-                {/* İç dekoratif çizgiler */}
-                <line x1="100" y1="25" x2="100" y2="175" stroke="#111827" strokeWidth="3"/>
-                <line x1="25" y1="100" x2="175" y2="100" stroke="#111827" strokeWidth="3"/>
-                <line x1="40" y1="40" x2="160" y2="160" stroke="#DC2626" strokeWidth="2"/>
-                <line x1="160" y1="40" x2="40" y2="160" stroke="#DC2626" strokeWidth="2"/>
-              </svg>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white border-2 sm:border-4 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] group-hover:shadow-[4px_4px_0px_0px_#000] sm:group-hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center overflow-visible transform -translate-y-1 sm:-translate-y-2 lg:-translate-y-3 p-1">
+              <NavbarLogo />
             </div>
           </motion.div>
           <div className="hidden sm:block">
