@@ -1,1 +1,0 @@
-(()=>{var a={};a.id=636,a.ids=[636],a.modules={2015:a=>{"use strict";a.exports=require("react")},2768:()=>{},9033:(a,b,c)=>{"use strict";c.r(b),c.d(b,{default:()=>e});var d=c(2015);function e({Component:a,pageProps:b}){return d.createElement(a,b)}c(2768)}};var b=require("../webpack-runtime.js");b.C(a);var c=b(b.s=9033);module.exports=c})();

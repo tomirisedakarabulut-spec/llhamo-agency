@@ -2,18 +2,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import './mobile.css';
 
-/* Neo Brutalist Global Styles */
+/* Neo Brutalist Global Styles - Mobile Optimized */
 @layer base {
   html, body, #__next { height: 100%; }
   html { scroll-behavior: smooth; }
   body { 
     @apply bg-yellow-300 text-black antialiased; 
     font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
-  /* Custom scrollbar - Neo Brutalist */
+  /* Custom scrollbar - Neo Brutalist - Mobile Optimized */
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
+  }
+  
+  @media (min-width: 768px) {
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
   }
   
   ::-webkit-scrollbar-track {
@@ -21,20 +31,36 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-black border-2 border-black;
+    @apply bg-black border border-black;
+  }
+  
+  @media (min-width: 768px) {
+    ::-webkit-scrollbar-thumb {
+      @apply border-2;
+    }
   }
   
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-red-600;
   }
+  
+  /* Mobile touch improvements */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Prevent zoom on input focus on iOS */
+  input, textarea, select {
+    font-size: 16px;
+  }
 }
 
 @layer components {
-  .section { @apply py-16 sm:py-20; }
+  .section { @apply py-12 sm:py-16 lg:py-20; }
   
-  /* Mobile-first responsive utilities */
+  /* Mobile-first responsive utilities - Improved */
   .container-responsive {
-    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+    @apply w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8;
     max-width: 100%;
   }
   
@@ -60,39 +86,87 @@
   
   /* Neo Brutalist Components - Mobile Optimized */
   .neo-card {
-    @apply bg-white border-4 border-black shadow-[4px_4px_0px_0px_#000] sm:shadow-[8px_8px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] sm:hover:shadow-[12px_12px_0px_0px_#000] transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1;
+    @apply bg-white border-2 sm:border-3 lg:border-4 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] lg:shadow-[8px_8px_0px_0px_#000] hover:shadow-[3px_3px_0px_0px_#000] sm:hover:shadow-[6px_6px_0px_0px_#000] lg:hover:shadow-[12px_12px_0px_0px_#000] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 sm:hover:-translate-x-1 sm:hover:-translate-y-1;
   }
   
   .neo-button {
-    @apply bg-black text-white border-4 border-black font-bold px-4 py-2 sm:px-6 sm:py-3 shadow-[3px_3px_0px_0px_#DC2626] sm:shadow-[4px_4px_0px_0px_#DC2626] hover:shadow-[4px_4px_0px_0px_#DC2626] sm:hover:shadow-[6px_6px_0px_0px_#DC2626] transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 uppercase tracking-wide text-sm sm:text-base;
+    @apply bg-black text-white border-2 sm:border-3 lg:border-4 border-black font-bold px-3 sm:px-4 lg:px-6 py-2 sm:py-3 shadow-[2px_2px_0px_0px_#DC2626] sm:shadow-[3px_3px_0px_0px_#DC2626] lg:shadow-[4px_4px_0px_0px_#DC2626] hover:shadow-[3px_3px_0px_0px_#DC2626] sm:hover:shadow-[4px_4px_0px_0px_#DC2626] lg:hover:shadow-[6px_6px_0px_0px_#DC2626] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 sm:hover:-translate-x-1 sm:hover:-translate-y-1 uppercase tracking-wide text-sm sm:text-base;
   }
   
   .neo-button-secondary {
-    @apply bg-white text-black border-4 border-black font-bold px-4 py-2 sm:px-6 sm:py-3 shadow-[3px_3px_0px_0px_#EAB308] sm:shadow-[4px_4px_0px_0px_#EAB308] hover:shadow-[4px_4px_0px_0px_#EAB308] sm:hover:shadow-[6px_6px_0px_0px_#EAB308] transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 uppercase tracking-wide text-sm sm:text-base;
+    @apply bg-white text-black border-2 sm:border-3 lg:border-4 border-black font-bold px-3 sm:px-4 lg:px-6 py-2 sm:py-3 shadow-[2px_2px_0px_0px_#EAB308] sm:shadow-[3px_3px_0px_0px_#EAB308] lg:shadow-[4px_4px_0px_0px_#EAB308] hover:shadow-[3px_3px_0px_0px_#EAB308] sm:hover:shadow-[4px_4px_0px_0px_#EAB308] lg:hover:shadow-[6px_6px_0px_0px_#EAB308] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 sm:hover:-translate-x-1 sm:hover:-translate-y-1 uppercase tracking-wide text-sm sm:text-base;
   }
   
   .neo-input {
-    @apply w-full border-4 border-black bg-white px-3 py-2 sm:px-4 sm:py-3 font-bold focus:outline-none focus:shadow-[3px_3px_0px_0px_#DC2626] sm:focus:shadow-[4px_4px_0px_0px_#DC2626] transition-all duration-200 text-sm sm:text-base;
+    @apply w-full border-2 sm:border-3 lg:border-4 border-black bg-white px-2 sm:px-3 lg:px-4 py-2 sm:py-3 font-bold focus:outline-none focus:shadow-[2px_2px_0px_0px_#DC2626] sm:focus:shadow-[3px_3px_0px_0px_#DC2626] lg:focus:shadow-[4px_4px_0px_0px_#DC2626] transition-all duration-200 text-sm sm:text-base;
   }
   
   .neo-badge {
-    @apply bg-red-600 text-white border-4 border-black px-3 py-1 sm:px-4 sm:py-2 font-bold uppercase tracking-wide shadow-[3px_3px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] transform rotate-1 text-xs sm:text-sm;
+    @apply bg-red-600 text-white border-2 sm:border-3 lg:border-4 border-black px-2 sm:px-3 lg:px-4 py-1 sm:py-2 font-bold uppercase tracking-wide shadow-[2px_2px_0px_0px_#000] sm:shadow-[3px_3px_0px_0px_#000] lg:shadow-[4px_4px_0px_0px_#000] transform rotate-1 text-xs sm:text-sm;
   }
   
   .neo-section-dark {
-    @apply bg-black text-white border-y-4 border-black;
+    @apply bg-black text-white border-y-2 sm:border-y-3 lg:border-y-4 border-black;
   }
   
   .neo-section-accent {
-    @apply bg-red-600 text-white border-y-4 border-black;
+    @apply bg-red-600 text-white border-y-2 sm:border-y-3 lg:border-y-4 border-black;
   }
   
   .neo-grid-item {
-    @apply bg-white border-4 border-black p-6 shadow-[6px_6px_0px_0px_#000] hover:shadow-[8px_8px_0px_0px_#000] transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1;
+    @apply bg-white border-2 sm:border-3 lg:border-4 border-black p-3 sm:p-4 lg:p-6 shadow-[3px_3px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] lg:shadow-[6px_6px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] sm:hover:shadow-[6px_6px_0px_0px_#000] lg:hover:shadow-[8px_8px_0px_0px_#000] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 sm:hover:-translate-x-1 sm:hover:-translate-y-1;
   }
 
-  /* Admin Panel Styles */
+  /* Mobile-specific improvements */
+  .mobile-touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  .mobile-safe-area {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Improved text sizing for mobile */
+  .mobile-text-responsive {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  .mobile-heading-responsive {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+  }
+
+  /* Admin Panel Styles - Mobile Optimized */
   .admin-label {
-    @apply block text-sm font-black text-black mb-2 uppercase tracking-wide;
+    @apply block text-xs sm:text-sm font-black text-black mb-1 sm:mb-2 uppercase tracking-wide;
+  }
+  
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    @apply block w-full text-left px-3 sm:px-4 py-2 sm:py-3 font-bold text-sm sm:text-base transition-all duration-200;
+  }
+  
+  /* Mobile form improvements */
+  .mobile-form-group {
+    @apply mb-4 sm:mb-6;
+  }
+  
+  .mobile-form-label {
+    @apply block text-sm sm:text-base font-bold mb-2;
+  }
+  
+  .mobile-form-input {
+    @apply w-full px-3 sm:px-4 py-2 sm:py-3 border-2 sm:border-3 border-black text-sm sm:text-base;
+  }
+  
+  /* Mobile button improvements */
+  .mobile-btn-primary {
+    @apply w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-4 bg-red-600 text-white font-bold text-sm sm:text-base border-2 sm:border-3 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[3px_3px_0px_0px_#000] hover:shadow-[3px_3px_0px_0px_#000] sm:hover:shadow-[4px_4px_0px_0px_#000] transition-all duration-200;
+  }
+  
+  .mobile-btn-secondary {
+    @apply w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-4 bg-white text-black font-bold text-sm sm:text-base border-2 sm:border-3 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[3px_3px_0px_0px_#000] hover:shadow-[3px_3px_0px_0px_#000] sm:hover:shadow-[4px_4px_0px_0px_#000] transition-all duration-200;
   }
 }
