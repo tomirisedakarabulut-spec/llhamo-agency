@@ -136,8 +136,10 @@ export default function Navbar() {
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-red-600 rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
             
             {/* Main Logo Container */}
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white border-2 sm:border-4 border-black shadow-[3px_3px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] group-hover:shadow-[4px_4px_0px_0px_#000] sm:group-hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-300 flex items-center justify-center overflow-hidden p-1">
-              <NavbarLogo />
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white border-2 sm:border-4 border-black shadow-[3px_3px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] group-hover:shadow-[4px_4px_0px_0px_#000] sm:group-hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-300 flex items-center justify-center overflow-hidden p-0.5">
+              <div className="w-full h-full flex items-center justify-center">
+                <NavbarLogo />
+              </div>
               
               {/* Single Sparkle */}
               <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-yellow-300 border border-black rounded-full animate-pulse"></div>

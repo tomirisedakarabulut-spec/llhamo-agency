@@ -30,7 +30,7 @@ export default function Logo({
 
 // Preset configurations for different contexts
 export const NavbarLogo = (props) => (
-  <Logo size="sm" className="cursor-pointer" {...props} />
+  <Logo size="md" className="cursor-pointer" {...props} />
 )
 
 export const FooterLogo = (props) => (
