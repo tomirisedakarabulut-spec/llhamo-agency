@@ -97,6 +97,52 @@ export default function Footer() {
         </div>
       </section>
 
+      {/* Mini Sitemap */}
+      <section className="bg-yellow-300 py-8 border-b-4 border-black">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h3 
+              className="text-2xl font-black text-black mb-6"
+              style={{ fontFamily: 'Space Grotesk' }}
+            >
+              QUICK NAVIGATION
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+              <Link 
+                href="/about"
+                className="bg-black text-white border-4 border-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 uppercase tracking-wide transform hover:-translate-x-1 hover:-translate-y-1"
+              >
+                ABOUT
+              </Link>
+              <Link 
+                href="/services"
+                className="bg-red-600 text-white border-4 border-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 uppercase tracking-wide transform hover:-translate-x-1 hover:-translate-y-1"
+              >
+                SERVICES
+              </Link>
+              <Link 
+                href="/blog"
+                className="bg-black text-white border-4 border-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 uppercase tracking-wide transform hover:-translate-x-1 hover:-translate-y-1"
+              >
+                BLOG
+              </Link>
+              <Link 
+                href="/contact"
+                className="bg-red-600 text-white border-4 border-white font-bold px-6 py-3 shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 uppercase tracking-wide transform hover:-translate-x-1 hover:-translate-y-1"
+              >
+                CONTACT
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Main Footer Content */}
       <div className="py-16">
         <div className="container mx-auto px-4 max-w-6xl">
