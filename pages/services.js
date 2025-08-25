@@ -11,7 +11,26 @@ import {
   Zap,
   CheckCircle,
   Star,
-  ChevronUp
+  ChevronUp,
+  Sparkles,
+  Rocket,
+  Shield,
+  Megaphone,
+  BarChart3,
+  Users,
+  Globe,
+  Smartphone,
+  Camera,
+  Cpu,
+  LineChart,
+  Zap,
+  Eye,
+  Heart,
+  Award,
+  Lightbulb,
+  Settings,
+  Database,
+  Network
 } from 'lucide-react'
 import { FloatingBackButton } from '../components/BackButton'
 
@@ -20,61 +39,73 @@ const services = [
     id: 'creative',
     title: 'CREATIVE\nCAMPAIGNS',
     description: 'WE SMASH BORING WITH BRUTAL CREATIVITY THAT MAKES YOUR BRAND LEGENDARY!',
-    icon: Palette,
+    icon: Sparkles,
+    secondaryIcon: Palette,
     features: ['BRAND STORYTELLING', 'VISUAL IDENTITY', 'CAMPAIGN STRATEGY', 'CONTENT CREATION', 'CREATIVE DIRECTION'],
     price: '₺15,000',
     popular: false,
-    color: 'red'
+    color: 'red',
+    illustration: '🎨✨'
   },
   {
     id: 'digital-ads',
     title: 'DIGITAL\nADVERTISING',
     description: 'PRECISION STRIKES ACROSS ALL PLATFORMS WITH AI-POWERED DESTRUCTION!',
-    icon: Target,
+    icon: Rocket,
+    secondaryIcon: Target,
     features: ['GOOGLE ADS', 'META ADVERTISING', 'TIKTOK ADS', 'PERFORMANCE ANALYTICS', 'CONVERSION OPTIMIZATION'],
     price: '₺12,000',
     popular: true,
-    color: 'yellow'
+    color: 'yellow',
+    illustration: '🚀🎯'
   },
   {
     id: 'branding',
     title: 'BRAND\nIDENTITY',
     description: 'TRANSFORM YOUR BRAND INTO AN UNSTOPPABLE VISUAL FORCE!',
     icon: Crown,
+    secondaryIcon: Shield,
     features: ['LOGO DESIGN', 'BRAND GUIDELINES', 'VISUAL SYSTEMS', 'BRAND STRATEGY', 'TRADEMARK SUPPORT'],
     price: '₺25,000',
     popular: false,
-    color: 'red'
+    color: 'red',
+    illustration: '👑🛡️'
   },
   {
     id: 'video',
     title: 'VIDEO\nPRODUCTION',
     description: 'CINEMATIC BRUTALITY THAT CAPTURES HEARTS AND DESTROYS COMPETITION!',
-    icon: Video,
+    icon: Camera,
+    secondaryIcon: Video,
     features: ['VIDEO PRODUCTION', 'CONTENT CREATION', 'POST-PRODUCTION', 'MOTION GRAPHICS', 'SOCIAL VIDEO'],
     price: '₺18,000',
     popular: false,
-    color: 'yellow'
+    color: 'yellow',
+    illustration: '📹🎬'
   },
   {
     id: 'ai',
     title: 'AI\nMARKETING',
     description: 'HARNESS THE POWER OF ARTIFICIAL INTELLIGENCE FOR TOTAL DOMINATION!',
-    icon: Brain,
+    icon: Cpu,
+    secondaryIcon: Brain,
     features: ['AI ANALYTICS', 'AUTOMATION', 'PERSONALIZATION', 'CHATBOTS', 'PREDICTIVE ANALYSIS'],
     price: '₺20,000',
     popular: false,
-    color: 'red'
+    color: 'red',
+    illustration: '🤖🧠'
   },
   {
     id: 'growth',
     title: 'GROWTH\nSTRATEGY',
     description: 'DATA-DRIVEN WARFARE FOR SUSTAINABLE BUSINESS DESTRUCTION OF LIMITS!',
-    icon: TrendingUp,
+    icon: LineChart,
+    secondaryIcon: TrendingUp,
     features: ['GROWTH HACKING', 'CONVERSION OPTIMIZATION', 'ANALYTICS', 'A/B TESTING', 'FUNNEL OPTIMIZATION'],
     price: '₺16,000',
     popular: false,
-    color: 'yellow'
+    color: 'yellow',
+    illustration: '📈⚡'
   }
 ]
 
@@ -174,15 +205,95 @@ export default function Services() {
                   </div>
                 )}
 
-                <div className={`neo-card p-8 h-full flex flex-col ${
-                  service.color === 'red' ? 'bg-red-600 text-white' : 'bg-white text-black'
-                } ${service.popular ? 'border-red-600' : ''}`}>
+                <motion.div 
+                  className={`neo-card p-8 h-full flex flex-col ${
+                    service.color === 'red' ? 'bg-red-600 text-white' : 'bg-white text-black'
+                  } ${service.popular ? 'border-red-600' : ''}`}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -8,
+                    boxShadow: "12px 12px 0px 0px #000"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 300, 
+                    damping: 20 
+                  }}
+                >
                   
-                  {/* Icon */}
-                  <div className={`w-16 h-16 border-4 border-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${
-                    service.color === 'red' ? 'bg-white text-black' : 'bg-black text-white'
-                  }`}>
-                    <service.icon className="w-8 h-8" />
+                  {/* Enhanced Icon Section */}
+                  <div className="relative mb-6">
+                    {/* Main Icon Container */}
+                    <motion.div 
+                      className={`w-20 h-20 border-4 border-black flex items-center justify-center ${
+                        service.color === 'red' ? 'bg-white text-black' : 'bg-black text-white'
+                      }`}
+                      whileHover={{ 
+                        scale: 1.15, 
+                        rotate: 5,
+                        boxShadow: "6px 6px 0px 0px #000"
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 400, 
+                        damping: 15 
+                      }}
+                    >
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ 
+                          duration: 20, 
+                          repeat: Infinity, 
+                          ease: "linear" 
+                        }}
+                      >
+                        <service.icon className="w-10 h-10" />
+                      </motion.div>
+                    </motion.div>
+                    
+                    {/* Secondary Icon */}
+                    <motion.div 
+                      className={`absolute -top-2 -right-2 w-8 h-8 border-2 border-black flex items-center justify-center ${
+                        service.color === 'red' ? 'bg-yellow-300 text-black' : 'bg-red-600 text-white'
+                      }`}
+                      whileHover={{ 
+                        scale: 1.2, 
+                        rotate: -10,
+                        y: -2
+                      }}
+                      animate={{ 
+                        y: [0, -3, 0],
+                        rotate: [0, -5, 0]
+                      }}
+                      transition={{ 
+                        y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                        rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                    >
+                      <service.secondaryIcon className="w-4 h-4" />
+                    </motion.div>
+                    
+                    {/* Illustration Emoji */}
+                    <motion.div 
+                      className="absolute -bottom-2 -left-2 text-2xl transform rotate-12"
+                      whileHover={{ 
+                        scale: 1.3, 
+                        rotate: 0,
+                        y: -5
+                      }}
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        rotate: [12, -12, 12]
+                      }}
+                      transition={{ 
+                        scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                        rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                    >
+                      {service.illustration}
+                    </motion.div>
                   </div>
 
                   {/* Content */}
