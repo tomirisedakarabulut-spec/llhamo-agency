@@ -49,7 +49,7 @@ export default function Home() {
         
         {/* Additional SEO */}
         <link rel="canonical" href="https://lhamo.agency" />
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" href="/logo.png" />
         
         {/* Structured Data */}

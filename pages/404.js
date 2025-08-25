@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Home, ArrowLeft, Search, AlertTriangle } from 'lucide-react'
+import { FloatingBackButton } from '../components/BackButton'
 
 export default function Custom404() {
   return (
@@ -13,6 +14,7 @@ export default function Custom404() {
       </Head>
 
       <div className="min-h-screen bg-yellow-300 flex items-center justify-center px-4">
+        <FloatingBackButton />
         <div className="max-w-2xl mx-auto text-center">
           {/* Neo Brutalist 404 Design */}
           <motion.div

@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Crown, Users, Target, Heart, Zap, Award, Globe, Shield } from 'lucide-react'
+import { Crown, Users, Target, Heart, Zap, Award, Globe, Shield, ChevronUp } from 'lucide-react'
 import MandalaLogo from '../components/MandalaLogo'
+import { FloatingBackButton } from '../components/BackButton'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -67,6 +68,13 @@ const values = [
 ]
 
 export default function About() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <motion.div
       initial="initial"
@@ -75,6 +83,20 @@ export default function About() {
       variants={pageVariants}
       transition={pageTransition}
     >
+      <FloatingBackButton />
+          transition: all 0.2s ease;
+        }
+        .back-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 6px 6px 0px 0px #000;
+        }
+      `}</style>
+      <button 
+        className="back-button"
+        onClick={() => window.history.back()}
+      >
+        ← GERİ
+      </button>
       <Head>
         <title>ABOUT THE GODDESSES | LHAMO - Brutal Marketing Army</title>
         <meta name="description" content="Meet the divine marketing goddesses of LHAMO. Discover our brutal story of transforming brands through mystical creativity and savage precision." />
@@ -421,6 +443,19 @@ export default function About() {
           </motion.div>
         </div>
       </section>
+
+      {/* Floating Menu Button */}
+      <motion.button
+        onClick={scrollToTop}
+        className="fixed bottom-6 right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 bg-red-600 text-white border-2 sm:border-4 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center group"
+        whileHover={{ scale: 1.1, y: -2 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <ChevronUp className="w-6 h-6 sm:w-7 sm:h-7 group-hover:animate-bounce" />
+      </motion.button>
     </motion.div>
   )
 }

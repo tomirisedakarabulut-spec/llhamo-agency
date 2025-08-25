@@ -16,6 +16,7 @@ import {
   Rocket,
   Shield
 } from 'lucide-react'
+import { FloatingBackButton } from '../components/BackButton'
 
 const jobOpenings = [
   {
@@ -140,6 +141,7 @@ export default function Careers() {
       variants={pageVariants}
       transition={pageTransition}
     >
+      <FloatingBackButton />
       <Head>
         <title>JOIN THE ARMY | LHAMO - Brutal Career Opportunities</title>
         <meta name="description" content="Join LHAMO's brutal marketing army. Discover savage career opportunities in creative, tech, and strategy warfare." />

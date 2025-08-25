@@ -10,7 +10,8 @@ export default function Document() {
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
         rel: "stylesheet"
       }),
-      React.createElement("link", { rel: "icon", href: "/favicon-32x32.png", type: "image/png" }),
+      React.createElement("link", { rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" }),
+      React.createElement("link", { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }),
       React.createElement("link", { rel: "shortcut icon", href: "/favicon-32x32.png", type: "image/png" }),
       React.createElement("link", { rel: "apple-touch-icon", href: "/favicon-32x32.png" }),
       React.createElement("link", { rel: "manifest", href: "/manifest.json" }),
