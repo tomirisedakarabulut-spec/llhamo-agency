@@ -16,6 +16,7 @@ import {
 
 import { getAllBlogPosts, getBlogCategories } from '../lib/content'
 import QuickNavigation from '../components/QuickNavigation'
+import SimpleNavbar from '../components/SimpleNavbar'
 
 
 export default function Blog({ blogPosts, categories }) {
@@ -56,6 +57,9 @@ export default function Blog({ blogPosts, categories }) {
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+
+      {/* Navigation */}
+      <SimpleNavbar />
 
       {/* Hero Section */}
       <section className="bg-yellow-300 pt-32 pb-16 border-b-4 border-black">

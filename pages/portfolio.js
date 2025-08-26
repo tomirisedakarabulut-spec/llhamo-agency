@@ -13,6 +13,7 @@ import {
   Heart,
   ChevronUp
 } from 'lucide-react'
+import SimpleNavbar from '../components/SimpleNavbar'
 
 
 const portfolioItems = [
@@ -124,6 +125,9 @@ export default function Portfolio() {
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+
+      {/* Navigation */}
+      <SimpleNavbar />
 
       {/* Hero Section */}
       <section className="bg-yellow-300 pt-32 pb-16 border-b-4 border-black">

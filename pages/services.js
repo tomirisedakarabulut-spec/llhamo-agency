@@ -31,6 +31,7 @@ import {
   Database,
   Network
 } from 'lucide-react'
+import SimpleNavbar from '../components/SimpleNavbar'
 
 
 const services = [
@@ -78,6 +79,9 @@ export default function Services() {
         <title>BRUTAL SERVICES | LHAMO - Marketing Warfare Arsenal</title>
         <meta name="description" content="Discover LHAMO's brutal marketing services. From creative campaigns to AI-powered strategies, we destroy boring marketing with divine precision." />
       </Head>
+
+      {/* Navigation */}
+      <SimpleNavbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 border-b-4 border-black">

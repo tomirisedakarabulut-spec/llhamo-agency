@@ -14,6 +14,7 @@ import {
   Shield,
   ChevronUp
 } from 'lucide-react'
+import SimpleNavbar from '../components/SimpleNavbar'
 
 
 const contactMethods = [
@@ -80,11 +81,12 @@ export default function Contact() {
         <title>CONTACT THE ARMY | LHAMO - Start Your Brutal Project</title>
         <meta name="description" content="Ready to destroy boring marketing? Contact LHAMO's brutal creative army and start your legendary brand transformation today." />
         <meta name="keywords" content="contact LHAMO, marketing agency contact, brutal marketing, creative agency Istanbul" />
-        <meta property="og:title" content="CONTACT THE ARMY | LHAMO" />
-        <meta property="og:description" content="Start your brutal marketing transformation today" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+
+      {/* Navigation */}
+      <SimpleNavbar />
 
       {/* Hero Section */}
       <section className="bg-yellow-300 pt-32 pb-16 border-b-4 border-black">
