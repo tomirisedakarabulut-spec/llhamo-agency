@@ -12,16 +12,16 @@ import {
   FolderOpen,
   BookOpen,
   Mail,
-  ArrowUp
+  ArrowUp,
+  Crown
 } from 'lucide-react'
-import { NavbarLogo } from './Logo'
+import Logo from './Logo'
 
 const navigation = [
-  { name: 'HOME', href: '/', icon: Home },
+  { name: 'HOME', href: '/' },
   { 
     name: 'ABOUT', 
     href: '/about',
-    icon: User,
     submenu: [
       { name: 'OUR STORY', href: '/about' },
       { name: 'TEAM', href: '/about#team' },
@@ -31,7 +31,6 @@ const navigation = [
   { 
     name: 'SERVICES', 
     href: '/services',
-    icon: Briefcase,
     submenu: [
       { name: 'CREATIVE CAMPAIGNS', href: '/services#creative' },
       { name: 'DIGITAL ADS', href: '/services#digital-ads' },
@@ -40,9 +39,9 @@ const navigation = [
       { name: 'AI MARKETING', href: '/services#ai' },
     ]
   },
-  { name: 'PORTFOLIO', href: '/portfolio', icon: FolderOpen },
-  { name: 'BLOG', href: '/blog', icon: BookOpen },
-  { name: 'CONTACT', href: '/contact', icon: Mail },
+  { name: 'PORTFOLIO', href: '/portfolio' },
+  { name: 'BLOG', href: '/blog' },
+  { name: 'CONTACT', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -120,11 +119,11 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled 
-          ? 'bg-gradient-to-r from-yellow-300/95 via-red-600/10 to-yellow-300/95 backdrop-blur-md border-b-4 border-black shadow-[0_8px_0px_0px_#000]' 
-          : 'bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300'
+          ? 'bg-gradient-to-r from-black/95 via-red-600/20 to-black/95 backdrop-blur-md border-b-3 border-black shadow-[0_6px_0px_0px_#000]' 
+          : 'bg-gradient-to-r from-black via-gray-900 to-black border-b-2 border-red-600'
       }`}
     >
-      <nav className="container mx-auto px-3 sm:px-4 flex items-center justify-between h-16 sm:h-20 max-w-6xl">
+      <nav className="container mx-auto px-3 sm:px-4 flex items-center justify-between h-12 sm:h-14 max-w-6xl">
         {/* LHAMO Logo - Clean Divine Design */}
         <Link href="/" className="flex items-center space-x-2 sm:space-x-3 group">
           <motion.div
@@ -136,9 +135,9 @@ export default function Navbar() {
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-red-600 rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
             
             {/* Main Logo Container */}
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white border-2 sm:border-4 border-black shadow-[3px_3px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] group-hover:shadow-[4px_4px_0px_0px_#000] sm:group-hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-300 flex items-center justify-center overflow-hidden p-0.5">
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white border-2 border-black shadow-[2px_2px_0px_0px_#000] group-hover:shadow-[3px_3px_0px_0px_#000] transition-all duration-300 flex items-center justify-center overflow-hidden p-0.5">
               <div className="w-full h-full flex items-center justify-center">
-                <NavbarLogo />
+                <Logo variant="png" size="sm" className="cursor-pointer w-full h-full" />
               </div>
               
               {/* Single Sparkle */}
@@ -154,10 +153,10 @@ export default function Navbar() {
           </motion.div>
           
           <div className="hidden sm:block">
-            <div className="font-black text-xl sm:text-2xl text-black transition-all duration-300 group-hover:text-red-600" style={{ fontFamily: 'Space Grotesk' }}>
+            <div className="font-black text-lg sm:text-xl text-white transition-all duration-300 group-hover:text-red-400" style={{ fontFamily: 'Space Grotesk' }}>
               LHAMO
             </div>
-            <div className="text-xs font-bold text-red-600 tracking-widest transition-all duration-300 group-hover:text-black">
+            <div className="text-xs font-bold text-red-400 tracking-widest transition-all duration-300 group-hover:text-white">
               GODDESS.COGO
             </div>
           </div>
@@ -169,10 +168,10 @@ export default function Navbar() {
             <div key={item.name} className="relative group">
               <Link
                 href={item.href}
-                className={`flex items-center space-x-1 px-4 py-2 font-bold text-sm transition-all duration-300 border-2 border-transparent relative overflow-hidden ${
+                className={`flex items-center space-x-1 px-3 py-1.5 font-bold text-sm transition-all duration-300 border-2 border-white relative overflow-hidden ${
                   router.pathname === item.href
-                    ? 'bg-gradient-to-r from-black via-red-600 to-black text-white border-black shadow-[4px_4px_0px_0px_#DC2626]'
-                    : 'text-black hover:bg-gradient-to-r hover:from-white hover:via-yellow-100 hover:to-white hover:border-black hover:shadow-[2px_2px_0px_0px_#000] hover:-translate-y-1 hover:scale-105'
+                    ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white border-white shadow-[4px_4px_0px_0px_#DC2626]'
+                    : 'bg-black text-white border-white shadow-[2px_2px_0px_0px_#fff] hover:bg-gradient-to-r hover:from-red-600 hover:via-red-500 hover:to-red-600 hover:shadow-[3px_3px_0px_0px_#fff] hover:-translate-y-0.5 hover:scale-105'
                 }`}
                 onMouseEnter={() => {
                   setIsHovering(item.name)
@@ -210,7 +209,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000] overflow-hidden"
+                    className="absolute top-full left-0 mt-2 w-64 bg-white border-4 border-black shadow-[10px_10px_0px_0px_#000] overflow-hidden"
                     onMouseEnter={() => setActiveSubmenu(item.name)}
                     onMouseLeave={() => setActiveSubmenu(null)}
                   >
@@ -224,7 +223,7 @@ export default function Navbar() {
                         <Link
                           href={subItem.href}
                           className={`block px-6 py-3 text-sm font-bold text-black hover:bg-red-600 hover:text-white transition-all duration-200 relative overflow-hidden ${
-                            index !== item.submenu.length - 1 ? 'border-b-2 border-black' : ''
+                            index !== item.submenu.length - 1 ? 'border-b-3 border-black' : ''
                           }`}
                           style={{ fontFamily: 'Space Grotesk' }}
                         >
@@ -252,7 +251,7 @@ export default function Navbar() {
             <motion.div
               whileHover={{ x: -2, y: -2, scale: 1.05 }}
               whileTap={{ x: 0, y: 0, scale: 0.95 }}
-              className="neo-button text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-3 relative overflow-hidden group"
+              className="bg-red-600 text-white border-2 border-white shadow-[3px_3px_0px_0px_#fff] text-sm sm:text-base px-3 sm:px-4 py-1.5 sm:py-2 relative overflow-hidden group font-black hover:shadow-[4px_4px_0px_0px_#fff] transition-all duration-200"
             >
               <motion.div
                 className="absolute inset-0 bg-red-600"
@@ -271,7 +270,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             type="button"
-            className="lg:hidden p-2 sm:p-3 bg-black text-white border-2 sm:border-4 border-black shadow-[2px_2px_0px_0px_#DC2626] sm:shadow-[4px_4px_0px_0px_#DC2626] relative overflow-hidden"
+            className="lg:hidden p-1.5 sm:p-2 bg-black text-white border-2 border-white shadow-[2px_2px_0px_0px_#fff] sm:shadow-[3px_3px_0px_0px_#fff] relative overflow-hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -309,14 +308,14 @@ export default function Navbar() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-0 right-0 h-full w-80 max-w-[90vw] sm:max-w-[75vw] bg-yellow-300 border-l-4 border-black z-50 lg:hidden overflow-y-auto"
+              className="fixed top-0 right-0 h-full w-80 max-w-[90vw] sm:max-w-[75vw] bg-black border-l-3 border-red-600 z-50 lg:hidden overflow-y-auto"
             >
               {/* Mobile Menu Header - Enhanced */}
               <motion.div 
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="flex items-center justify-between p-4 sm:p-6 border-b-4 border-black bg-red-600"
+                className="flex items-center justify-between p-4 sm:p-6 border-b-3 border-red-600 bg-red-600"
               >
                 <div className="flex items-center space-x-3">
                   {/* Animated Mini Logo */}
@@ -375,7 +374,7 @@ export default function Navbar() {
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 sm:p-2 bg-black text-white border-2 border-white shadow-[2px_2px_0px_0px_#FDE047]"
+                  className="p-1.5 sm:p-2 bg-black text-white border-3 border-white shadow-[3px_3px_0px_0px_#FDE047]"
                 >
                   <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 </motion.button>
@@ -384,7 +383,6 @@ export default function Navbar() {
               {/* Mobile Navigation - Enhanced with Animations */}
               <div className="p-3 sm:p-4 lg:p-6 space-y-2 sm:space-y-3">
                 {navigation.map((item, index) => {
-                  const Icon = item.icon
                   const isActive = router.pathname === item.href
                   
                   return (
@@ -396,10 +394,10 @@ export default function Navbar() {
                     >
                       <Link
                         href={item.href}
-                        className={`flex items-center space-x-2 sm:space-x-3 lg:space-x-4 p-2.5 sm:p-3 lg:p-4 font-bold text-sm sm:text-base lg:text-lg transition-all duration-200 border-2 sm:border-4 relative overflow-hidden ${
+                        className={`flex items-center space-x-2 sm:space-x-3 lg:space-x-4 p-2.5 sm:p-3 lg:p-4 font-bold text-sm sm:text-base lg:text-lg transition-all duration-200 border-2 relative overflow-hidden ${
                           isActive
-                            ? 'bg-black text-white border-black shadow-[2px_2px_0px_0px_#DC2626] sm:shadow-[4px_4px_0px_0px_#DC2626]'
-                            : 'bg-white text-black border-black hover:shadow-[2px_2px_0px_0px_#000] sm:hover:shadow-[4px_4px_0px_0px_#000] hover:transform hover:-translate-y-0.5 sm:hover:-translate-y-1'
+                            ? 'bg-red-600 text-white border-white shadow-[3px_3px_0px_0px_#fff] sm:shadow-[4px_4px_0px_0px_#fff]'
+                            : 'bg-black text-white border-white shadow-[2px_2px_0px_0px_#fff] sm:shadow-[3px_3px_0px_0px_#fff] hover:shadow-[3px_3px_0px_0px_#fff] sm:hover:shadow-[4px_4px_0px_0px_#fff] hover:transform hover:-translate-y-0.5 sm:hover:-translate-y-1'
                         }`}
                         style={{ fontFamily: 'Space Grotesk' }}
                         onClick={() => setMobileMenuOpen(false)}
@@ -407,11 +405,11 @@ export default function Navbar() {
                         <motion.div
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
-                          className={`w-6 h-6 sm:w-8 sm:h-8 border-2 border-black flex items-center justify-center ${
+                          className={`w-6 h-6 sm:w-8 sm:h-8 border-3 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_#000] ${
                             isActive ? 'bg-white text-black' : 'bg-black text-white'
                           }`}
                         >
-                          <Icon className="w-3 h-3 sm:w-5 sm:h-5" />
+                          <span className="text-xs font-bold">•</span>
                         </motion.div>
                         <span>{item.name}</span>
                       </Link>
@@ -433,7 +431,7 @@ export default function Navbar() {
                             >
                               <Link
                                 href={subItem.href}
-                                className="block py-2 sm:py-3 px-3 sm:px-4 text-xs sm:text-sm font-bold text-black bg-white border-2 border-black hover:shadow-[1px_1px_0px_0px_#000] sm:hover:shadow-[2px_2px_0px_0px_#000] hover:transform hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden"
+                                className="block py-2 sm:py-3 px-3 sm:px-4 text-xs sm:text-sm font-bold text-black bg-white border-3 border-black shadow-[1px_1px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] sm:hover:shadow-[3px_3px_0px_0px_#000] hover:transform hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden"
                                 onClick={() => setMobileMenuOpen(false)}
                               >
                                 <motion.div
@@ -463,7 +461,7 @@ export default function Navbar() {
                 <div className="space-y-3 sm:space-y-4">
                   <Link
                     href="/contact"
-                    className="block text-center py-3 sm:py-4 px-4 sm:px-6 bg-yellow-300 text-black border-2 sm:border-4 border-black shadow-[2px_2px_0px_0px_#000] sm:shadow-[4px_4px_0px_0px_#000] hover:shadow-[3px_3px_0px_0px_#000] sm:hover:shadow-[6px_6px_0px_0px_#000] font-black text-sm sm:text-lg uppercase tracking-wide transition-all duration-200 relative overflow-hidden group"
+                    className="block text-center py-3 sm:py-4 px-4 sm:px-6 bg-yellow-300 text-black border-3 sm:border-4 border-black shadow-[3px_3px_0px_0px_#000] sm:shadow-[5px_5px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] sm:hover:shadow-[7px_7px_0px_0px_#000] font-black text-sm sm:text-lg uppercase tracking-wide transition-all duration-200 relative overflow-hidden group"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <motion.div

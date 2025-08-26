@@ -1,22 +1,14 @@
 // LHAMO Agency Service Worker - Brutal Caching Strategy
 
-const CACHE_NAME = 'lhamo-brutal-v1';
-const STATIC_CACHE = 'lhamo-static-v1';
-const DYNAMIC_CACHE = 'lhamo-dynamic-v1';
-
-// Assets to cache immediately
-const STATIC_ASSETS = [
+const CACHE_NAME = 'lhamo-v1.0.0'
+const urlsToCache = [
   '/',
-  '/about',
-  '/services',
-  '/portfolio',
-  '/blog',
-  '/contact',
-  '/careers',
-  '/favicon.svg',
-  '/logo.svg',
+  '/logo.png',
+  '/favicon-32x32.png',
+  '/favicon-16x16.png',
   '/manifest.json',
-];
+  '/styles/globals.css'
+]
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {

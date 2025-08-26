@@ -4,8 +4,8 @@
     "title": "LHAMO - Divine Digital Marketing Agency",
     "description": "Unleash your brand's divine power with LHAMO. Premium digital marketing agency specializing in creative campaigns, AI-powered marketing, and mystical brand transformation.",
     "url": "https://lhamo.agency",
-    "logo": "/logo.svg",
-    "favicon": "/favicon.svg"
+    "logo": "/logo.png",
+    "favicon": "/favicon-32x32.png"
   },
   "contact": {
     "email": "hello@lhamo.agency",
@@ -28,10 +28,9 @@
     "ogImage": "/og-image.jpg"
   },
   "theme": {
-    "primaryColor": "#FDE047",
-    "secondaryColor": "#DC2626", 
-    "accentColor": "#000000",
-    "backgroundColor": "#FFFFFF"
+    "primary": "#DC2626",
+    "secondary": "#FDE047",
+    "accent": "#000000"
   },
   "features": {
     "newsletter": true,

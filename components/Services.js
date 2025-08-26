@@ -73,10 +73,10 @@ export default function Services() {
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Neo Brutalist Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.1 }}
           className="text-center mb-16"
         >
           <div className="neo-badge inline-flex items-center space-x-2 mb-8">
@@ -105,10 +105,10 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.1, delay: 0 }}
               className="group"
               whileHover={{ y: -5 }}
               whileTap={{ scale: 0.98 }}
@@ -146,9 +146,9 @@ export default function Services() {
                       <motion.li 
                         key={feature} 
                         className="flex items-center space-x-2"
-                        initial={{ opacity: 0, x: -10 }}
+                        initial={{ opacity: 1, x: 0 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: (index * 0.1) + (featureIndex * 0.05) }}
+                        transition={{ delay: 0 }}
                       >
                         <div className={`w-2 h-2 border border-black ${
                           service.color === 'red' ? 'bg-white' : 'bg-black'
@@ -185,10 +185,10 @@ export default function Services() {
 
         {/* CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.1, delay: 0 }}
           className="text-center mt-20"
         >
           <div className="neo-card p-12 bg-yellow-300 text-black">

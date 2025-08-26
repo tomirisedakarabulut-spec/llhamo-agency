@@ -1,27 +1,37 @@
 {
-  "name": "LHAMO - Brutal Marketing Goddesses",
+  "name": "LHAMO - Divine Digital Marketing Agency",
   "short_name": "LHAMO",
-  "description": "Divine digital marketing agency that destroys boring marketing through brutal creativity",
+  "description": "Unleash your brand's divine power with LHAMO. Premium digital marketing agency specializing in creative campaigns, AI-powered marketing, and mystical brand transformation.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FDE047",
-  "theme_color": "#DC2626",
+  "theme_color": "#FDE047",
   "orientation": "portrait-primary",
-  "categories": ["business", "marketing", "design"],
+  "scope": "/",
   "lang": "tr",
-  "dir": "ltr",
+  "categories": ["business", "marketing", "advertising"],
   "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
     {
       "src": "/favicon-32x32.png",
       "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/logo.svg",
+      "src": "/logo.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [

@@ -218,12 +218,65 @@ export default function Portfolio() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="neo-card bg-white text-black p-0 overflow-hidden group"
               >
-                {/* Image */}
-                <div className="bg-black h-64 flex items-center justify-center border-b-4 border-black relative overflow-hidden">
-                  <Target className="w-16 h-16 text-white group-hover:scale-110 transition-transform duration-300" />
+                {/* Enhanced Visual Section */}
+                <div className="bg-gradient-to-br from-black via-gray-900 to-black h-80 flex items-center justify-center border-b-4 border-black relative overflow-hidden">
+                  {/* Dynamic Background Pattern */}
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="grid grid-cols-8 gap-2 h-full">
+                      {Array.from({ length: 32 }).map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="bg-red-600 border border-yellow-300"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.3, 0.7, 0.3]
+                          }}
+                          transition={{
+                            duration: 2 + Math.random() * 2,
+                            repeat: Infinity,
+                            delay: Math.random() * 2
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
                   
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+                  {/* Main Visual Element */}
+                  <div className="relative z-10 text-center">
+                    <div className="w-24 h-24 bg-red-600 border-4 border-white shadow-[8px_8px_0px_0px_#000] flex items-center justify-center mb-4 transform rotate-12 group-hover:rotate-0 transition-transform duration-300">
+                      <Target className="w-12 h-12 text-white" />
+                    </div>
+                    
+                    {/* Category Badge */}
+                    <div className="bg-yellow-300 text-black px-4 py-2 border-2 border-black shadow-[4px_4px_0px_0px_#000] transform -rotate-6">
+                      <span className="font-black text-sm">{item.category}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Floating Elements */}
+                  <motion.div 
+                    className="absolute top-4 left-4 w-8 h-8 bg-yellow-300 border-2 border-black transform rotate-45"
+                    animate={{ rotate: [45, -45, 45] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <motion.div 
+                    className="absolute top-4 right-4 w-6 h-6 bg-red-600 border-2 border-white transform -rotate-45"
+                    animate={{ rotate: [-45, 45, -45] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <motion.div 
+                    className="absolute bottom-4 left-4 w-4 h-4 bg-white border-2 border-black"
+                    animate={{ scale: [1, 1.5, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <motion.div 
+                    className="absolute bottom-4 right-4 w-5 h-5 bg-red-600 border-2 border-yellow-300 transform rotate-12"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-red-600/90 via-red-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
                     <div className="text-center">
                       <Eye className="w-8 h-8 text-white mx-auto mb-2" />
                       <span className="text-white font-bold text-sm">VIEW BRUTALITY</span>

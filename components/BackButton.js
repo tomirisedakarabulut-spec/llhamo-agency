@@ -90,10 +90,10 @@ export default function BackButton({
 }
 
 // Preset configurations
-export const FloatingBackButton = (props) => (
-  <BackButton variant="floating" {...props} />
-)
+export const FloatingBackButton = (props) => {
+  return <BackButton variant="floating" {...props} />
+}
 
-export const InlineBackButton = (props) => (
-  <BackButton variant="inline" {...props} />
-)
+export const InlineBackButton = (props) => {
+  return <BackButton variant="inline" {...props} />
+}

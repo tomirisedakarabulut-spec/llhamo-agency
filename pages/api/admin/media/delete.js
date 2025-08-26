@@ -1,24 +1,25 @@
 import fs from 'fs'
 import path from 'path'
+import { requireAuth } from '../../../../lib/auth'
 
-export default async function handler(req, res) {
+async function deleteMedia(req, res) {
   if (req.method !== 'DELETE') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
 
   try {
-    const { path: filePath } = req.body
+    const { filePath } = req.body
     
     if (!filePath) {
       return res.status(400).json({ message: 'File path is required' })
     }
 
-    // Security check: ensure file is in public directory
-    if (!filePath.startsWith('/uploads/') && !filePath.startsWith('/portfolio/')) {
-      return res.status(403).json({ message: 'Invalid file path' })
-    }
-
     const fullPath = path.join(process.cwd(), 'public', filePath)
+    
+    // Security check: ensure the file is in the uploads directory
+    if (!fullPath.includes('uploads')) {
+      return res.status(403).json({ message: 'Access denied' })
+    }
     
     // Check if file exists
     if (!fs.existsSync(fullPath)) {
@@ -38,3 +39,5 @@ export default async function handler(req, res) {
     res.status(500).json({ message: 'Internal server error' })
   }
 }
+
+export default requireAuth(deleteMedia)

@@ -1,42 +1,30 @@
-import Image from 'next/image'
-
 export default function Logo({ 
   size = 'md', 
-  className = ''
+  className = '',
+  variant = 'png'
 }) {
   const sizeConfig = {
-    xs: { width: 32, height: 32 },
-    sm: { width: 48, height: 48 },
-    md: { width: 64, height: 64 },
-    lg: { width: 96, height: 96 },
-    xl: { width: 128, height: 128 }
+    xs: { width: 24, height: 24 },
+    sm: { width: 32, height: 32 },
+    md: { width: 48, height: 48 },
+    lg: { width: 64, height: 64 },
+    xl: { width: 96, height: 96 }
   }
 
   const config = sizeConfig[size]
 
   return (
-    <div className={`relative ${className}`}>
-      <Image
+    <div 
+      className={`relative ${className}`}
+      style={{ width: config.width, height: config.height }}
+    >
+      <img
         src="/logo.png"
-        alt="LHAMO Agency Logo"
+        alt="LHAMO Logo"
         width={config.width}
         height={config.height}
-        className="object-contain"
-        priority={size === 'lg' || size === 'xl'}
+        className="w-full h-full object-contain"
       />
     </div>
   )
 }
-
-// Preset configurations for different contexts
-export const NavbarLogo = (props) => (
-  <Logo size="md" className="cursor-pointer" {...props} />
-)
-
-export const FooterLogo = (props) => (
-  <Logo size="md" className="cursor-pointer" {...props} />
-)
-
-export const HeroLogo = (props) => (
-  <Logo size="lg" className="cursor-pointer" {...props} />
-)

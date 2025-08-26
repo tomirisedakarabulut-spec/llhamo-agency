@@ -51,13 +51,13 @@ export default function Footer() {
       {/* Newsletter Section */}
       <section className="bg-red-600 py-16 border-b-4 border-black">
         <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
+                  <motion.div
+          initial={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.1 }}
+          className="text-center"
+        >
             <div className="neo-badge inline-flex items-center space-x-2 mb-8 bg-yellow-300 text-black">
               <Zap className="w-5 h-5" />
               <span>JOIN THE BRUTALITY</span>

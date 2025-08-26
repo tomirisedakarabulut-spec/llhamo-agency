@@ -9,6 +9,7 @@ import {
   Crown,
   Zap
 } from 'lucide-react'
+import { setAuthToken, isAuthenticated } from '../../lib/auth'
 
 export default function AdminLogin() {
   const [credentials, setCredentials] = useState({ username: '', password: '' })
@@ -18,24 +19,39 @@ export default function AdminLogin() {
 
   // Check if already authenticated
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem('lhamo_admin_auth')
-    if (isAuthenticated === 'true') {
+    if (isAuthenticated()) {
       router.replace('/admin/dashboard')
     }
-  }, [])
+  }, [router])
 
   const handleLogin = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
 
-    // Simple authentication (in production, use proper authentication)
-    if (credentials.username === 'lhamo' && credentials.password === 'brutal2024') {
-      localStorage.setItem('lhamo_admin_auth', 'true')
-      localStorage.setItem('lhamo_admin_user', 'LHAMO ADMIN')
-      router.push('/admin/dashboard')
-    } else {
-      setError('WRONG CREDENTIALS, WARRIOR!')
+    try {
+      const response = await fetch('/api/admin/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        // Store the token
+        setAuthToken(data.token)
+        localStorage.setItem('lhamo_admin_user', JSON.stringify(data.user))
+        router.push('/admin/dashboard')
+      } else {
+        setError(data.message || 'Authentication failed')
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      setError('Network error. Please try again.')
+    } finally {
       setIsLoading(false)
     }
   }

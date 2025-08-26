@@ -1,21 +1,10 @@
 import Head from 'next/head'
-import { motion } from 'framer-motion'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import SimpleNavbar from '../components/SimpleNavbar'
 import HeroSection from '../components/HeroSection'
 import Services from '../components/Services'
+import Footer from '../components/Footer'
 
-const pageVariants = {
-  initial: { opacity: 0 },
-  in: { opacity: 1 },
-  out: { opacity: 0 }
-}
 
-const pageTransition = {
-  type: 'tween',
-  ease: 'anticipate',
-  duration: 0.5
-}
 
 export default function Home() {
   return (
@@ -82,19 +71,11 @@ export default function Home() {
         />
       </Head>
       
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
+      <div className="min-h-screen flex flex-col bg-yellow-300">
+        <SimpleNavbar />
         <main className="flex-1">
-          <motion.div
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={pageTransition}
-          >
-            <HeroSection />
-            <Services />
-          </motion.div>
+          <HeroSection />
+          <Services />
         </main>
         <Footer />
       </div>
