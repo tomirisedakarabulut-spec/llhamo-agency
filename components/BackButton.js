@@ -37,7 +37,7 @@ export default function BackButton({
           aria-label="Önceki sayfaya dön"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
-          <span>GERİ</span>
+          <span></span>
         </motion.button>
 
         {/* Home Button */}
@@ -69,7 +69,7 @@ export default function BackButton({
         aria-label="Önceki sayfaya dön"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
-        <span>GERİ</span>
+        <span></span>
       </motion.button>
 
       {/* Home Button */}

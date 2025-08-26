@@ -81,7 +81,7 @@ export default function Custom404() {
                 className="flex items-center justify-center space-x-2 bg-white text-black px-8 py-4 font-bold border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] transition-all duration-200"
               >
                 <ArrowLeft className="w-5 h-5" />
-                <span>GERİ DÖN</span>
+                <span></span>
               </button>
             </div>
 
