@@ -67,7 +67,7 @@ export default function QuickNavigation() {
     <div className="fixed bottom-6 right-6 z-40">
       <div className="flex flex-col space-y-3">
         {/* Social Media Buttons */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 items-end">
           {socialLinks.map((social, index) => {
             const Icon = social.icon
             return (
@@ -78,11 +78,11 @@ export default function QuickNavigation() {
                 rel="noopener noreferrer"
                 whileHover={{ 
                   scale: 1.1, 
-                  x: -5,
+                  x: 5,
                   boxShadow: `0 8px 0px 0px ${social.brandColor}`
                 }}
                 whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ 
                   duration: 0.3, 
@@ -100,7 +100,7 @@ export default function QuickNavigation() {
         </div>
 
         {/* Contact Info */}
-        <div className="bg-black border-4 border-white shadow-[6px_6px_0px_0px_#000] p-4 transform rotate-1">
+        <div className="bg-black border-4 border-white shadow-[6px_6px_0px_0px_#000] p-4 transform -rotate-1">
           <h3 className="text-white font-black text-sm mb-3 text-center">QUICK CONTACT</h3>
           <div className="space-y-2">
             {contactInfo.map((contact, index) => {
@@ -109,7 +109,7 @@ export default function QuickNavigation() {
                 <motion.a
                   key={contact.label}
                   href={contact.href}
-                  whileHover={{ x: -2, scale: 1.05 }}
+                  whileHover={{ x: 2, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
