@@ -15,7 +15,8 @@ import {
 } from 'lucide-react'
 
 import { getAllBlogPosts, getBlogCategories } from '../lib/content'
-import { FloatingBackButton } from '../components/BackButton'
+import QuickNavigation from '../components/QuickNavigation'
+
 
 export default function Blog({ blogPosts, categories }) {
   const scrollToTop = () => {
@@ -45,7 +46,7 @@ export default function Blog({ blogPosts, categories }) {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <FloatingBackButton />
+      
       <Head>
         <title>BRUTAL INSIGHTS | LHAMO - Marketing Warfare Blog</title>
         <meta name="description" content="Brutal marketing insights and strategies that destroy competition. Read LHAMO's savage blog for divine marketing wisdom." />
@@ -311,6 +312,9 @@ export default function Blog({ blogPosts, categories }) {
           </motion.div>
         </div>
       </section>
+
+      {/* Quick Navigation */}
+      <QuickNavigation />
 
       {/* Floating Menu Button */}
       <motion.button

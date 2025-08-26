@@ -12,7 +12,7 @@ import {
   MessageSquare
 } from 'lucide-react'
 import { getAllBlogSlugs, getBlogPostContent, getSiteConfig } from '../../lib/content'
-import { FloatingBackButton } from '../../components/BackButton'
+
 
 export default function BlogPost({ post, siteConfig }) {
   if (!post) {
@@ -48,7 +48,7 @@ export default function BlogPost({ post, siteConfig }) {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <FloatingBackButton />
+      
       <Head>
         <title>{post.seo?.metaTitle || `${post.title} | ${siteConfig.site.name}`}</title>
         <meta name="description" content={post.seo?.metaDescription || post.excerpt} />

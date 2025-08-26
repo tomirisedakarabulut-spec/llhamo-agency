@@ -32,7 +32,6 @@ export default function About() {
       </Head>
 
       <SimpleNavbar />
-      <BackButton variant="floating" />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-yellow-300 via-red-500 to-black relative overflow-hidden">

@@ -14,7 +14,7 @@ import {
   Shield,
   ChevronUp
 } from 'lucide-react'
-import { FloatingBackButton } from '../components/BackButton'
+
 
 const contactMethods = [
   {
@@ -75,7 +75,7 @@ export default function Contact() {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <FloatingBackButton />
+      
       <Head>
         <title>CONTACT THE ARMY | LHAMO - Start Your Brutal Project</title>
         <meta name="description" content="Ready to destroy boring marketing? Contact LHAMO's brutal creative army and start your legendary brand transformation today." />

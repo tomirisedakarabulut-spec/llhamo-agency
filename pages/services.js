@@ -31,7 +31,7 @@ import {
   Database,
   Network
 } from 'lucide-react'
-import { FloatingBackButton } from '../components/BackButton'
+
 
 const services = [
   {
@@ -73,7 +73,7 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-yellow-300">
-      <FloatingBackButton />
+      
       <Head>
         <title>BRUTAL SERVICES | LHAMO - Marketing Warfare Arsenal</title>
         <meta name="description" content="Discover LHAMO's brutal marketing services. From creative campaigns to AI-powered strategies, we destroy boring marketing with divine precision." />

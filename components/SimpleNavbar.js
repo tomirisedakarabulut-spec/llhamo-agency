@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ArrowLeft } from 'lucide-react'
 import Logo from './Logo'
 
 const navigation = [
@@ -18,6 +18,14 @@ export default function SimpleNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const router = useRouter()
+
+  const goBack = () => {
+    if (window.history.length > 1) {
+      router.back()
+    } else {
+      router.push('/')
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +80,16 @@ export default function SimpleNavbar() {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Back Button */}
+            <motion.button
+              onClick={goBack}
+              whileHover={{ x: -2, scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-3 py-1.5 font-bold text-sm transition-all duration-300 border-2 border-white bg-yellow-300 text-black border-white shadow-[2px_2px_0px_0px_#fff] hover:shadow-[3px_3px_0px_0px_#fff] hover:-translate-y-0.5 flex items-center space-x-1"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -106,6 +124,20 @@ export default function SimpleNavbar() {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Back Button */}
+              <motion.button
+                onClick={() => {
+                  goBack()
+                  setMobileMenuOpen(false)
+                }}
+                whileHover={{ x: -2, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="block w-full p-3 font-bold text-sm transition-all duration-200 border-2 border-white bg-yellow-300 text-black border-white shadow-[2px_2px_0px_0px_#fff] hover:shadow-[3px_3px_0px_0px_#fff] flex items-center space-x-2"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>GERİ DÖN</span>
+              </motion.button>
             </div>
           </motion.div>
         )}

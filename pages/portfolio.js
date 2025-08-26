@@ -13,7 +13,7 @@ import {
   Heart,
   ChevronUp
 } from 'lucide-react'
-import { FloatingBackButton } from '../components/BackButton'
+
 
 const portfolioItems = [
   {
@@ -114,7 +114,7 @@ export default function Portfolio() {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <FloatingBackButton />
+      
       <Head>
         <title>BRUTAL PORTFOLIO | LHAMO - Marketing Warfare Results</title>
         <meta name="description" content="Witness the brutal marketing campaigns that destroyed competition. See LHAMO's savage portfolio of legendary brand transformations." />
