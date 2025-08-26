@@ -307,24 +307,7 @@ export default function Footer() {
                 ))}
               </ul>
 
-              {/* Social Links */}
-              <div>
-                <h4 className="text-sm font-black text-white mb-4">FOLLOW THE BRUTALITY</h4>
-                <div className="flex space-x-3">
-                  {socialLinks.map((social) => (
-                    <motion.a
-                      key={social.name}
-                      href={social.href}
-                      whileHover={{ x: -2, y: -2, scale: 1.1 }}
-                      whileTap={{ x: 0, y: 0, scale: 0.9 }}
-                      className={`w-10 h-10 ${social.color} border-4 border-white shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center`}
-                      aria-label={social.name}
-                    >
-                      <social.icon className="w-5 h-5 text-white" />
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
+
             </motion.div>
           </div>
         </div>

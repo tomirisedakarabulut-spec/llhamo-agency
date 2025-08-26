@@ -3,6 +3,7 @@ import SimpleNavbar from '../components/SimpleNavbar'
 import HeroSection from '../components/HeroSection'
 import Services from '../components/Services'
 import Footer from '../components/Footer'
+import QuickNavigation from '../components/QuickNavigation'
 
 
 
@@ -78,6 +79,7 @@ export default function Home() {
           <Services />
         </main>
         <Footer />
+        <QuickNavigation />
       </div>
     </>
   )
