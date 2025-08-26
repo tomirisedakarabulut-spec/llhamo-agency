@@ -8,37 +8,35 @@ import {
   Phone,
   MapPin
 } from 'lucide-react'
-import { getSiteConfig } from '../lib/content'
 
 export default function QuickNavigation() {
-  const config = getSiteConfig()
   
   const socialLinks = [
     { 
       name: 'Instagram', 
       icon: Instagram, 
-      href: config.social?.instagram || '#', 
+      href: 'https://instagram.com/lhamo.agency', 
       color: 'bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500',
       brandColor: '#E4405F'
     },
     { 
       name: 'Twitter', 
       icon: Twitter, 
-      href: config.social?.twitter || '#', 
+      href: 'https://twitter.com/lhamoagency', 
       color: 'bg-blue-400',
       brandColor: '#1DA1F2'
     },
     { 
       name: 'LinkedIn', 
       icon: Linkedin, 
-      href: config.social?.linkedin || '#', 
+      href: 'https://linkedin.com/company/lhamo-agency', 
       color: 'bg-blue-600',
       brandColor: '#0A66C2'
     },
     { 
       name: 'YouTube', 
       icon: Youtube, 
-      href: config.social?.youtube || '#', 
+      href: 'https://youtube.com/@lhamoagency', 
       color: 'bg-red-600',
       brandColor: '#FF0000'
     }
