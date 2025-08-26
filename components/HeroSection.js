@@ -140,16 +140,6 @@ export default function HeroSection() {
           
           {/* Left Column - Content */}
           <div className="text-left">
-            {/* Neo Brutalist Badge - Improved */}
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.1 }}
-              className="neo-badge inline-flex items-center space-x-1 sm:space-x-2 mb-4 sm:mb-6 lg:mb-8 px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm"
-            >
-              <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
-              <span className="font-bold">DIVINE MARKETING GODS</span>
-            </motion.div>
 
             {/* Main Headline - Improved Mobile Responsive */}
             <motion.h1
@@ -234,7 +224,17 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column - Visual Element */}
-          <div className="hidden lg:flex items-center justify-center">
+          <div className="hidden lg:flex items-center justify-center relative">
+            {/* Neo Brutalist Badge - Moved to Right */}
+            <motion.div
+              initial={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.1 }}
+              className="absolute -top-8 -left-8 neo-badge inline-flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm z-10"
+            >
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+              <span className="font-bold">DIVINE MARKETING GODDESS</span>
+            </motion.div>
             <motion.div
               initial={{ opacity: 1, scale: 1 }}
               animate={{ opacity: 1, scale: 1 }}
