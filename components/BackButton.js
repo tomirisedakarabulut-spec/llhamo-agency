@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Home } from 'lucide-react'
 
 export default function BackButton({ 
-  showHome = true, 
+  showHome = false, 
   className = '',
   variant = 'default'
 }) {
@@ -50,7 +50,7 @@ export default function BackButton({
           aria-label="Ana sayfaya dön"
         >
             <Home className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
-            <span>ANA SAYFA</span>
+            <span></span>
           </motion.button>
         )}
       </div>
@@ -82,7 +82,7 @@ export default function BackButton({
           aria-label="Ana sayfaya dön"
         >
           <Home className="w-4 h-4 group-hover:scale-110 transition-transform duration-200" />
-          <span>ANA SAYFA</span>
+          <span></span>
         </motion.button>
       )}
     </div>
