@@ -27,7 +27,7 @@ export default function BackButton({
 
   if (variant === 'floating') {
     return (
-      <div className="fixed top-6 left-6 z-[99999] flex items-center space-x-2 pointer-events-auto">
+      <div className="fixed top-6 right-6 z-[99999] flex items-center space-x-2 pointer-events-auto">
         {/* Back Button */}
         <motion.button
           whileHover={{ x: -2, scale: 1.05 }}
