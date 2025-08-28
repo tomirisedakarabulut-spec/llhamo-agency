@@ -149,6 +149,16 @@ export default function HeroSection() {
 
       <div className="container mx-auto px-4 py-20 sm:py-32 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-8"
+          >
+            <Logo size="xl" className="mx-auto" />
+          </motion.div>
+
           {/* Main Headline */}
           <motion.h1 
             initial={{ opacity: 0, y: 50 }}

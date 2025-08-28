@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 import BackButton from '../components/BackButton'
 import SimpleNavbar from '../components/SimpleNavbar'
+import Logo from '../components/Logo'
 
 export default function About() {
   const scrollToTop = () => {
@@ -51,6 +52,16 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
+            {/* Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <Logo size="xl" className="mx-auto" />
+            </motion.div>
+
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 mb-8 px-4 py-2 bg-red-600 text-white border-4 border-black shadow-[6px_6px_0px_0px_#000] transform rotate-2">
               <Crown className="w-5 h-5" />

@@ -160,7 +160,7 @@ export default function Services() {
           className="text-center mb-16"
         >
           <div className="neo-badge inline-flex items-center space-x-2 mb-8">
-            <Zap className="w-5 h-5" />
+            <Logo size="sm" className="mr-2" />
             <span>BRUTAL SERVICES</span>
           </div>
           

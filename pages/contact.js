@@ -15,6 +15,7 @@ import {
   ChevronUp
 } from 'lucide-react'
 import SimpleNavbar from '../components/SimpleNavbar'
+import Logo from '../components/Logo'
 
 
 const contactMethods = [
@@ -96,6 +97,16 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
+            {/* Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <Logo size="xl" className="mx-auto" />
+            </motion.div>
+
             <div className="neo-badge inline-flex items-center space-x-2 mb-8">
               <MessageSquare className="w-5 h-5" />
               <span>CONTACT THE ARMY</span>
