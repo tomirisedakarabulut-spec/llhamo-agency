@@ -108,6 +108,46 @@ export default function Services() {
         >
           CREATIVITY
         </motion.div>
+        
+        {/* Additional Service Decorations */}
+        <motion.div 
+          animate={{ rotate: [0, 180, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 right-1/3 w-10 h-10 bg-red-600 border-3 border-black shadow-[6px_6px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ y: [0, -15, 0], rotate: 360 }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-1/3 left-1/3 w-8 h-8 bg-black border-3 border-red-600 shadow-[5px_5px_0px_0px_#000]"
+        />
+        
+        {/* Service Text Elements */}
+        <motion.div 
+          animate={{ opacity: [0.3, 1, 0.3], rotate: [0, 3, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-10 text-black font-black text-base border-2 border-black px-2 py-1 bg-red-600 shadow-[3px_3px_0px_0px_#000]"
+        >
+          WARFARE
+        </motion.div>
+        <motion.div 
+          animate={{ opacity: [0.3, 1, 0.3], rotate: [0, -3, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-1/2 right-10 text-red-600 font-black text-base border-2 border-red-600 px-2 py-1 bg-black shadow-[3px_3px_0px_0px_#000]"
+        >
+          VICTORY
+        </motion.div>
+        
+        {/* Animated Lines */}
+        <motion.div 
+          animate={{ scaleX: [0, 1, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-0 w-20 h-1 bg-red-600 shadow-[2px_2px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ scaleX: [0, 1, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/4 right-0 w-20 h-1 bg-black shadow-[2px_2px_0px_0px_#000]"
+        />
       </div>
       
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
