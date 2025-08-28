@@ -157,48 +157,50 @@ export default function Footer() {
               className="lg:col-span-1"
             >
               {/* Neo Brutalist Mandala Logo */}
-              <div className="flex items-center space-x-3 mb-6">
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 15 }}
-                  className="w-16 h-16 bg-red-600 border-4 border-white shadow-[6px_6px_0px_0px_#FDE047] flex items-center justify-center transform -rotate-3 relative overflow-hidden"
-                >
-                  {/* Neo Brutalist Mandala Pattern - Larger Version */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {/* Center Circle */}
-                    <div className="w-4 h-4 bg-yellow-300 border-2 border-white rounded-full absolute"></div>
-                    
-                    {/* Inner Ring - 4 squares */}
-                    <div className="w-3 h-3 bg-white border-2 border-black absolute -top-2 left-1/2 transform -translate-x-1/2"></div>
-                    <div className="w-3 h-3 bg-white border-2 border-black absolute -bottom-2 left-1/2 transform -translate-x-1/2"></div>
-                    <div className="w-3 h-3 bg-white border-2 border-black absolute top-1/2 -left-2 transform -translate-y-1/2"></div>
-                    <div className="w-3 h-3 bg-white border-2 border-black absolute top-1/2 -right-2 transform -translate-y-1/2"></div>
-                    
-                    {/* Middle Ring - 4 rectangles */}
-                    <div className="w-2 h-4 bg-yellow-300 border border-white absolute top-1 left-1/2 transform -translate-x-1/2 rotate-45"></div>
-                    <div className="w-2 h-4 bg-yellow-300 border border-white absolute bottom-1 left-1/2 transform -translate-x-1/2 rotate-45"></div>
-                    <div className="w-4 h-2 bg-yellow-300 border border-white absolute top-1/2 left-1 transform -translate-y-1/2 rotate-45"></div>
-                    <div className="w-4 h-2 bg-yellow-300 border border-white absolute top-1/2 right-1 transform -translate-y-1/2 rotate-45"></div>
-                    
-                    {/* Outer Ring - 8 small squares */}
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute top-0 left-1/2 transform -translate-x-1/2"></div>
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute bottom-0 left-1/2 transform -translate-x-1/2"></div>
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1/2 left-0 transform -translate-y-1/2"></div>
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1/2 right-0 transform -translate-y-1/2"></div>
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1 left-1"></div>
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1 right-1"></div>
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute bottom-1 left-1"></div>
-                    <div className="w-1.5 h-1.5 bg-black border border-white absolute bottom-1 right-1"></div>
-                  </div>
-                </motion.div>
-                <div>
-                  <div className="font-black text-3xl text-white" style={{ fontFamily: 'Space Grotesk' }}>
-                    LHAMO
-                  </div>
-                  <div className="text-sm font-bold text-red-600 tracking-widest">
-                    GODDESS.COGO
+              <Link href="/" className="block">
+                <div className="flex items-center space-x-3 mb-6 group">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 15 }}
+                    className="w-16 h-16 bg-red-600 border-4 border-white shadow-[6px_6px_0px_0px_#FDE047] flex items-center justify-center transform -rotate-3 relative overflow-hidden group-hover:shadow-[8px_8px_0px_0px_#FDE047] transition-all duration-300"
+                  >
+                    {/* Neo Brutalist Mandala Pattern - Larger Version */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {/* Center Circle */}
+                      <div className="w-4 h-4 bg-yellow-300 border-2 border-white rounded-full absolute"></div>
+                      
+                      {/* Inner Ring - 4 squares */}
+                      <div className="w-3 h-3 bg-white border-2 border-black absolute -top-2 left-1/2 transform -translate-x-1/2"></div>
+                      <div className="w-3 h-3 bg-white border-2 border-black absolute -bottom-2 left-1/2 transform -translate-x-1/2"></div>
+                      <div className="w-3 h-3 bg-white border-2 border-black absolute top-1/2 -left-2 transform -translate-y-1/2"></div>
+                      <div className="w-3 h-3 bg-white border-2 border-black absolute top-1/2 -right-2 transform -translate-y-1/2"></div>
+                      
+                      {/* Middle Ring - 4 rectangles */}
+                      <div className="w-2 h-4 bg-yellow-300 border border-white absolute top-1 left-1/2 transform -translate-x-1/2 rotate-45"></div>
+                      <div className="w-2 h-4 bg-yellow-300 border border-white absolute bottom-1 left-1/2 transform -translate-x-1/2 rotate-45"></div>
+                      <div className="w-4 h-2 bg-yellow-300 border border-white absolute top-1/2 left-1 transform -translate-y-1/2 rotate-45"></div>
+                      <div className="w-4 h-2 bg-yellow-300 border border-white absolute top-1/2 right-1 transform -translate-y-1/2 rotate-45"></div>
+                      
+                      {/* Outer Ring - 8 small squares */}
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute top-0 left-1/2 transform -translate-x-1/2"></div>
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute bottom-0 left-1/2 transform -translate-x-1/2"></div>
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1/2 left-0 transform -translate-y-1/2"></div>
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1/2 right-0 transform -translate-y-1/2"></div>
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1 left-1"></div>
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute top-1 right-1"></div>
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute bottom-1 left-1"></div>
+                      <div className="w-1.5 h-1.5 bg-black border border-white absolute bottom-1 right-1"></div>
+                    </div>
+                  </motion.div>
+                  <div>
+                    <div className="font-black text-3xl text-white group-hover:text-red-400 transition-colors duration-300" style={{ fontFamily: 'Space Grotesk' }}>
+                      LHAMO
+                    </div>
+                    <div className="text-sm font-bold text-red-600 tracking-widest group-hover:text-white transition-colors duration-300">
+                      WARRIOR.COGO
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
               
               <p className="font-bold text-white mb-8 leading-tight">
                 WE DESTROY BORING MARKETING AND CREATE LEGENDARY BRANDS THROUGH BRUTAL CREATIVITY!

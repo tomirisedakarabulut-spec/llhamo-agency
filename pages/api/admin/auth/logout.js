@@ -22,3 +22,8 @@ async function logout(req, res) {
 
 export default requireAuth(logout)
 
+
+
+
+
+

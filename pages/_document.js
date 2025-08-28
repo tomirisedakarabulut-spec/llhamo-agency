@@ -20,7 +20,7 @@ export default function Document() {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="LHAMO" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="LHAMO" />
+                <meta name="application-name" content="LHAMO" />
         <link rel="preload" href="/logo.png" as="image" />
         <meta name="robots" content="index,follow" />
         <meta name="author" content="LHAMO Agency" />

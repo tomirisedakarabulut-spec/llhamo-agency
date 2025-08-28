@@ -11,6 +11,7 @@ const navigation = [
   { name: 'SERVICES', href: '/services' },
   { name: 'PORTFOLIO', href: '/portfolio' },
   { name: 'BLOG', href: '/blog' },
+  { name: 'CRM', href: '/crm' },
   { name: 'CONTACT', href: '/contact' },
 ]
 
@@ -60,7 +61,7 @@ export default function SimpleNavbar() {
                 LHAMO
               </div>
               <div className="text-xs font-bold text-red-400 tracking-widest transition-all duration-300 group-hover:text-white">
-                GODDESS.COGO
+                WARRIOR.COGO
               </div>
             </div>
           </Link>

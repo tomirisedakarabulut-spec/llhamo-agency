@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Head from 'next/head'
+import SEOHead from '../../components/SEOHead'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { 
@@ -37,8 +37,52 @@ import {
 } from 'lucide-react'
 import AdminLayout from '../../components/AdminLayout'
 import { getAllBlogPosts, getSiteConfig } from '../../lib/content'
+import { useRouter } from 'next/router'
 
 export default function AdminDashboard({ blogPosts, siteConfig }) {
+  const [lastLogin, setLastLogin] = useState('')
+  const [sessionDuration, setSessionDuration] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const router = useRouter()
+
+  // Check authentication on component mount
+  useEffect(() => {
+    const checkAuth = () => {
+      const auth = localStorage.getItem('lhamo_admin_auth')
+      console.log('Dashboard auth check:', auth)
+      
+      if (auth !== 'true') {
+        console.log('Not authenticated, redirecting to login...')
+        window.location.href = '/admin'
+        return
+      }
+      
+      console.log('Authenticated, loading dashboard...')
+      setIsAuthenticated(true)
+      setIsLoading(false)
+    }
+
+    checkAuth()
+  }, [])
+
+  // Show loading while checking authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600 mx-auto mb-4"></div>
+          <p className="text-xl font-bold">CHECKING AUTHENTICATION...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Don't render if not authenticated
+  if (!isAuthenticated) {
+    return null
+  }
+
   const [stats, setStats] = useState({
     totalPosts: 0,
     publishedPosts: 0,
@@ -75,6 +119,20 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
   })
 
   useEffect(() => {
+    // Get last login time
+    const loginTime = localStorage.getItem('lhamo_admin_login_time')
+    if (loginTime) {
+      const loginDate = new Date(loginTime)
+      setLastLogin(loginDate.toLocaleString('tr-TR'))
+      
+      // Calculate session duration
+      const now = new Date()
+      const diff = now - loginDate
+      const hours = Math.floor(diff / (1000 * 60 * 60))
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+      setSessionDuration(`${hours}s ${minutes}dk`)
+    }
+    
     // Enhanced stats calculation
     const totalViews = blogPosts.reduce((sum, post) => sum + (post.views || 0), 0)
     const publishedPosts = blogPosts.filter(post => post.published !== false).length
@@ -283,10 +341,12 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
 
   return (
     <AdminLayout title="BRUTAL DASHBOARD">
-      <Head>
-        <title>Admin Dashboard | LHAMO</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+      <SEOHead 
+        title="Admin Dashboard | LHAMO - Brutal Control Center"
+        description="Command your digital empire with savage precision"
+        image="/crown-icon.png"
+        url="https://lhamo.agency/admin/dashboard"
+      />
 
       <div className="space-y-8">
         {/* Welcome Section */}
@@ -296,18 +356,31 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
           transition={{ duration: 0.6 }}
           className="neo-card bg-red-600 text-white p-8"
         >
-          <div className="flex items-center space-x-4">
-            <Crown className="w-12 h-12 text-yellow-300" />
-            <div>
-              <h2 
-                className="text-3xl font-black mb-2"
-                style={{ fontFamily: 'Space Grotesk' }}
-              >
-                WELCOME TO THE BRUTAL CONTROL CENTER
-              </h2>
-              <p className="text-lg font-bold">
-                Command your digital empire with savage precision!
-              </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Crown className="w-12 h-12 text-yellow-300" />
+              <div>
+                <h2 
+                  className="text-3xl font-black mb-2"
+                  style={{ fontFamily: 'Space Grotesk' }}
+                >
+                  WELCOME TO THE BRUTAL CONTROL CENTER
+                </h2>
+                <p className="text-lg font-bold">
+                  Command your digital empire with savage precision!
+                </p>
+              </div>
+            </div>
+            
+            {/* Session Info */}
+            <div className="text-right">
+              <div className="bg-black p-4 border-4 border-white shadow-[4px_4px_0px_0px_#FDE047]">
+                <div className="text-sm font-bold text-yellow-300 mb-1">SESSION INFO</div>
+                <div className="text-xs text-white">
+                  <div>Login: {lastLogin}</div>
+                  <div>Duration: {sessionDuration}</div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

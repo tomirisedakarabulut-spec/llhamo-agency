@@ -84,7 +84,7 @@ Markdown formatında yazınızı yazın...
     "address": "Istanbul, Turkey"
   },
   "social": {
-    "instagram": "https://instagram.com/lhamo.agency",
+    "instagram": "https://instagram.com/lhamo.co",
     "twitter": "https://twitter.com/lhamoagency"
   }
 }

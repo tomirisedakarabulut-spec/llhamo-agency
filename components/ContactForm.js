@@ -56,6 +56,31 @@ export default function ContactForm({ formspreeId = process.env.NEXT_PUBLIC_FORM
     setStatus({ submitting: true, success: null, error: null })
 
     try {
+      // Create lead in CRM system
+      const leadData = {
+        name: form.name,
+        email: form.email,
+        company: form.company || 'Unknown',
+        phone: form.phone || '',
+        message: form.message,
+        source: 'contact_form',
+        status: 'new',
+        score: 50,
+        tags: ['website', 'contact_form']
+      }
+
+      const crmResponse = await fetch('/api/crm/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(leadData),
+      })
+
+      if (!crmResponse.ok) {
+        throw new Error('CRM lead creation failed')
+      }
+
       // Prefer Formspree if ID provided
       if (formspreeId) {
         const resp = await fetch(`https://formspree.io/f/${formspreeId}`, {
@@ -64,7 +89,7 @@ export default function ContactForm({ formspreeId = process.env.NEXT_PUBLIC_FORM
           body: new FormData(e.currentTarget),
         })
         if (!resp.ok) throw new Error('Gönderim başarısız')
-        setStatus({ submitting: false, success: 'Mesajınız gönderildi.', error: null })
+        setStatus({ submitting: false, success: 'Mesajınız gönderildi ve CRM sistemine kaydedildi!', error: null })
         setForm({ name: '', email: '', message: '' })
         return
       }
@@ -74,12 +99,14 @@ export default function ContactForm({ formspreeId = process.env.NEXT_PUBLIC_FORM
         const { serviceId, templateId, publicKey } = emailJs
         window.emailjs.init(publicKey)
         await window.emailjs.send(serviceId, templateId, form)
-        setStatus({ submitting: false, success: 'Mesajınız gönderildi.', error: null })
+        setStatus({ submitting: false, success: 'Mesajınız gönderildi ve CRM sistemine kaydedildi!', error: null })
         setForm({ name: '', email: '', message: '' })
         return
       }
 
-      throw new Error('Yapılandırma bulunamadı (Formspree veya EmailJS).')
+      // If no email service configured, just save to CRM
+      setStatus({ submitting: false, success: 'Mesajınız CRM sistemine kaydedildi!', error: null })
+      setForm({ name: '', email: '', message: '' })
     } catch (err) {
       setStatus({ submitting: false, success: null, error: err.message || 'Bir hata oluştu.' })
     }

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Head from 'next/head'
+import SEOHead from '../components/SEOHead'
 import { 
   Mail, 
   Phone, 
@@ -77,13 +77,12 @@ export default function Contact() {
       transition={pageTransition}
     >
       
-      <Head>
-        <title>CONTACT THE ARMY | LHAMO - Start Your Brutal Project</title>
-        <meta name="description" content="Ready to destroy boring marketing? Contact LHAMO's brutal creative army and start your legendary brand transformation today." />
-        <meta name="keywords" content="contact LHAMO, marketing agency contact, brutal marketing, creative agency Istanbul" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <SEOHead 
+        title="CONTACT THE ARMY | LHAMO - Start Your Brutal Project"
+        description="Ready to destroy boring marketing? Contact LHAMO's brutal creative army and start your legendary brand transformation today."
+        image="/crown-icon.png"
+        url="https://lhamo.agency/contact"
+      />
 
       {/* Navigation */}
       <SimpleNavbar />
@@ -116,7 +115,7 @@ export default function Contact() {
             </h1>
             
             <p className="text-xl font-bold text-black max-w-3xl mx-auto leading-tight">
-              READY TO DESTROY BORING MARKETING? LET'S CREATE SOMETHING LEGENDARY TOGETHER!
+              READY TO DESTROY BORING MARKETING? LET'S CREATE SOMETHING BRUTAL TOGETHER!
             </p>
           </motion.div>
         </div>

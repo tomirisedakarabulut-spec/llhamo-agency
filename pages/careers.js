@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Head from 'next/head'
+import SEOHead from '../components/SEOHead'
 import Link from 'next/link'
 import { 
   MapPin, 
@@ -142,15 +142,12 @@ export default function Careers() {
       transition={pageTransition}
     >
       
-      <Head>
-        <title>JOIN THE ARMY | LHAMO - Brutal Career Opportunities</title>
-        <meta name="description" content="Join LHAMO's brutal marketing army. Discover savage career opportunities in creative, tech, and strategy warfare." />
-        <meta name="keywords" content="marketing jobs, creative careers, tech jobs, Istanbul jobs, remote work, LHAMO careers" />
-        <meta property="og:title" content="JOIN THE ARMY | LHAMO" />
-        <meta property="og:description" content="Join the brutal marketing army. Savage career opportunities await." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <SEOHead 
+        title="JOIN THE ARMY | LHAMO - Brutal Career Opportunities"
+        description="Join LHAMO's brutal marketing army. Discover savage career opportunities in creative, tech, and strategy warfare."
+        image="/crown-icon.png"
+        url="https://lhamo.agency/careers"
+      />
 
       {/* Hero Section */}
       <section className="bg-yellow-300 pt-32 pb-16 border-b-4 border-black">

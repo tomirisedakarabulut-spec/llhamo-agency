@@ -15,7 +15,7 @@ export default function QuickNavigation() {
     { 
       name: 'Instagram', 
       icon: Instagram, 
-      href: 'https://instagram.com/lhamo.agency', 
+      href: 'https://instagram.com/lhamo.co', 
       color: 'bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500',
       brandColor: '#E4405F'
     },

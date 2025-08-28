@@ -286,7 +286,7 @@ export default function AdminConfig({ initialConfig }) {
                     value={config.social.instagram}
                     onChange={(e) => handleConfigChange('social', 'instagram', e.target.value)}
                     className="w-full neo-input"
-                    placeholder="https://instagram.com/username"
+                    placeholder="https://instagram.com/lhamo.co"
                   />
                 </div>
 

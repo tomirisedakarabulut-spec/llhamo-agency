@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Head from 'next/head'
+import SEOHead from '../components/SEOHead'
 import Link from 'next/link'
 import { 
   Calendar, 
@@ -15,7 +15,6 @@ import {
 } from 'lucide-react'
 
 import { getAllBlogPosts, getBlogCategories } from '../lib/content'
-import QuickNavigation from '../components/QuickNavigation'
 import SimpleNavbar from '../components/SimpleNavbar'
 
 
@@ -48,15 +47,12 @@ export default function Blog({ blogPosts, categories }) {
       transition={pageTransition}
     >
       
-      <Head>
-        <title>BRUTAL INSIGHTS | LHAMO - Marketing Warfare Blog</title>
-        <meta name="description" content="Brutal marketing insights and strategies that destroy competition. Read LHAMO's savage blog for divine marketing wisdom." />
-        <meta name="keywords" content="marketing blog, brutal marketing, AI marketing, branding insights, social media strategy" />
-        <meta property="og:title" content="BRUTAL INSIGHTS | LHAMO" />
-        <meta property="og:description" content="Savage marketing insights that destroy competition" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <SEOHead 
+          title="BRUTAL INSIGHTS | LHAMO - Marketing Warfare Blog"
+  description="Brutal marketing insights and strategies that destroy competition. Read LHAMO's savage blog for legendary marketing wisdom."
+        image="/crown-icon.png"
+        url="https://lhamo.agency/blog"
+      />
 
       {/* Navigation */}
       <SimpleNavbar />
@@ -89,7 +85,7 @@ export default function Blog({ blogPosts, categories }) {
             </h1>
             
             <p className="text-xl font-bold text-black max-w-3xl mx-auto leading-tight mb-12">
-              SAVAGE INSIGHTS THAT DESTROY BORING MARKETING AND CREATE LEGENDARY BRANDS!
+              SAVAGE INSIGHTS THAT DESTROY BORING MARKETING AND CREATE LEGENDARY WARRIORS!
             </p>
 
             {/* Search & Filter */}
@@ -316,9 +312,6 @@ export default function Blog({ blogPosts, categories }) {
           </motion.div>
         </div>
       </section>
-
-      {/* Quick Navigation */}
-      <QuickNavigation />
 
       {/* Floating Menu Button */}
       <motion.button

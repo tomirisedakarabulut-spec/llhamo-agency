@@ -1,8 +1,8 @@
 {
   "site": {
     "name": "LHAMO",
-    "title": "LHAMO - Divine Digital Marketing Agency",
-    "description": "Unleash your brand's divine power with LHAMO. Premium digital marketing agency specializing in creative campaigns, AI-powered marketing, and mystical brand transformation.",
+    "title": "LHAMO - Brutal Marketing Warfare",
+    "description": "Unleash your brand's brutal power with LHAMO. Premium digital marketing agency specializing in creative campaigns, AI-powered marketing, and legendary brand transformation.",
     "url": "https://lhamo.agency",
     "logo": "/logo.png",
     "favicon": "/favicon-32x32.png"
@@ -14,7 +14,7 @@
     "workingHours": "24/7 BRUTALITY"
   },
   "social": {
-    "instagram": "https://instagram.com/lhamo.agency",
+    "instagram": "https://instagram.com/lhamo.co",
     "twitter": "https://twitter.com/lhamoagency",
     "linkedin": "https://linkedin.com/company/lhamo-agency",
     "youtube": "https://youtube.com/@lhamoagency"
@@ -23,9 +23,9 @@
     "defaultTitle": "LHAMO - Divine Digital Marketing Agency",
     "titleTemplate": "%s | LHAMO",
     "defaultDescription": "Unleash your brand's divine power with LHAMO. Premium digital marketing agency specializing in creative campaigns, AI-powered marketing, and mystical brand transformation.",
-    "keywords": ["digital marketing", "creative agency", "branding", "AI marketing", "video production", "social media", "advertising"],
+    "keywords": ["brutal marketing", "creative agency", "branding", "AI marketing", "video production", "social media", "advertising", "warfare"],
     "author": "LHAMO Agency",
-    "ogImage": "/og-image.jpg"
+    "ogImage": "/logo.png"
   },
   "theme": {
     "primary": "#DC2626",

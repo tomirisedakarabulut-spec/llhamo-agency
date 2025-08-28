@@ -18,7 +18,8 @@
     "analyze": "ANALYZE=true npm run build",
     "clean": "rm -rf .next && rm -rf node_modules/.cache",
     "create-post": "node scripts/create-blog-post.js",
-    "content:blog": "node scripts/create-blog-post.js"
+    "content:blog": "node scripts/create-blog-post.js",
+    "crm:seed": "node scripts/seed-crm-data.js"
   },
   "keywords": [],
   "author": "",

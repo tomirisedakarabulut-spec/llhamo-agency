@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import SEOHead from '../components/SEOHead'
 import { motion } from 'framer-motion'
 import { 
   Crown, 
@@ -26,10 +26,12 @@ export default function About() {
 
   return (
     <>
-      <Head>
-        <title>ABOUT THE GODDESSES | LHAMO - Brutal Marketing Army</title>
-        <meta name="description" content="Meet the divine marketing goddesses of LHAMO. Discover our brutal story of transforming brands through mystical creativity and savage precision." />
-      </Head>
+      <SEOHead 
+          title="ABOUT THE WARRIORS | LHAMO - Brutal Marketing Army"
+  description="Meet the legendary marketing warriors of LHAMO. Discover our brutal story of transforming brands through savage creativity and strategic warfare."
+        image="/logo.png"
+        url="https://lhamo.agency/about"
+      />
 
       <SimpleNavbar />
 
@@ -52,7 +54,7 @@ export default function About() {
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 mb-8 px-4 py-2 bg-red-600 text-white border-4 border-black shadow-[6px_6px_0px_0px_#000] transform rotate-2">
               <Crown className="w-5 h-5" />
-              <span className="font-bold">DIVINE MARKETING GODDESSES</span>
+              <span className="font-bold">LEGENDARY MARKETING WARRIORS</span>
             </div>
 
             {/* Main Headline */}
@@ -65,7 +67,7 @@ export default function About() {
 
             {/* Subtitle */}
             <p className="text-xl md:text-2xl font-bold text-black mb-12 max-w-4xl mx-auto leading-relaxed">
-              THE BRUTAL MARKETING ARMY THAT SMASHES BORING BRANDS AND TRANSFORMS THEM INTO LEGENDARY GODDESSES OF THEIR INDUSTRY
+              THE BRUTAL MARKETING ARMY THAT CRUSHES BORING BRANDS AND TRANSFORMS THEM INTO LEGENDARY WARRIORS OF THEIR INDUSTRY
             </p>
 
             {/* Stats */}
@@ -120,11 +122,11 @@ export default function About() {
               viewport={{ once: true }}
             >
               <div className="bg-yellow-300 border-8 border-black shadow-[12px_12px_0px_0px_#000] p-8 transform rotate-2">
-                <h3 className="text-3xl font-black text-black mb-6">FROM ZERO TO GODDESS</h3>
+                <h3 className="text-3xl font-black text-black mb-6">FROM ZERO TO LEGEND</h3>
                 <p className="text-lg font-bold text-black leading-relaxed">
                   LHAMO was born from the ashes of boring marketing. We saw brands drowning in mediocrity, 
-                  following the same tired formulas, and decided to become the divine force that would 
-                  transform them into legendary goddesses of their industry.
+                                      following the same tired formulas, and decided to become the brutal force that would
+                    transform them into legendary warriors of their industry.
                 </p>
               </div>
             </motion.div>
@@ -139,14 +141,14 @@ export default function About() {
                 <div className="bg-red-600 text-white border-4 border-black shadow-[6px_6px_0px_0px_#000] p-6 transform -rotate-1">
                   <h4 className="text-xl font-black mb-3">THE AWAKENING</h4>
                   <p className="font-bold">We realized that most agencies were just copying each other. 
-                  No originality, no passion, no divine spark. That's when we decided to become the 
-                  marketing goddesses the world needed.</p>
+                  No originality, no passion, no brutal spark. That's when we decided to become the 
+                  marketing warriors the world needed.</p>
                 </div>
                 
                 <div className="bg-black text-white border-4 border-black shadow-[6px_6px_0px_0px_#DC2626] p-6 transform rotate-1">
                   <h4 className="text-xl font-black mb-3">THE TRANSFORMATION</h4>
                   <p className="font-bold">We developed our brutal methodology - combining savage creativity 
-                  with divine precision. Every campaign became a masterpiece, every brand a legend.</p>
+                  with strategic precision. Every campaign became a masterpiece, every brand a legend.</p>
                 </div>
               </div>
             </motion.div>
@@ -165,7 +167,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-black text-black mb-8" style={{ fontFamily: 'Space Grotesk' }}>
-              OUR DIVINE VALUES
+              OUR WARRIOR VALUES
             </h2>
             <div className="w-32 h-2 bg-red-600 mx-auto border-2 border-black shadow-[4px_4px_0px_0px_#000]"></div>
           </motion.div>
@@ -179,8 +181,8 @@ export default function About() {
                 color: 'bg-red-600 text-white'
               },
               { 
-                title: 'DIVINE PRECISION', 
-                description: 'Like goddesses, we strike with perfect accuracy. Every pixel, every word, every moment is calculated for maximum impact.',
+                title: 'STRATEGIC PRECISION', 
+                description: 'Like warriors, we strike with perfect accuracy. Every pixel, every word, every moment is calculated for maximum impact.',
                 icon: Target,
                 color: 'bg-black text-white'
               },
@@ -204,7 +206,7 @@ export default function About() {
               },
               { 
                 title: 'UNBREAKABLE SHIELD', 
-                description: 'We protect our clients like divine guardians. Their success is our mission, their victory is our glory.',
+                description: 'We protect our clients like legendary guardians. Their success is our mission, their victory is our glory.',
                 icon: Shield,
                 color: 'bg-yellow-300 text-black'
               }
@@ -240,7 +242,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-black text-black mb-8" style={{ fontFamily: 'Space Grotesk' }}>
-              THE GODDESSES
+              THE WARRIORS
             </h2>
             <div className="w-32 h-2 bg-red-600 mx-auto border-2 border-black shadow-[4px_4px_0px_0px_#000]"></div>
           </motion.div>
@@ -249,22 +251,22 @@ export default function About() {
             {[
               {
                 name: 'TOMIRIS',
-                role: 'CREATIVE GODDESS',
+                role: 'CREATIVE WARRIOR',
                 description: 'The mastermind behind every legendary campaign. Her creativity knows no bounds.',
                 icon: Crown,
                 color: 'bg-red-600 text-white'
               },
               {
                 name: 'LHAMO',
-                role: 'STRATEGY GODDESS',
-                description: 'The divine strategist who turns chaos into conquest. Every plan is a masterpiece.',
+                role: 'STRATEGY WARRIOR',
+                description: 'The legendary strategist who turns chaos into conquest. Every plan is a masterpiece.',
                 icon: Eye,
                 color: 'bg-black text-white'
               },
               {
-                name: 'GODDESS.COGO',
-                role: 'TECHNOLOGY GODDESS',
-                description: 'The digital sorceress who wields technology like a divine weapon.',
+                name: 'WARRIOR.COGO',
+                role: 'TECHNOLOGY WARRIOR',
+                description: 'The digital warrior who wields technology like a legendary weapon.',
                 icon: Rocket,
                 color: 'bg-yellow-300 text-black'
               }
@@ -303,13 +305,13 @@ export default function About() {
             className="text-center"
           >
             <h2 className="text-4xl md:text-6xl font-black mb-8" style={{ fontFamily: 'Space Grotesk' }}>
-              OUR DIVINE MISSION
+              OUR WARRIOR MISSION
             </h2>
             <div className="w-32 h-2 bg-red-600 mx-auto border-2 border-white shadow-[4px_4px_0px_0px_#DC2626] mb-12"></div>
             
             <div className="bg-red-600 border-8 border-white shadow-[12px_12px_0px_0px_#000] p-12 transform rotate-1">
               <p className="text-2xl md:text-3xl font-black leading-relaxed mb-8">
-                TO TRANSFORM EVERY BRAND INTO A LEGENDARY GODDESS OF THEIR INDUSTRY THROUGH BRUTAL CREATIVITY AND DIVINE PRECISION
+                TO TRANSFORM EVERY BRAND INTO A LEGENDARY WARRIOR OF THEIR INDUSTRY THROUGH BRUTAL CREATIVITY AND STRATEGIC PRECISION
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <div className="bg-black text-white px-6 py-3 font-bold border-2 border-white shadow-[4px_4px_0px_0px_#DC2626]">
@@ -322,7 +324,7 @@ export default function About() {
                 </div>
                 <div className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000]">
                   <Crown className="w-5 h-5 inline mr-2" />
-                  DIVINE POWER
+                  LEGENDARY POWER
                 </div>
               </div>
             </div>
@@ -343,7 +345,7 @@ export default function About() {
               READY TO BECOME A LEGEND?
             </h2>
             <p className="text-xl font-bold text-black mb-12">
-              JOIN THE BRUTAL MARKETING ARMY AND TRANSFORM YOUR BRAND INTO A DIVINE GODDESS
+              JOIN THE BRUTAL MARKETING ARMY AND TRANSFORM YOUR BRAND INTO A LEGENDARY WARRIOR
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">

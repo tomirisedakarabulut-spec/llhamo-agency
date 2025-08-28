@@ -13,21 +13,25 @@ import {
   BarChart3,
   LogOut,
   Crown,
-  Shield
+  Shield,
+  Bell
 } from 'lucide-react'
+import AdminNotification, { useNotifications, NotificationBell } from './AdminNotification'
 
 const adminNavigation = [
-  { name: 'DASHBOARD', href: '/admin/dashboard', icon: Home },
-  { name: 'BLOG POSTS', href: '/admin/blog', icon: FileText },
-  { name: 'SITE CONFIG', href: '/admin/config', icon: Settings },
-  { name: 'MEDIA', href: '/admin/media', icon: Image },
-  { name: 'ANALYTICS', href: '/admin/analytics', icon: BarChart3 },
+  { name: 'DASHBOARD', href: '/admin/dashboard', icon: Home, badge: null },
+  { name: 'BLOG POSTS', href: '/admin/blog', icon: FileText, badge: 'NEW' },
+  { name: 'SITE CONFIG', href: '/admin/config', icon: Settings, badge: null },
+  { name: 'MEDIA', href: '/admin/media', icon: Image, badge: null },
+  { name: 'ANALYTICS', href: '/admin/analytics', icon: BarChart3, badge: 'HOT' },
 ]
 
 export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [user, setUser] = useState('')
+  const [showNotifications, setShowNotifications] = useState(false)
   const router = useRouter()
+  const { notifications, addNotification, removeNotification } = useNotifications()
 
   useEffect(() => {
     // Check authentication only if we're not already on login page
@@ -42,16 +46,24 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
     }
     
     setUser(adminUser || 'ADMIN')
-  }, [router.pathname])
+  }, [router.pathname, router])
 
   const handleLogout = () => {
-    localStorage.removeItem('lhamo_admin_auth')
-    localStorage.removeItem('lhamo_admin_user')
-    router.push('/admin')
+    addNotification('Logging out...', 'info', 2000)
+    setTimeout(() => {
+      // Clear all admin data
+      localStorage.removeItem('lhamo_admin_auth')
+      localStorage.removeItem('lhamo_admin_user')
+      localStorage.removeItem('lhamo_admin_login_time')
+      localStorage.removeItem('lhamo_admin_token')
+      
+      // Redirect to login page
+      router.push('/admin')
+    }, 2000)
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 flex">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <motion.div
@@ -68,7 +80,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
         initial={{ x: -300 }}
         animate={{ x: sidebarOpen ? 0 : -300 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className={`fixed inset-y-0 left-0 w-64 bg-black border-r-4 border-black z-50 lg:translate-x-0 lg:static lg:inset-0`}
+        className={`fixed inset-y-0 left-0 w-64 bg-black border-r-4 border-black z-50 lg:relative lg:translate-x-0 lg:flex-shrink-0`}
       >
         <div className="flex items-center justify-between h-16 px-6 bg-red-600 border-b-4 border-black">
           <div className="flex items-center space-x-3">
@@ -90,7 +102,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
           </button>
         </div>
 
-        <nav className="p-4 space-y-2">
+        <nav className="p-4 space-y-2 flex-1">
           {adminNavigation.map((item) => {
             const Icon = item.icon
             const isActive = router.pathname === item.href
@@ -99,22 +111,33 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center space-x-3 px-4 py-3 font-bold transition-all duration-200 border-4 ${
+                className={`flex items-center justify-between px-4 py-3 font-bold transition-all duration-200 border-4 relative ${
                   isActive
                     ? 'bg-red-600 text-white border-white shadow-[4px_4px_0px_0px_#FDE047]'
                     : 'text-white border-transparent hover:bg-white hover:text-black hover:border-white hover:shadow-[2px_2px_0px_0px_#DC2626]'
                 }`}
                 onClick={() => setSidebarOpen(false)}
               >
-                <Icon className="w-5 h-5" />
-                <span style={{ fontFamily: 'Space Grotesk' }}>{item.name}</span>
+                <div className="flex items-center space-x-3">
+                  <Icon className="w-5 h-5" />
+                  <span style={{ fontFamily: 'Space Grotesk' }}>{item.name}</span>
+                </div>
+                {item.badge && (
+                  <div className={`px-2 py-1 text-xs font-bold rounded ${
+                    item.badge === 'NEW' 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-yellow-300 text-black'
+                  }`}>
+                    {item.badge}
+                  </div>
+                )}
               </Link>
             )
           })}
         </nav>
 
         {/* User info & logout */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-yellow-300 border-t-4 border-black">
+        <div className="p-4 bg-yellow-300 border-t-4 border-black">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Shield className="w-5 h-5 text-black" />
@@ -136,10 +159,10 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
         </div>
       </motion.div>
 
-      {/* Main content */}
-      <div className="lg:ml-64">
+      {/* Main content area */}
+      <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
-        <header className="bg-yellow-300 border-b-4 border-black h-16 flex items-center justify-between px-6">
+        <header className="bg-yellow-300 border-b-4 border-black h-16 flex items-center justify-between px-6 flex-shrink-0">
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setSidebarOpen(true)}
@@ -156,6 +179,10 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
           </div>
 
           <div className="flex items-center space-x-4">
+            <NotificationBell 
+              count={notifications.length} 
+              onClick={() => setShowNotifications(!showNotifications)} 
+            />
             <Link
               href="/"
               target="_blank"
@@ -167,16 +194,28 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
         </header>
 
         {/* Page content */}
-        <main className="p-6">
+        <main className="flex-1 p-6 overflow-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="h-full"
           >
             {children}
           </motion.div>
         </main>
       </div>
+
+      {/* Notifications */}
+      {notifications.map((notification) => (
+        <AdminNotification
+          key={notification.id}
+          message={notification.message}
+          type={notification.type}
+          duration={notification.duration}
+          onClose={() => removeNotification(notification.id)}
+        />
+      ))}
     </div>
   )
 }

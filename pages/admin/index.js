@@ -1,128 +1,86 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+import { useState } from 'react'
+import SEOHead from '../../components/SEOHead'
 import { 
   Shield, 
   Eye, 
   Lock,
   Crown,
-  Zap
+  Zap,
+  EyeOff,
+  AlertTriangle
 } from 'lucide-react'
-import { setAuthToken, isAuthenticated } from '../../lib/auth'
 
 export default function AdminLogin() {
-  const [credentials, setCredentials] = useState({ username: '', password: '' })
-  const [isLoading, setIsLoading] = useState(false)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
 
-  // Check if already authenticated
-  useEffect(() => {
-    if (isAuthenticated()) {
-      router.replace('/admin/dashboard')
-    }
-  }, [router])
-
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
 
-    try {
-      const response = await fetch('/api/admin/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      })
+    console.log('Login attempt:', { username, password })
 
-      const data = await response.json()
-
-      if (response.ok) {
-        // Store the token
-        setAuthToken(data.token)
-        localStorage.setItem('lhamo_admin_user', JSON.stringify(data.user))
-        router.push('/admin/dashboard')
-      } else {
-        setError(data.message || 'Authentication failed')
-      }
-    } catch (error) {
-      console.error('Login error:', error)
-      setError('Network error. Please try again.')
-    } finally {
+    // Simple authentication
+    if (username === 'lhamo' && password === 'brutal2024') {
+      console.log('Login successful')
+      
+      // Set authentication
+      localStorage.setItem('lhamo_admin_auth', 'true')
+      localStorage.setItem('lhamo_admin_user', 'LHAMO ADMIN')
+      localStorage.setItem('lhamo_admin_login_time', new Date().toISOString())
+      
+      // Redirect
+      window.location.href = '/admin/dashboard'
+    } else {
+      console.log('Login failed')
+      setError('WRONG CREDENTIALS! TRY AGAIN.')
       setIsLoading(false)
     }
   }
 
-  const pageVariants = {
-    initial: { opacity: 0, scale: 0.9 },
-    in: { opacity: 1, scale: 1 },
-    out: { opacity: 0, scale: 1.1 }
-  }
-
   return (
-    <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-yellow-300 flex items-center justify-center p-4"
-    >
-      <Head>
-        <title>ADMIN LOGIN | LHAMO - Brutal Control Panel</title>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+    <div className="min-h-screen bg-yellow-300 flex items-center justify-center p-4">
+      <SEOHead 
+        title="ADMIN LOGIN | LHAMO - Brutal Control Panel"
+        description="Secure admin access to LHAMO's brutal control center"
+        image="/crown-icon.png"
+        url="https://lhamo.agency/admin"
+      />
 
       <div className="w-full max-w-md">
-        <motion.div
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mb-8"
-        >
-          {/* Logo */}
+        {/* Header */}
+        <div className="text-center mb-8">
           <div className="w-20 h-20 bg-red-600 border-4 border-black shadow-[8px_8px_0px_0px_#000] flex items-center justify-center mx-auto mb-6 transform -rotate-3">
             <Crown className="w-10 h-10 text-white" />
           </div>
           
-          <h1 
-            className="text-4xl font-black text-black mb-2"
-            style={{ fontFamily: 'Space Grotesk' }}
-          >
+          <h1 className="text-4xl font-black text-black mb-2">
             ADMIN PANEL
           </h1>
           <p className="text-lg font-bold text-black">
             BRUTAL CONTROL CENTER
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="neo-card bg-black text-white p-8"
-        >
+        {/* Login Form */}
+        <div className="bg-black text-white p-8 border-4 border-black shadow-[8px_8px_0px_0px_#000]">
           <div className="flex items-center space-x-2 mb-6">
             <Shield className="w-6 h-6 text-red-600" />
-            <h2 className="text-xl font-black" style={{ fontFamily: 'Space Grotesk' }}>
-              SECURE LOGIN
-            </h2>
+            <h2 className="text-xl font-black">SECURE LOGIN</h2>
           </div>
 
           {error && (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="bg-red-600 text-white p-4 border-4 border-white mb-6 text-center font-bold"
-            >
-              {error}
-            </motion.div>
+            <div className="p-4 bg-red-600 border-4 border-white mb-6 text-center font-bold flex items-center justify-center space-x-2">
+              <AlertTriangle className="w-5 h-5" />
+              <span>{error}</span>
+            </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-black text-white mb-2 uppercase tracking-wide">
                 <Lock className="w-4 h-4 inline mr-2" />
@@ -130,11 +88,12 @@ export default function AdminLogin() {
               </label>
               <input
                 type="text"
-                value={credentials.username}
-                onChange={(e) => setCredentials({...credentials, username: e.target.value})}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="w-full bg-white text-black border-4 border-white px-4 py-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_#DC2626] transition-all duration-200"
                 placeholder="ENTER YOUR WARRIOR NAME..."
                 required
+                disabled={isLoading}
               />
             </div>
 
@@ -143,28 +102,45 @@ export default function AdminLogin() {
                 <Eye className="w-4 h-4 inline mr-2" />
                 PASSWORD
               </label>
-              <input
-                type="password"
-                value={credentials.password}
-                onChange={(e) => setCredentials({...credentials, password: e.target.value})}
-                className="w-full bg-white text-black border-4 border-white px-4 py-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_#DC2626] transition-all duration-200"
-                placeholder="BRUTAL SECRET CODE..."
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full bg-white text-black border-4 border-white px-4 py-3 font-bold focus:outline-none focus:shadow-[4px_4px_0px_0px_#DC2626] transition-all duration-200 pr-12"
+                  placeholder="BRUTAL SECRET CODE..."
+                  required
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-600 hover:text-black transition-colors duration-200"
+                  disabled={isLoading}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
             </div>
 
-            <motion.button
+            <button
               type="submit"
               disabled={isLoading}
-              whileHover={{ x: -2, y: -2 }}
-              whileTap={{ x: 0, y: 0 }}
-              className={`w-full bg-red-600 text-white border-4 border-white font-bold py-4 shadow-[4px_4px_0px_0px_#FDE047] hover:shadow-[6px_6px_0px_0px_#FDE047] transition-all duration-200 uppercase tracking-wide flex items-center justify-center space-x-2 ${
-                isLoading ? 'opacity-50 cursor-not-allowed' : ''
+              className={`w-full border-4 border-white font-bold py-4 shadow-[4px_4px_0px_0px_#FDE047] transition-all duration-200 uppercase tracking-wide flex items-center justify-center space-x-2 ${
+                isLoading 
+                  ? 'bg-gray-400 text-gray-600 cursor-not-allowed' 
+                  : 'bg-red-600 text-white hover:shadow-[6px_6px_0px_0px_#FDE047]'
               }`}
             >
-              <Zap className="w-5 h-5" />
-              <span>{isLoading ? 'AUTHENTICATING...' : 'ENTER BRUTAL ZONE'}</span>
-            </motion.button>
+              {isLoading ? (
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+              ) : (
+                <Zap className="w-5 h-5" />
+              )}
+              <span>
+                {isLoading ? 'AUTHENTICATING...' : 'ENTER BRUTAL ZONE'}
+              </span>
+            </button>
           </form>
 
           <div className="mt-6 text-center">
@@ -175,19 +151,45 @@ export default function AdminLogin() {
               Demo: lhamo / brutal2024
             </div>
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-6"
-        >
+          {/* Debug Info */}
+          <div className="mt-4 p-3 bg-gray-800 text-xs text-gray-300">
+            <p>Debug Info:</p>
+            <p>Username: {username}</p>
+            <p>Password Length: {password.length}</p>
+            <p>Loading: {isLoading ? 'Yes' : 'No'}</p>
+            <p>Error: {error || 'None'}</p>
+          </div>
+        </div>
+
+        <div className="text-center mt-6">
           <p className="text-sm font-bold text-black">
             🔒 PROTECTED BY BRUTAL SECURITY
           </p>
-        </motion.div>
+        </div>
+
+        {/* Quick Test Links */}
+        <div className="mt-6 text-center space-y-2">
+          <a 
+            href="/admin/simple"
+            className="block text-sm text-red-600 font-bold hover:text-black transition-colors"
+          >
+            SIMPLE TEST
+          </a>
+          <a 
+            href="/admin/debug"
+            className="block text-sm text-red-600 font-bold hover:text-black transition-colors"
+          >
+            DEBUG PAGE
+          </a>
+          <a 
+            href="/admin/test"
+            className="block text-sm text-red-600 font-bold hover:text-black transition-colors"
+          >
+            TEST PAGE
+          </a>
+        </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

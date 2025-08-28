@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Head from 'next/head'
+import SEOHead from '../components/SEOHead'
 import Link from 'next/link'
 import { 
   ExternalLink, 
@@ -116,15 +116,12 @@ export default function Portfolio() {
       transition={pageTransition}
     >
       
-      <Head>
-        <title>BRUTAL PORTFOLIO | LHAMO - Marketing Warfare Results</title>
-        <meta name="description" content="Witness the brutal marketing campaigns that destroyed competition. See LHAMO's savage portfolio of legendary brand transformations." />
-        <meta name="keywords" content="marketing portfolio, brutal campaigns, brand transformation, digital marketing results" />
-        <meta property="og:title" content="BRUTAL PORTFOLIO | LHAMO" />
-        <meta property="og:description" content="Witness brutal marketing campaigns that destroyed competition" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <SEOHead 
+        title="BRUTAL PORTFOLIO | LHAMO - Marketing Warfare Results"
+        description="Witness the brutal marketing campaigns that destroyed competition. See LHAMO's savage portfolio of legendary brand transformations."
+        image="/logo.png"
+        url="https://lhamo.agency/portfolio"
+      />
 
       {/* Navigation */}
       <SimpleNavbar />
@@ -157,7 +154,7 @@ export default function Portfolio() {
             </h1>
             
             <p className="text-xl font-bold text-black max-w-3xl mx-auto leading-tight mb-12">
-              WITNESS THE BRUTAL CAMPAIGNS THAT DESTROYED COMPETITION AND CREATED MARKETING LEGENDS!
+              WITNESS THE BRUTAL CAMPAIGNS THAT DESTROYED COMPETITION AND CREATED MARKETING WARRIORS!
             </p>
 
             {/* Stats */}

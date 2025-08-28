@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Head from 'next/head'
+import SEOHead from '../components/SEOHead'
 import { 
   Palette, 
   Target, 
@@ -75,10 +75,12 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-yellow-300">
       
-      <Head>
-        <title>BRUTAL SERVICES | LHAMO - Marketing Warfare Arsenal</title>
-        <meta name="description" content="Discover LHAMO's brutal marketing services. From creative campaigns to AI-powered strategies, we destroy boring marketing with divine precision." />
-      </Head>
+      <SEOHead 
+          title="BRUTAL SERVICES | LHAMO - Marketing Warfare Arsenal"
+  description="Discover LHAMO's brutal marketing services. From creative campaigns to AI-powered strategies, we destroy boring marketing with strategic precision."
+        image="/logo.png"
+        url="https://lhamo.agency/services"
+      />
 
       {/* Navigation */}
       <SimpleNavbar />
@@ -103,7 +105,7 @@ export default function Services() {
             </h1>
             
             <p className="text-xl font-bold text-black max-w-3xl mx-auto leading-tight">
-              WE DON'T DO GENTLE MARKETING. WE CRUSH COMPETITION WITH BRUTAL CREATIVITY!
+              WE DON'T DO GENTLE MARKETING. WE CRUSH COMPETITION WITH BRUTAL WARFARE!
             </p>
           </div>
         </div>

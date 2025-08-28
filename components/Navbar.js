@@ -13,7 +13,8 @@ import {
   BookOpen,
   Mail,
   ArrowUp,
-  Crown
+  Crown,
+  Instagram
 } from 'lucide-react'
 import Logo from './Logo'
 
@@ -157,7 +158,7 @@ export default function Navbar() {
               LHAMO
             </div>
             <div className="text-xs font-bold text-red-400 tracking-widest transition-all duration-300 group-hover:text-white">
-              GODDESS.COGO
+              WARRIOR.COGO
             </div>
           </div>
         </Link>
@@ -242,6 +243,29 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
           ))}
+          
+          {/* Instagram Navigation Shortcut */}
+          <motion.a
+            href="https://instagram.com/lhamo.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ 
+              scale: 1.1, 
+              rotate: 5,
+              boxShadow: '0 6px 0px 0px #E4405F'
+            }}
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 border-2 border-white shadow-[3px_3px_0px_0px_#fff] hover:shadow-[4px_4px_0px_0px_#fff] transition-all duration-200 relative overflow-hidden group"
+            aria-label="Follow us on Instagram"
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500"
+              initial={{ x: '-100%' }}
+              whileHover={{ x: '0%' }}
+              transition={{ duration: 0.2 }}
+            />
+            <Instagram className="w-5 h-5 text-white relative z-10 group-hover:scale-110 transition-transform duration-200" />
+          </motion.a>
         </div>
 
         {/* CTA & Mobile Menu */}
@@ -367,7 +391,7 @@ export default function Navbar() {
                   </motion.div>
                   <div>
                     <div className="font-black text-base sm:text-lg text-white" style={{ fontFamily: 'Space Grotesk' }}>LHAMO</div>
-                    <div className="text-xs font-bold text-yellow-300">MOBILE</div>
+                    <div className="text-xs font-bold text-yellow-300">WARRIOR</div>
                   </div>
                 </div>
                 <motion.button
@@ -449,6 +473,36 @@ export default function Navbar() {
                     </motion.div>
                   )
                 })}
+                
+                {/* Mobile Instagram Navigation Shortcut */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navigation.length * 0.1 }}
+                >
+                  <motion.a
+                    href="https://instagram.com/lhamo.co"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ 
+                      scale: 1.05, 
+                      rotate: 3,
+                      boxShadow: '0 4px 0px 0px #E4405F'
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 p-2.5 sm:p-3 lg:p-4 font-bold text-sm sm:text-base lg:text-lg bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white border-2 border-white shadow-[3px_3px_0px_0px_#fff] sm:shadow-[4px_4px_0px_0px_#fff] hover:shadow-[4px_4px_0px_0px_#fff] sm:hover:shadow-[5px_5px_0px_0px_#fff] hover:transform hover:-translate-y-0.5 sm:hover:-translate-y-1 transition-all duration-200 relative overflow-hidden group"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                      className="w-6 h-6 sm:w-8 sm:h-8 border-3 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_#000] bg-white"
+                    >
+                      <Instagram className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
+                    </motion.div>
+                    <span>INSTAGRAM</span>
+                  </motion.a>
+                </motion.div>
               </div>
               
               {/* Mobile CTA & Social - Enhanced */}
