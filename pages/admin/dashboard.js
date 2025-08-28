@@ -120,6 +120,8 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
   }
 
   useEffect(() => {
+    if (!isAuthenticated) return
+
     // Get last login time
     const loginTime = localStorage.getItem('lhamo_admin_login_time')
     if (loginTime) {
@@ -342,7 +344,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
       averageDealValue,
       monthlyRevenue: totalValue
     })
-  }, [blogPosts])
+  }, [isAuthenticated, blogPosts])
 
   const quickActions = [
     {
