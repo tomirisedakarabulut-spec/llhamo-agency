@@ -46,6 +46,42 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
 
+  // All state hooks must be called at the top level
+  const [stats, setStats] = useState({
+    totalPosts: 0,
+    publishedPosts: 0,
+    draftPosts: 0,
+    totalViews: 0,
+    totalContacts: 0,
+    totalProjects: 0,
+    conversionRate: 0,
+    monthlyRevenue: 0
+  })
+
+  const [recentActivity, setRecentActivity] = useState([])
+  const [systemStatus, setSystemStatus] = useState({
+    server: 'online',
+    database: 'online',
+    email: 'online',
+    backup: 'online'
+  })
+
+  const [crmData, setCrmData] = useState({
+    customers: [],
+    leads: [],
+    deals: [],
+    interactions: []
+  })
+
+  const [crmStats, setCrmStats] = useState({
+    totalCustomers: 0,
+    activeLeads: 0,
+    totalDeals: 0,
+    conversionRate: 0,
+    averageDealValue: 0,
+    monthlyRevenue: 0
+  })
+
   // Check authentication on component mount
   useEffect(() => {
     const checkAuth = () => {
@@ -82,41 +118,6 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
   if (!isAuthenticated) {
     return null
   }
-
-  const [stats, setStats] = useState({
-    totalPosts: 0,
-    publishedPosts: 0,
-    draftPosts: 0,
-    totalViews: 0,
-    totalContacts: 0,
-    totalProjects: 0,
-    conversionRate: 0,
-    monthlyRevenue: 0
-  })
-
-  const [recentActivity, setRecentActivity] = useState([])
-  const [systemStatus, setSystemStatus] = useState({
-    server: 'online',
-    database: 'online',
-    email: 'online',
-    backup: 'online'
-  })
-
-  const [crmData, setCrmData] = useState({
-    customers: [],
-    leads: [],
-    deals: [],
-    interactions: []
-  })
-
-  const [crmStats, setCrmStats] = useState({
-    totalCustomers: 0,
-    activeLeads: 0,
-    totalDeals: 0,
-    conversionRate: 0,
-    averageDealValue: 0,
-    monthlyRevenue: 0
-  })
 
   useEffect(() => {
     // Get last login time
