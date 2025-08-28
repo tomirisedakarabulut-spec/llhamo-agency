@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Zap
 } from 'lucide-react'
+import Logo from './Logo'
 
 const services = [
   {
