@@ -69,7 +69,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-16 sm:py-20 neo-section-dark">
+    <section className="py-16 sm:py-20 bg-yellow-300">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Neo Brutalist Section Header */}
         <motion.div
@@ -85,17 +85,17 @@ export default function Services() {
           </div>
           
           <h2 
-            className="text-5xl lg:text-7xl font-black text-white mb-8 leading-none tracking-tight"
+            className="text-5xl lg:text-7xl font-black text-black mb-8 leading-none tracking-tight"
             style={{ fontFamily: 'Space Grotesk' }}
           >
             MARKETING
             <br />
-            <span className="bg-yellow-300 text-black px-4 py-2 border-4 border-white shadow-[8px_8px_0px_0px_#DC2626] inline-block transform rotate-1">
+            <span className="bg-red-600 text-white px-4 py-2 border-4 border-black shadow-[8px_8px_0px_0px_#000] inline-block transform rotate-1">
               WARFARE
             </span>
           </h2>
           
-          <p className="text-xl font-bold text-white max-w-3xl mx-auto leading-tight">
+          <p className="text-xl font-bold text-black max-w-3xl mx-auto leading-tight">
             WE DON'T DO GENTLE MARKETING. WE CRUSH COMPETITION WITH BRUTAL CREATIVITY!
           </p>
         </motion.div>
