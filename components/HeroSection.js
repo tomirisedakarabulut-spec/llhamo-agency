@@ -13,12 +13,74 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-yellow-300 via-yellow-200 to-yellow-400 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-red-600 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-black animate-ping"></div>
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-red-600 animate-bounce"></div>
-        <div className="absolute bottom-20 right-10 w-1 h-1 bg-black animate-pulse"></div>
+      {/* Brutalist Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Geometric Shapes */}
+        <motion.div 
+          animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          className="absolute top-10 left-10 w-8 h-8 bg-red-600 border-4 border-black shadow-[8px_8px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ rotate: -360, y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 right-20 w-6 h-6 bg-black border-4 border-red-600 shadow-[6px_6px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ x: [0, 50, 0], rotate: 180 }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-40 left-1/4 w-4 h-4 bg-red-600 border-2 border-black shadow-[4px_4px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ scale: [1, 1.5, 1], rotate: 90 }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-40 right-1/3 w-10 h-10 bg-black border-4 border-red-600 shadow-[8px_8px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ y: [0, 30, 0], rotate: -90 }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 left-1/3 w-5 h-5 bg-red-600 border-3 border-black shadow-[5px_5px_0px_0px_#000]"
+        />
+        
+        {/* Floating Text Elements */}
+        <motion.div 
+          animate={{ opacity: [0.3, 1, 0.3], rotate: [0, 5, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-32 right-10 text-red-600 font-black text-xs border-2 border-red-600 px-2 py-1 bg-black shadow-[4px_4px_0px_0px_#000]"
+        >
+          BRUTAL
+        </motion.div>
+        <motion.div 
+          animate={{ opacity: [0.3, 1, 0.3], rotate: [0, -5, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-32 left-10 text-black font-black text-xs border-2 border-black px-2 py-1 bg-red-600 shadow-[4px_4px_0px_0px_#000]"
+        >
+          WARFARE
+        </motion.div>
+        
+        {/* Animated Lines */}
+        <motion.div 
+          animate={{ scaleX: [0, 1, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-0 w-32 h-1 bg-red-600 shadow-[2px_2px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ scaleX: [0, 1, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-1/4 right-0 w-32 h-1 bg-black shadow-[2px_2px_0px_0px_#000]"
+        />
+        
+        {/* Corner Decorations */}
+        <div className="absolute top-0 left-0 w-20 h-20 border-l-4 border-t-4 border-red-600"></div>
+        <div className="absolute top-0 right-0 w-20 h-20 border-r-4 border-t-4 border-black"></div>
+        <div className="absolute bottom-0 left-0 w-20 h-20 border-l-4 border-b-4 border-black"></div>
+        <div className="absolute bottom-0 right-0 w-20 h-20 border-r-4 border-b-4 border-red-600"></div>
+        
+        {/* Pulsing Dots */}
+        <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-red-600 animate-pulse shadow-[2px_2px_0px_0px_#000]"></div>
+        <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-black animate-ping shadow-[1px_1px_0px_0px_#000]"></div>
+        <div className="absolute bottom-1/3 left-1/2 w-3 h-3 bg-red-600 animate-bounce shadow-[3px_3px_0px_0px_#000]"></div>
+        <div className="absolute top-1/2 right-1/2 w-1 h-1 bg-black animate-pulse shadow-[1px_1px_0px_0px_#000]"></div>
       </div>
 
       <div className="container mx-auto px-4 py-20 sm:py-32 relative z-10">

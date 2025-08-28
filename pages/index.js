@@ -14,7 +14,13 @@ export default function Home() {
         url="https://lhamo.agency"
       />
       
-      <div className="min-h-screen flex flex-col bg-yellow-300">
+      <div className="min-h-screen flex flex-col bg-yellow-300 relative">
+        {/* Page Decorative Elements */}
+        <div className="fixed top-0 left-0 w-full h-1 bg-red-600 z-50"></div>
+        <div className="fixed top-0 right-0 w-1 h-full bg-black z-50"></div>
+        <div className="fixed bottom-0 left-0 w-full h-1 bg-red-600 z-50"></div>
+        <div className="fixed top-0 left-0 w-1 h-full bg-black z-50"></div>
+        
         <SimpleNavbar />
         <main className="flex-1">
           <HeroSection />

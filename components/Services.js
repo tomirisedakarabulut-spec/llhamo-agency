@@ -69,8 +69,48 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-16 sm:py-20 bg-yellow-300">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section className="py-16 sm:py-20 bg-yellow-300 relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-10 right-10 w-16 h-16 border-4 border-red-600 shadow-[8px_8px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-10 left-10 w-12 h-12 bg-black border-4 border-red-600 shadow-[6px_6px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/4 w-8 h-8 bg-red-600 border-2 border-black shadow-[4px_4px_0px_0px_#000]"
+        />
+        <motion.div 
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-1/3 right-1/4 w-10 h-10 bg-black border-4 border-red-600 shadow-[6px_6px_0px_0px_#000]"
+        />
+        
+        {/* Floating Text Decorations */}
+        <motion.div 
+          animate={{ opacity: [0.5, 1, 0.5], x: [0, 10, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-20 text-red-600 font-black text-sm border-2 border-red-600 px-3 py-1 bg-black shadow-[4px_4px_0px_0px_#000]"
+        >
+          BRUTAL
+        </motion.div>
+        <motion.div 
+          animate={{ opacity: [0.5, 1, 0.5], x: [0, -10, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-20 right-20 text-black font-black text-sm border-2 border-black px-3 py-1 bg-red-600 shadow-[4px_4px_0px_0px_#000]"
+        >
+          CREATIVITY
+        </motion.div>
+      </div>
+      
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
         {/* Neo Brutalist Section Header */}
         <motion.div
           initial={{ opacity: 1, y: 0 }}
