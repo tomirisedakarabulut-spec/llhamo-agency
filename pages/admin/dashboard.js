@@ -38,7 +38,6 @@ import {
 import AdminLayout from '../../components/AdminLayout'
 import { getAllBlogPosts, getSiteConfig } from '../../lib/content'
 import { useRouter } from 'next/router'
-import { getLeads, getDeals, getCRMAnalytics } from '../../lib/crm'
 
 export default function AdminDashboard({ blogPosts, siteConfig }) {
   const [lastLogin, setLastLogin] = useState('')
@@ -137,6 +136,43 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
     // Enhanced stats calculation
     const totalViews = blogPosts.reduce((sum, post) => sum + (post.views || 0), 0)
     const publishedPosts = blogPosts.filter(post => post.published !== false).length
+
+    // Fetch CRM data from API endpoints
+    const fetchCRMData = async () => {
+      try {
+        const [leadsResponse, dealsResponse, analyticsResponse] = await Promise.all([
+          fetch('/api/crm/leads'),
+          fetch('/api/crm/deals'),
+          fetch('/api/crm/analytics')
+        ])
+
+        if (leadsResponse.ok) {
+          const leads = await leadsResponse.json()
+          setCrmData(prev => ({ ...prev, leads }))
+        }
+
+        if (dealsResponse.ok) {
+          const deals = await dealsResponse.json()
+          setCrmData(prev => ({ ...prev, deals }))
+        }
+
+        if (analyticsResponse.ok) {
+          const analytics = await analyticsResponse.json()
+          setCrmStats({
+            totalCustomers: analytics.totalCustomers || 0,
+            activeLeads: analytics.activeLeads || 0,
+            totalDeals: analytics.totalDeals || 0,
+            conversionRate: analytics.conversionRate || 0,
+            averageDealValue: analytics.averageDealValue || 0,
+            monthlyRevenue: analytics.monthlyRevenue || 0
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching CRM data:', error)
+      }
+    }
+
+    fetchCRMData()
     const draftPosts = blogPosts.filter(post => post.published === false).length
     
     setStats({
