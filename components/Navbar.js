@@ -524,7 +524,10 @@ export default function Navbar() {
                       whileHover={{ x: '0%' }}
                       transition={{ duration: 0.2 }}
                     />
-                    <span className="relative z-10">🔥 GET BRUTAL</span>
+                    <span className="relative z-10">
+                  <span className="inline-block w-4 h-4 bg-red-600 border border-white mr-1 align-middle"></span>
+                  GET BRUTAL
+                </span>
                   </Link>
                   
                   {/* Contact Info - Enhanced */}

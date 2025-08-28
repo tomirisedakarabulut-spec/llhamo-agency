@@ -1,4 +1,4 @@
-import SEOHead from '../components/SEOHead'
+animport SEOHead from '../components/SEOHead'
 import { motion } from 'framer-motion'
 import { 
   Crown, 

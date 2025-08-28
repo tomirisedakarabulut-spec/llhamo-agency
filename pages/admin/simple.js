@@ -70,7 +70,9 @@ export default function SimpleTest() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-red-600 border-4 border-black shadow-[4px_4px_0px_0px_#000] flex items-center justify-center mx-auto mb-4">
-            <span className="text-white text-2xl font-black">⚡</span>
+                            <span className="text-white text-2xl font-black">
+                  <span className="inline-block w-6 h-6 bg-yellow-300 border-2 border-black"></span>
+                </span>
           </div>
           <h1 className="text-3xl font-black text-black mb-2">SIMPLE TEST</h1>
           <p className="text-lg font-bold text-black">AUTHENTICATION TEST PAGE</p>
@@ -79,7 +81,9 @@ export default function SimpleTest() {
         {/* Status Display */}
         <div className="bg-black text-white p-6 border-4 border-black shadow-[8px_8px_0px_0px_#000] mb-6">
           <div className="flex items-center space-x-2 mb-4">
-            <span className="text-red-600 text-xl">🛡️</span>
+            <span className="text-red-600 text-xl">
+              <span className="inline-block w-4 h-4 bg-black border border-red-600"></span>
+            </span>
             <h2 className="text-xl font-black">AUTHENTICATION STATUS</h2>
           </div>
 
@@ -107,7 +111,9 @@ export default function SimpleTest() {
             onClick={handleLogin}
             className="bg-green-600 text-white border-4 border-white font-bold py-4 shadow-[4px_4px_0px_0px_#FDE047] hover:shadow-[6px_6px_0px_0px_#FDE047] transition-all duration-200 uppercase tracking-wide flex items-center justify-center space-x-2"
           >
-            <span>⚡</span>
+            <span>
+              <span className="inline-block w-3 h-3 bg-yellow-300 border border-black"></span>
+            </span>
             <span>LOGIN</span>
           </button>
 

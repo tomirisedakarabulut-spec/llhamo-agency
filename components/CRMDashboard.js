@@ -133,7 +133,8 @@ export default function CRMDashboard() {
           className="mb-8"
         >
           <h1 className="text-4xl font-black text-black mb-2" style={{ fontFamily: 'Space Grotesk' }}>
-            🔥 LHAMO CRM WARFARE
+            <span className="inline-block w-6 h-6 bg-red-600 border-2 border-black mr-2 align-middle"></span>
+        LHAMO CRM WARFARE
           </h1>
           <p className="text-lg font-bold text-gray-600">
             BRUTAL CUSTOMER RELATIONSHIP MANAGEMENT SYSTEM

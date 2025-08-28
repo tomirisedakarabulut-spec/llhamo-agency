@@ -157,7 +157,10 @@ export default function HeroSection() {
             className="text-4xl sm:text-5xl lg:text-7xl font-black text-black mb-6 leading-tight"
             style={{ fontFamily: 'Space Grotesk' }}
           >
-            <span className="block">⚔️ BRUTAL CAMPAIGNS.</span>
+            <span className="block">
+              <span className="inline-block w-8 h-8 bg-red-600 border-2 border-black mr-2 align-middle"></span>
+              BRUTAL CAMPAIGNS.
+            </span>
             <span className="block text-red-600">LEGENDARY RESULTS.</span>
           </motion.h1>
 
@@ -203,7 +206,10 @@ export default function HeroSection() {
                   whileHover={{ x: '0%' }}
                   transition={{ duration: 0.2 }}
                 />
-                <span className="relative z-10">⚔️ START BRUTALITY</span>
+                <span className="relative z-10">
+                  <span className="inline-block w-5 h-5 bg-white border border-black mr-2 align-middle"></span>
+                  START BRUTALITY
+                </span>
               </motion.button>
             </Link>
             
@@ -220,7 +226,10 @@ export default function HeroSection() {
                   whileHover={{ x: '0%' }}
                   transition={{ duration: 0.2 }}
                 />
-                <span className="relative z-10">🔥 VIEW CARNAGE</span>
+                <span className="relative z-10">
+                  <span className="inline-block w-5 h-5 bg-red-600 border border-white mr-2 align-middle"></span>
+                  VIEW CARNAGE
+                </span>
               </motion.button>
             </Link>
           </motion.div>
