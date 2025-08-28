@@ -16,6 +16,7 @@ import {
 
 import { getAllBlogPosts, getBlogCategories } from '../lib/content'
 import SimpleNavbar from '../components/SimpleNavbar'
+import QuickNavigation from '../components/QuickNavigation'
 
 
 export default function Blog({ blogPosts, categories }) {
@@ -312,6 +313,9 @@ export default function Blog({ blogPosts, categories }) {
           </motion.div>
         </div>
       </section>
+
+      {/* Quick Navigation */}
+      <QuickNavigation />
 
       {/* Floating Menu Button */}
       <motion.button

@@ -14,6 +14,7 @@ import {
   ChevronUp
 } from 'lucide-react'
 import SimpleNavbar from '../components/SimpleNavbar'
+import QuickNavigation from '../components/QuickNavigation'
 
 
 const portfolioItems = [
@@ -479,10 +480,13 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Quick Navigation */}
+      <QuickNavigation />
+
       {/* Floating Menu Button */}
       <motion.button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 bg-red-600 text-white border-2 sm:border-4 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center group"
+        className="fixed bottom-6 left-6 z-30 w-12 h-12 sm:w-14 sm:h-14 bg-red-600 text-white border-2 sm:border-4 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000] transition-all duration-200 flex items-center justify-center group"
         whileHover={{ scale: 1.1, y: -2 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0, y: 20 }}
