@@ -24,7 +24,18 @@ export default function Logo({
         width={config.width}
         height={config.height}
         className="w-full h-full object-contain"
+        onError={(e) => {
+          // Fallback to a simple div if image fails to load
+          e.target.style.display = 'none'
+          e.target.nextSibling.style.display = 'block'
+        }}
       />
+      <div 
+        className="w-full h-full bg-red-600 border-2 border-black flex items-center justify-center text-white font-black text-xs"
+        style={{ display: 'none' }}
+      >
+        LHAMO
+      </div>
     </div>
   )
 }

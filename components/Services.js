@@ -161,7 +161,13 @@ export default function Services() {
           className="text-center mb-16"
         >
           <div className="neo-badge inline-flex items-center space-x-2 mb-8">
-            <Logo size="sm" className="mr-2" />
+            {typeof Logo !== 'undefined' ? (
+              <Logo size="sm" className="mr-2" />
+            ) : (
+              <div className="w-8 h-8 bg-red-600 border-2 border-black mr-2 flex items-center justify-center">
+                <span className="text-white font-black text-xs">L</span>
+              </div>
+            )}
             <span>BRUTAL SERVICES</span>
           </div>
           

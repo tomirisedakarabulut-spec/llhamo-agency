@@ -38,6 +38,7 @@ import {
 import AdminLayout from '../../components/AdminLayout'
 import { getAllBlogPosts, getSiteConfig } from '../../lib/content'
 import { useRouter } from 'next/router'
+import { getLeads, getDeals, getCRMAnalytics } from '../../lib/crm'
 
 export default function AdminDashboard({ blogPosts, siteConfig }) {
   const [lastLogin, setLastLogin] = useState('')
