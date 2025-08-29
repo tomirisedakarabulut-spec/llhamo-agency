@@ -1,4 +1,89 @@
 {
-  "deals": [],
-  "lastUpdated": "2025-08-28T23:04:16.167Z"
+  "deals": [
+    {
+      "id": "deal_1",
+      "name": "TechStartup Rebranding",
+      "company": "TechStartup Inc.",
+      "value": 25000,
+      "stage": "proposal",
+      "probability": 75,
+      "owner": "LHAMO TEAM",
+      "description": "Complete rebranding campaign including logo design, brand guidelines, and marketing materials.",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "updatedAt": "2024-01-16T14:20:00.000Z",
+      "activities": [
+        {
+          "id": "activity_4",
+          "type": "proposal",
+          "description": "Proposal sent to client",
+          "timestamp": "2024-01-16T14:20:00.000Z"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "deal_2",
+      "name": "FashionBrand Social Media",
+      "company": "FashionBrand Co.",
+      "value": 18000,
+      "stage": "negotiation",
+      "probability": 90,
+      "owner": "LHAMO TEAM",
+      "description": "Social media management and content creation for Instagram and TikTok.",
+      "createdAt": "2024-01-14T14:20:00.000Z",
+      "updatedAt": "2024-01-16T16:30:00.000Z",
+      "activities": [
+        {
+          "id": "activity_5",
+          "type": "negotiation",
+          "description": "Contract negotiation in progress",
+          "timestamp": "2024-01-16T16:30:00.000Z"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "deal_3",
+      "name": "Savage Restaurant Launch",
+      "company": "Savage Restaurant",
+      "value": 35000,
+      "stage": "qualification",
+      "probability": 60,
+      "owner": "LHAMO TEAM",
+      "description": "Complete marketing strategy for restaurant launch including branding, digital ads, and PR.",
+      "createdAt": "2024-01-13T16:45:00.000Z",
+      "updatedAt": "2024-01-15T11:30:00.000Z",
+      "activities": [
+        {
+          "id": "activity_6",
+          "type": "qualification",
+          "description": "Requirements gathering completed",
+          "timestamp": "2024-01-15T11:30:00.000Z"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "deal_4",
+      "name": "E-Commerce Marketing Overhaul",
+      "company": "E-Commerce Empire",
+      "value": 42000,
+      "stage": "prospecting",
+      "probability": 40,
+      "owner": "LHAMO TEAM",
+      "description": "Complete marketing overhaul including conversion optimization, email marketing, and retargeting campaigns.",
+      "createdAt": "2024-01-15T13:10:00.000Z",
+      "updatedAt": "2024-01-16T10:45:00.000Z",
+      "activities": [
+        {
+          "id": "activity_7",
+          "type": "discovery",
+          "description": "Discovery meeting completed",
+          "timestamp": "2024-01-16T10:45:00.000Z"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "lastUpdated": "2025-08-29T00:14:04.205Z"
 }

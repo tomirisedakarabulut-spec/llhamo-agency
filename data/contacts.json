@@ -1,4 +1,38 @@
 {
-  "contacts": [],
-  "lastUpdated": "2025-08-28T23:04:16.167Z"
+  "contacts": [
+    {
+      "id": "contact_1",
+      "name": "Ahmet Yılmaz",
+      "email": "ahmet@techstartup.com",
+      "company": "TechStartup Inc.",
+      "phone": "+90 555 123 4567",
+      "position": "CEO",
+      "status": "active",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "updatedAt": "2024-01-15T10:30:00.000Z",
+      "interactions": [],
+      "notes": []
+    },
+    {
+      "id": "contact_2",
+      "name": "Zeynep Kaya",
+      "email": "zeynep@fashionbrand.com",
+      "company": "FashionBrand Co.",
+      "phone": "+90 555 987 6543",
+      "position": "Marketing Director",
+      "status": "active",
+      "createdAt": "2024-01-14T14:20:00.000Z",
+      "updatedAt": "2024-01-15T09:15:00.000Z",
+      "interactions": [
+        {
+          "id": "interaction_1",
+          "type": "email",
+          "description": "Initial contact email sent",
+          "timestamp": "2024-01-15T09:15:00.000Z"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "lastUpdated": "2025-08-29T00:14:04.205Z"
 }

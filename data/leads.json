@@ -1,4 +1,121 @@
 {
-  "leads": [],
-  "lastUpdated": "2025-08-28T23:04:16.167Z"
+  "leads": [
+    {
+      "id": "lead_1",
+      "name": "Ahmet Yılmaz",
+      "email": "ahmet@techstartup.com",
+      "company": "TechStartup Inc.",
+      "phone": "+90 555 123 4567",
+      "message": "We need a brutal rebranding campaign for our startup. Looking for something that will make us stand out in the crowded tech market.",
+      "source": "contact_form",
+      "status": "new",
+      "score": 85,
+      "tags": [
+        "startup",
+        "tech",
+        "rebranding"
+      ],
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "updatedAt": "2024-01-15T10:30:00.000Z",
+      "activities": []
+    },
+    {
+      "id": "lead_2",
+      "name": "Zeynep Kaya",
+      "email": "zeynep@fashionbrand.com",
+      "company": "FashionBrand Co.",
+      "phone": "+90 555 987 6543",
+      "message": "Our fashion brand needs a savage social media presence. We want to dominate Instagram and TikTok with brutal content.",
+      "source": "website",
+      "status": "contacted",
+      "score": 92,
+      "tags": [
+        "fashion",
+        "social_media",
+        "instagram"
+      ],
+      "createdAt": "2024-01-14T14:20:00.000Z",
+      "updatedAt": "2024-01-15T09:15:00.000Z",
+      "activities": [
+        {
+          "id": "activity_1",
+          "type": "email",
+          "description": "Initial contact email sent",
+          "timestamp": "2024-01-15T09:15:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "lead_3",
+      "name": "Mehmet Demir",
+      "email": "mehmet@restaurant.com",
+      "company": "Savage Restaurant",
+      "phone": "+90 555 456 7890",
+      "message": "We are opening a new restaurant and need a complete marketing strategy. From branding to digital advertising.",
+      "source": "referral",
+      "status": "qualified",
+      "score": 78,
+      "tags": [
+        "restaurant",
+        "branding",
+        "digital_ads"
+      ],
+      "createdAt": "2024-01-13T16:45:00.000Z",
+      "updatedAt": "2024-01-15T11:30:00.000Z",
+      "activities": [
+        {
+          "id": "activity_2",
+          "type": "call",
+          "description": "Qualification call completed",
+          "timestamp": "2024-01-15T11:30:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "lead_4",
+      "name": "Ayşe Özkan",
+      "email": "ayse@consulting.com",
+      "company": "Strategic Consulting",
+      "phone": "+90 555 321 6547",
+      "message": "Looking for AI-powered marketing solutions for our consulting firm. We want to automate our lead generation.",
+      "source": "linkedin",
+      "status": "new",
+      "score": 88,
+      "tags": [
+        "consulting",
+        "ai",
+        "automation"
+      ],
+      "createdAt": "2024-01-16T08:20:00.000Z",
+      "updatedAt": "2024-01-16T08:20:00.000Z",
+      "activities": []
+    },
+    {
+      "id": "lead_5",
+      "name": "Can Arslan",
+      "email": "can@ecommerce.com",
+      "company": "E-Commerce Empire",
+      "phone": "+90 555 789 1234",
+      "message": "Our e-commerce platform needs a complete marketing overhaul. We want to increase conversions and dominate our niche.",
+      "source": "contact_form",
+      "status": "contacted",
+      "score": 95,
+      "tags": [
+        "ecommerce",
+        "conversion",
+        "marketing"
+      ],
+      "createdAt": "2024-01-15T13:10:00.000Z",
+      "updatedAt": "2024-01-16T10:45:00.000Z",
+      "activities": [
+        {
+          "id": "activity_3",
+          "type": "meeting",
+          "description": "Discovery meeting scheduled",
+          "timestamp": "2024-01-16T10:45:00.000Z"
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2025-08-29T00:14:04.205Z"
 }

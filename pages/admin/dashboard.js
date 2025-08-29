@@ -147,13 +147,17 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
         ])
 
         if (leadsResponse.ok) {
-          const leads = await leadsResponse.json()
-          setCrmData(prev => ({ ...prev, leads }))
+          const leadsData = await leadsResponse.json()
+          if (leadsData.success && Array.isArray(leadsData.leads)) {
+            setCrmData(prev => ({ ...prev, leads: leadsData.leads }))
+          }
         }
 
         if (dealsResponse.ok) {
-          const deals = await dealsResponse.json()
-          setCrmData(prev => ({ ...prev, deals }))
+          const dealsData = await dealsResponse.json()
+          if (dealsData.success && Array.isArray(dealsData.deals)) {
+            setCrmData(prev => ({ ...prev, deals: dealsData.deals }))
+          }
         }
 
         if (analyticsResponse.ok) {
@@ -580,7 +584,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
               </div>
               
               <div className="space-y-3">
-                {crmData.customers.slice(0, 3).map((customer) => (
+                {Array.isArray(crmData.customers) && crmData.customers.slice(0, 3).map((customer) => (
                   <div key={customer.id} className="p-3 bg-gray-50 border-2 border-black hover:shadow-[2px_2px_0px_0px_#000] transition-all duration-200">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="font-black text-sm text-black">{customer.name}</h5>
@@ -605,6 +609,11 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                     </div>
                   </div>
                 ))}
+                {(!Array.isArray(crmData.customers) || crmData.customers.length === 0) && (
+                  <div className="p-3 bg-gray-50 border-2 border-black text-center">
+                    <p className="text-sm font-bold text-gray-600">No customers available</p>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -620,7 +629,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
               </div>
               
               <div className="space-y-3">
-                {crmData.leads.map((lead) => (
+                {Array.isArray(crmData.leads) && crmData.leads.map((lead) => (
                   <div key={lead.id} className="p-3 bg-white border-2 border-black hover:shadow-[2px_2px_0px_0px_#000] transition-all duration-200">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="font-black text-sm text-black">{lead.name}</h5>
@@ -643,6 +652,11 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                     </div>
                   </div>
                 ))}
+                {(!Array.isArray(crmData.leads) || crmData.leads.length === 0) && (
+                  <div className="p-3 bg-white border-2 border-black text-center">
+                    <p className="text-sm font-bold text-gray-600">No leads available</p>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -658,7 +672,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
               </div>
               
               <div className="space-y-3">
-                {crmData.deals.map((deal) => (
+                {Array.isArray(crmData.deals) && crmData.deals.map((deal) => (
                   <div key={deal.id} className="p-3 bg-black border-2 border-white hover:shadow-[2px_2px_0px_0px_#FDE047] transition-all duration-200">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="font-black text-sm">{deal.title}</h5>
@@ -682,6 +696,11 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                     </div>
                   </div>
                 ))}
+                {(!Array.isArray(crmData.deals) || crmData.deals.length === 0) && (
+                  <div className="p-3 bg-black border-2 border-white text-center">
+                    <p className="text-sm font-bold text-gray-300">No deals available</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
