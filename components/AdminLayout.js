@@ -63,7 +63,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="h-screen bg-gray-100 flex overflow-hidden">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <motion.div
@@ -80,7 +80,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
         initial={{ x: -300 }}
         animate={{ x: sidebarOpen ? 0 : -300 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className={`fixed inset-y-0 left-0 w-64 bg-black border-r-4 border-black z-40 lg:relative lg:translate-x-0 lg:flex-shrink-0`}
+        className={`fixed inset-y-0 left-0 w-64 bg-black border-r-4 border-black z-40 lg:relative lg:translate-x-0 lg:flex-shrink-0 lg:h-screen lg:flex lg:flex-col`}
       >
         <div className="flex items-center justify-between h-16 px-6 bg-red-600 border-b-4 border-black">
           <div className="flex items-center space-x-3">
@@ -102,7 +102,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
           </button>
         </div>
 
-        <nav className="p-4 space-y-2 flex-1">
+        <nav className="p-4 space-y-2 flex-1 overflow-y-auto">
           {adminNavigation.map((item) => {
             const Icon = item.icon
             const isActive = router.pathname === item.href
@@ -137,7 +137,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
         </nav>
 
         {/* User info & logout */}
-        <div className="p-4 bg-yellow-300 border-t-4 border-black">
+        <div className="p-4 bg-yellow-300 border-t-4 border-black flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Shield className="w-5 h-5 text-black" />
@@ -160,7 +160,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
       </motion.div>
 
       {/* Main content area */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 h-screen">
         {/* Top bar */}
         <header className="bg-yellow-300 border-b-4 border-black h-16 flex items-center justify-between px-6 flex-shrink-0 relative z-30">
           <div className="flex items-center space-x-4">
@@ -194,7 +194,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
         </header>
 
         {/* Page content */}
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-6 overflow-y-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
