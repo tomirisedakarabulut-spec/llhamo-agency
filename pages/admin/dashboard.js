@@ -951,8 +951,8 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
               { title: 'ACTIVE LEADS', value: crmStats.activeLeads, icon: UserPlus, color: 'bg-red-600 text-white' },
               { title: 'TOTAL DEALS', value: crmStats.totalDeals, icon: Target, color: 'bg-black text-white' },
               { title: 'CONVERSION', value: `${crmStats.conversionRate}%`, icon: TrendingUp, color: 'bg-yellow-300 text-black' },
-              { title: 'AVG DEAL', value: `₺${crmStats.averageDealValue.toLocaleString()}`, icon: DollarSign, color: 'bg-red-600 text-white' },
-              { title: 'PIPELINE', value: `₺${crmStats.monthlyRevenue.toLocaleString()}`, icon: BarChart3, color: 'bg-black text-white' }
+              { title: 'AVG DEAL', value: `₺${(crmStats.averageDealValue || 0).toLocaleString()}`, icon: DollarSign, color: 'bg-red-600 text-white' },
+              { title: 'PIPELINE', value: `₺${(crmStats.monthlyRevenue || 0).toLocaleString()}`, icon: BarChart3, color: 'bg-black text-white' }
             ].map((stat, index) => (
               <div key={stat.title} className={`neo-card p-4 ${stat.color} text-center`}>
                 <stat.icon className="w-6 h-6 mx-auto mb-2" />
@@ -999,7 +999,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                         <Tag className="w-3 h-3 text-red-600" />
                         <span className="text-xs font-bold text-gray-600">{customer.tags[0]}</span>
                       </div>
-                      <span className="text-xs font-bold text-black">₺{customer.value.toLocaleString()}</span>
+                      <span className="text-xs font-bold text-black">₺{(customer.value || 0).toLocaleString()}</span>
                     </div>
                   </div>
                 ))}
@@ -1042,7 +1042,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                         <MapPin className="w-3 h-3 text-red-600" />
                         <span className="text-xs font-bold text-gray-600">{lead.source}</span>
                       </div>
-                      <span className="text-xs font-bold text-black">₺{lead.value.toLocaleString()}</span>
+                      <span className="text-xs font-bold text-black">₺{(lead.value || 0).toLocaleString()}</span>
                     </div>
                   </div>
                 ))}
@@ -1086,7 +1086,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
                         <Target className="w-3 h-3 text-yellow-300" />
                         <span className="text-xs font-bold text-gray-300">{deal.probability}%</span>
                       </div>
-                      <span className="text-xs font-bold">₺{deal.value.toLocaleString()}</span>
+                      <span className="text-xs font-bold">₺{(deal.value || 0).toLocaleString()}</span>
                     </div>
                   </div>
                 ))}
