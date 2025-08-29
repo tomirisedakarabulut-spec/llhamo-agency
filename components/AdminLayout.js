@@ -70,7 +70,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
@@ -80,7 +80,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
         initial={{ x: -300 }}
         animate={{ x: sidebarOpen ? 0 : -300 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className={`fixed inset-y-0 left-0 w-64 bg-black border-r-4 border-black z-50 lg:relative lg:translate-x-0 lg:flex-shrink-0`}
+        className={`fixed inset-y-0 left-0 w-64 bg-black border-r-4 border-black z-40 lg:relative lg:translate-x-0 lg:flex-shrink-0`}
       >
         <div className="flex items-center justify-between h-16 px-6 bg-red-600 border-b-4 border-black">
           <div className="flex items-center space-x-3">
@@ -96,7 +96,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden p-2 text-white hover:text-yellow-300"
+            className="lg:hidden p-2 text-white hover:text-yellow-300 border-2 border-white hover:border-yellow-300 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -162,7 +162,7 @@ export default function AdminLayout({ children, title = 'ADMIN PANEL' }) {
       {/* Main content area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
-        <header className="bg-yellow-300 border-b-4 border-black h-16 flex items-center justify-between px-6 flex-shrink-0">
+        <header className="bg-yellow-300 border-b-4 border-black h-16 flex items-center justify-between px-6 flex-shrink-0 relative z-30">
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setSidebarOpen(true)}
