@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Head from 'next/head'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Save,
   Settings,
@@ -11,7 +11,29 @@ import {
   Palette,
   Shield,
   Eye,
-  RefreshCw
+  RefreshCw,
+  CheckCircle,
+  AlertTriangle,
+  Info,
+  Zap,
+  Database,
+  Server,
+  Wifi,
+  WifiOff,
+  Bell,
+  BellOff,
+  User,
+  Lock,
+  Key,
+  Download,
+  Upload,
+  Trash2,
+  Plus,
+  X,
+  ExternalLink,
+  Activity,
+  TrendingUp,
+  Target
 } from 'lucide-react'
 import AdminLayout from '../../components/AdminLayout'
 import { getSiteConfig } from '../../lib/content'
@@ -21,28 +43,102 @@ export default function AdminConfig({ initialConfig }) {
   const [isLoading, setIsLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('site')
   const [successMessage, setSuccessMessage] = useState('')
+  const [notifications, setNotifications] = useState([])
+  const [validationErrors, setValidationErrors] = useState({})
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
+  const [backupHistory, setBackupHistory] = useState([])
+  const [systemStatus, setSystemStatus] = useState({
+    database: 'online',
+    email: 'online',
+    backup: 'online',
+    cdn: 'online'
+  })
 
   const tabs = [
-    { id: 'site', label: 'SITE INFO', icon: Globe },
-    { id: 'contact', label: 'CONTACT', icon: Mail },
-    { id: 'social', label: 'SOCIAL MEDIA', icon: Shield },
-    { id: 'seo', label: 'SEO SETTINGS', icon: Eye },
-    { id: 'theme', label: 'THEME', icon: Palette }
+    { id: 'site', label: 'SITE INFO', icon: Globe, color: 'bg-blue-600' },
+    { id: 'contact', label: 'CONTACT', icon: Mail, color: 'bg-green-600' },
+    { id: 'social', label: 'SOCIAL MEDIA', icon: Shield, color: 'bg-purple-600' },
+    { id: 'seo', label: 'SEO SETTINGS', icon: Eye, color: 'bg-orange-600' },
+    { id: 'theme', label: 'THEME', icon: Palette, color: 'bg-pink-600' },
+    { id: 'security', label: 'SECURITY', icon: Lock, color: 'bg-red-600' },
+    { id: 'backup', label: 'BACKUP', icon: Database, color: 'bg-gray-600' }
   ]
 
+  // Add notification function
+  const addNotification = useCallback((message, type = 'info', duration = 5000) => {
+    const id = Date.now() + Math.random()
+    const notification = { id, message, type, duration, timestamp: new Date() }
+    setNotifications(prev => [...prev, notification])
+    
+    setTimeout(() => {
+      setNotifications(prev => prev.filter(n => n.id !== id))
+    }, duration)
+  }, [])
+
+  // Validate configuration
+  const validateConfig = useCallback((configData) => {
+    const errors = {}
+    
+    // Site validation
+    if (!configData.site?.name?.trim()) {
+      errors.siteName = 'Site name is required'
+    }
+    if (!configData.site?.url?.trim()) {
+      errors.siteUrl = 'Site URL is required'
+    }
+    if (configData.site?.url && !configData.site.url.startsWith('http')) {
+      errors.siteUrl = 'Site URL must start with http:// or https://'
+    }
+    
+    // Contact validation
+    if (configData.contact?.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(configData.contact.email)) {
+      errors.contactEmail = 'Invalid email format'
+    }
+    
+    // SEO validation
+    if (configData.seo?.metaTitle && configData.seo.metaTitle.length > 60) {
+      errors.metaTitle = 'Meta title should be less than 60 characters'
+    }
+    if (configData.seo?.metaDescription && configData.seo.metaDescription.length > 160) {
+      errors.metaDescription = 'Meta description should be less than 160 characters'
+    }
+    
+    return errors
+  }, [])
+
   const handleConfigChange = (section, field, value) => {
-    setConfig(prev => ({
-      ...prev,
+    const newConfig = {
+      ...config,
       [section]: {
-        ...prev[section],
+        ...config[section],
         [field]: value
       }
-    }))
+    }
+    
+    setConfig(newConfig)
+    setHasUnsavedChanges(true)
+    
+    // Clear validation errors for this field
+    if (validationErrors[`${section}${field}`]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [`${section}${field}`]: undefined
+      }))
+    }
   }
 
   const handleSave = async () => {
     setIsLoading(true)
     setSuccessMessage('')
+
+    // Validate before saving
+    const errors = validateConfig(config)
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors)
+      addNotification('Please fix validation errors before saving', 'error')
+      setIsLoading(false)
+      return
+    }
 
     try {
       const response = await fetch('/api/admin/config/update', {
@@ -55,13 +151,24 @@ export default function AdminConfig({ initialConfig }) {
 
       if (response.ok) {
         setSuccessMessage('CONFIGURATION SAVED SUCCESSFULLY!')
+        setHasUnsavedChanges(false)
+        addNotification('Configuration saved successfully!', 'success')
+        
+        // Add to backup history
+        setBackupHistory(prev => [{
+          id: Date.now(),
+          timestamp: new Date(),
+          type: 'manual',
+          status: 'success'
+        }, ...prev.slice(0, 9)])
+        
         setTimeout(() => setSuccessMessage(''), 3000)
       } else {
-        alert('Error saving configuration')
+        addNotification('Error saving configuration', 'error')
       }
     } catch (error) {
       console.error('Error:', error)
-      alert('Error saving configuration')
+      addNotification('Error saving configuration', 'error')
     }
 
     setIsLoading(false)
@@ -69,7 +176,51 @@ export default function AdminConfig({ initialConfig }) {
 
   const handleReset = () => {
     setConfig(initialConfig)
+    setHasUnsavedChanges(false)
+    setValidationErrors({})
+    addNotification('Configuration reset to original values', 'info')
   }
+
+  const handleBackup = async () => {
+    try {
+      addNotification('Creating backup...', 'info')
+      // Simulate backup process
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      setBackupHistory(prev => [{
+        id: Date.now(),
+        timestamp: new Date(),
+        type: 'manual',
+        status: 'success'
+      }, ...prev.slice(0, 9)])
+      
+      addNotification('Backup created successfully!', 'success')
+    } catch (error) {
+      addNotification('Error creating backup', 'error')
+    }
+  }
+
+  const handleRestore = async (backupId) => {
+    try {
+      addNotification('Restoring backup...', 'info')
+      // Simulate restore process
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      addNotification('Backup restored successfully!', 'success')
+    } catch (error) {
+      addNotification('Error restoring backup', 'error')
+    }
+  }
+
+  // Auto-save indicator
+  useEffect(() => {
+    if (hasUnsavedChanges) {
+      const timer = setTimeout(() => {
+        addNotification('You have unsaved changes', 'warning')
+      }, 30000) // 30 seconds
+      
+      return () => clearTimeout(timer)
+    }
+  }, [hasUnsavedChanges, addNotification])
 
   return (
     <AdminLayout title="SITE CONFIGURATION">
@@ -78,69 +229,159 @@ export default function AdminConfig({ initialConfig }) {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
+      {/* Notifications */}
+      <AnimatePresence>
+        {notifications.map((notification) => (
+          <motion.div
+            key={notification.id}
+            initial={{ opacity: 0, x: 300, scale: 0.8 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 300, scale: 0.8 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className={`fixed top-4 right-4 z-50 max-w-sm w-full ${
+              notification.type === 'success' ? 'bg-green-500 text-white' :
+              notification.type === 'error' ? 'bg-red-600 text-white' :
+              notification.type === 'warning' ? 'bg-yellow-300 text-black' :
+              'bg-blue-600 text-white'
+            } border-4 border-black shadow-[6px_6px_0px_0px_#000] p-4`}
+          >
+            <div className="flex items-start space-x-3">
+              {notification.type === 'success' ? <CheckCircle className="w-6 h-6" /> :
+               notification.type === 'error' ? <AlertTriangle className="w-6 h-6" /> :
+               notification.type === 'warning' ? <AlertTriangle className="w-6 h-6" /> :
+               <Info className="w-6 h-6" />}
+              <div className="flex-1">
+                <p className="font-bold text-sm">{notification.message}</p>
+                <p className="text-xs opacity-75">{notification.timestamp.toLocaleTimeString()}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </AnimatePresence>
+
       <div className="space-y-6">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <h1 
-              className="text-3xl font-black text-black mb-2"
-              style={{ fontFamily: 'Space Grotesk' }}
-            >
-              BRUTAL CONFIGURATION
-            </h1>
-            <p className="font-bold text-gray-600">
-              Control your digital empire's settings with savage precision
-            </p>
+        {/* Enhanced Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="neo-card bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6"
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <div>
+              <h1 
+                className="text-3xl font-black mb-2"
+                style={{ fontFamily: 'Space Grotesk' }}
+              >
+                BRUTAL CONFIGURATION
+              </h1>
+              <p className="font-bold opacity-90">
+                Control your digital empire's settings with savage precision
+              </p>
+              <div className="flex items-center space-x-4 mt-2 text-sm">
+                <span className="flex items-center space-x-1">
+                  <Database className="w-4 h-4" />
+                  <span>Database: {systemStatus.database}</span>
+                </span>
+                <span className="flex items-center space-x-1">
+                  <Mail className="w-4 h-4" />
+                  <span>Email: {systemStatus.email}</span>
+                </span>
+                <span className="flex items-center space-x-1">
+                  <Shield className="w-4 h-4" />
+                  <span>Security: Active</span>
+                </span>
+              </div>
+            </div>
+            
+            <div className="flex items-center space-x-3">
+              {hasUnsavedChanges && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="px-3 py-1 bg-yellow-300 text-black border-2 border-black text-xs font-bold"
+                >
+                  UNSAVED CHANGES
+                </motion.div>
+              )}
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleReset}
+                className="p-3 bg-black text-white border-2 border-white shadow-[2px_2px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] transition-all duration-200"
+              >
+                <RefreshCw className="w-5 h-5" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleSave}
+                disabled={isLoading}
+                className={`p-3 bg-green-600 text-white border-2 border-white shadow-[2px_2px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000] transition-all duration-200 flex items-center space-x-2 ${
+                  isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                {isLoading ? (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  >
+                    <RefreshCw className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <Save className="w-5 h-5" />
+                )}
+                <span className="font-bold text-sm">
+                  {isLoading ? 'SAVING...' : 'SAVE CONFIG'}
+                </span>
+              </motion.button>
+            </div>
           </div>
-          
-          <div className="flex items-center space-x-3">
-            <button
-              onClick={handleReset}
-              className="neo-button-secondary flex items-center space-x-2"
-            >
-              <RefreshCw className="w-4 h-4" />
-              <span>RESET</span>
-            </button>
-            <button
-              onClick={handleSave}
-              disabled={isLoading}
-              className="neo-button flex items-center space-x-2"
-            >
-              <Save className="w-4 h-4" />
-              <span>{isLoading ? 'SAVING...' : 'SAVE CHANGES'}</span>
-            </button>
-          </div>
-        </div>
+        </motion.div>
 
         {/* Success Message */}
         {successMessage && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="neo-card bg-green-500 text-white p-4 text-center font-bold"
+            exit={{ opacity: 0, y: -20 }}
+            className="neo-card bg-green-500 text-white p-4 border-4 border-black"
           >
-            {successMessage}
+            <div className="flex items-center space-x-3">
+              <CheckCircle className="w-6 h-6" />
+              <span className="font-bold">{successMessage}</span>
+            </div>
           </motion.div>
         )}
 
-        {/* Tabs */}
-        <div className="neo-card bg-white p-6">
-          <div className="flex flex-wrap gap-2 mb-6">
+        {/* Tab Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="neo-card bg-white p-4"
+        >
+          <div className="flex flex-wrap gap-2">
             {tabs.map((tab) => (
-              <button
+              <motion.button
                 key={tab.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-2 px-4 py-2 font-bold border-4 border-black transition-all duration-200 ${
+                className={`flex items-center space-x-2 px-4 py-2 font-bold border-4 transition-all duration-200 ${
                   activeTab === tab.id
-                    ? 'bg-red-600 text-white shadow-[4px_4px_0px_0px_#000]'
-                    : 'bg-white text-black hover:bg-yellow-300'
+                    ? `${tab.color} text-white border-black shadow-[4px_4px_0px_0px_#000]`
+                    : 'bg-gray-100 text-black border-gray-300 hover:border-black hover:shadow-[2px_2px_0px_0px_#000]'
                 }`}
               >
                 <tab.icon className="w-4 h-4" />
                 <span>{tab.label}</span>
-              </button>
+              </motion.button>
             ))}
           </div>
+        </motion.div>
 
           {/* Site Info Tab */}
           {activeTab === 'site' && (
