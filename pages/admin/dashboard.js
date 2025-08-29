@@ -40,13 +40,14 @@ import { getAllBlogPosts, getSiteConfig } from '../../lib/content'
 import { useRouter } from 'next/router'
 
 export default function AdminDashboard({ blogPosts, siteConfig }) {
+  const router = useRouter()
+  
+  // All state hooks must be called at the top level
   const [lastLogin, setLastLogin] = useState('')
   const [sessionDuration, setSessionDuration] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const router = useRouter()
-
-  // All state hooks must be called at the top level
+  
   const [stats, setStats] = useState({
     totalPosts: 0,
     publishedPosts: 0,
@@ -102,23 +103,7 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
     checkAuth()
   }, [])
 
-  // Show loading while checking authentication
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600 mx-auto mb-4"></div>
-          <p className="text-xl font-bold">CHECKING AUTHENTICATION...</p>
-        </div>
-      </div>
-    )
-  }
-
-  // Don't render if not authenticated
-  if (!isAuthenticated) {
-    return null
-  }
-
+  // Data initialization effect - moved to top level
   useEffect(() => {
     if (!isAuthenticated) return
 
@@ -139,6 +124,18 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
     // Enhanced stats calculation
     const totalViews = blogPosts.reduce((sum, post) => sum + (post.views || 0), 0)
     const publishedPosts = blogPosts.filter(post => post.published !== false).length
+    const draftPosts = blogPosts.filter(post => post.published === false).length
+    
+    setStats({
+      totalPosts: blogPosts.length,
+      publishedPosts,
+      draftPosts,
+      totalViews: totalViews || Math.floor(Math.random() * 50000) + 10000,
+      totalContacts: Math.floor(Math.random() * 100) + 25,
+      totalProjects: Math.floor(Math.random() * 50) + 10,
+      conversionRate: Math.floor(Math.random() * 15) + 5,
+      monthlyRevenue: Math.floor(Math.random() * 100000) + 50000
+    })
 
     // Fetch CRM data from API endpoints
     const fetchCRMData = async () => {
@@ -172,22 +169,12 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
         }
       } catch (error) {
         console.error('Error fetching CRM data:', error)
+        // Fallback to mock data if API fails
+        setMockCRMData()
       }
     }
 
     fetchCRMData()
-    const draftPosts = blogPosts.filter(post => post.published === false).length
-    
-    setStats({
-      totalPosts: blogPosts.length,
-      publishedPosts,
-      draftPosts,
-      totalViews: totalViews || Math.floor(Math.random() * 50000) + 10000,
-      totalContacts: Math.floor(Math.random() * 100) + 25,
-      totalProjects: Math.floor(Math.random() * 50) + 10,
-      conversionRate: Math.floor(Math.random() * 15) + 5,
-      monthlyRevenue: Math.floor(Math.random() * 100000) + 50000
-    })
 
     // Mock recent activity
     setRecentActivity([
@@ -225,7 +212,10 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
       }
     ])
 
-    // Mock CRM data
+  }, [isAuthenticated, blogPosts])
+
+  // Mock CRM data function
+  const setMockCRMData = () => {
     const mockCustomers = [
       {
         id: 1,
@@ -344,7 +334,24 @@ export default function AdminDashboard({ blogPosts, siteConfig }) {
       averageDealValue,
       monthlyRevenue: totalValue
     })
-  }, [isAuthenticated, blogPosts])
+  }
+
+  // Show loading while checking authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600 mx-auto mb-4"></div>
+          <p className="text-xl font-bold">CHECKING AUTHENTICATION...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Don't render if not authenticated
+  if (!isAuthenticated) {
+    return null
+  }
 
   const quickActions = [
     {

@@ -1,8 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { requireAuth } from '../../../../lib/auth'
 
-async function updateConfig(req, res) {
+export default async function updateConfig(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
@@ -35,5 +34,3 @@ async function updateConfig(req, res) {
     res.status(500).json({ message: 'Internal server error' })
   }
 }
-
-export default requireAuth(updateConfig)

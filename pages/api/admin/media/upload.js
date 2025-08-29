@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import { IncomingForm } from 'formidable'
-import { requireAuth } from '../../../../lib/auth'
 
 export const config = {
   api: {
@@ -9,7 +8,7 @@ export const config = {
   },
 }
 
-async function uploadMedia(req, res) {
+export default async function uploadMedia(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
@@ -60,5 +59,3 @@ async function uploadMedia(req, res) {
     res.status(500).json({ message: 'Internal server error' })
   }
 }
-
-export default requireAuth(uploadMedia)

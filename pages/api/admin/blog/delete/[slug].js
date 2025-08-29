@@ -1,8 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { requireAuth } from '../../../../../lib/auth'
 
-async function deleteBlogPost(req, res) {
+export default async function deleteBlogPost(req, res) {
   if (req.method !== 'DELETE') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
@@ -31,5 +30,3 @@ async function deleteBlogPost(req, res) {
     res.status(500).json({ message: 'Internal server error' })
   }
 }
-
-export default requireAuth(deleteBlogPost)

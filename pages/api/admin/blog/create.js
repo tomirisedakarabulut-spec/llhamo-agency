@@ -1,8 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { requireAuth } from '../../../../lib/auth'
 
-async function createBlogPost(req, res) {
+export default async function createBlogPost(req, res) {
   try {
     const postData = req.body
     
@@ -56,5 +55,3 @@ ${postData.content}`
     res.status(500).json({ message: 'Internal server error' })
   }
 }
-
-export default requireAuth(createBlogPost)

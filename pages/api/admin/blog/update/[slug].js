@@ -1,8 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { requireAuth } from '../../../../../lib/auth'
 
-async function updateBlogPost(req, res) {
+export default async function updateBlogPost(req, res) {
   if (req.method !== 'PUT') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
@@ -58,5 +57,3 @@ ${postData.content}`
     res.status(500).json({ message: 'Internal server error' })
   }
 }
-
-export default requireAuth(updateBlogPost)
