@@ -14,7 +14,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-yellow-300 via-yellow-200 to-yellow-400 overflow-hidden">
       {/* Brutalist Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Geometric Shapes */}
         <motion.div 
           animate={{ rotate: 360, scale: [1, 1.2, 1] }}
@@ -249,7 +249,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto"
           >
             <div className="bg-black border-4 border-black shadow-[6px_6px_0px_0px_#000] p-6 transform -rotate-1">
               <div className="text-3xl font-black text-red-600 mb-2">+892%</div>

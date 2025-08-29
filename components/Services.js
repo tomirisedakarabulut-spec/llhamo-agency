@@ -72,7 +72,7 @@ export default function Services() {
   return (
     <section className="py-16 sm:py-20 bg-yellow-300 relative overflow-hidden">
       {/* Decorative Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div 
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -151,7 +151,7 @@ export default function Services() {
         />
       </div>
       
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+      <div className="container mx-auto px-4 max-w-6xl relative z-20">
         {/* Neo Brutalist Section Header */}
         <motion.div
           initial={{ opacity: 1, y: 0 }}
@@ -161,13 +161,7 @@ export default function Services() {
           className="text-center mb-16"
         >
           <div className="neo-badge inline-flex items-center space-x-2 mb-8">
-            {typeof Logo !== 'undefined' ? (
-              <Logo size="sm" className="mr-2" />
-            ) : (
-              <div className="w-8 h-8 bg-red-600 border-2 border-black mr-2 flex items-center justify-center">
-                <span className="text-white font-black text-xs">L</span>
-              </div>
-            )}
+            <Logo size="sm" className="mr-2" />
             <span>BRUTAL SERVICES</span>
           </div>
           
@@ -188,7 +182,7 @@ export default function Services() {
         </motion.div>
 
         {/* Services Grid - Mobile Responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.id}

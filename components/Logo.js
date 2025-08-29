@@ -1,8 +1,12 @@
+import { useState } from 'react'
+
 export default function Logo({ 
   size = 'md', 
   className = '',
   variant = 'png'
 }) {
+  const [imageError, setImageError] = useState(false)
+  
   const sizeConfig = {
     xs: { width: 24, height: 24 },
     sm: { width: 32, height: 32 },
@@ -12,6 +16,19 @@ export default function Logo({
   }
 
   const config = sizeConfig[size]
+
+  if (imageError) {
+    return (
+      <div 
+        className={`relative ${className}`}
+        style={{ width: config.width, height: config.height }}
+      >
+        <div className="w-full h-full bg-red-600 border-2 border-black flex items-center justify-center text-white font-black text-xs">
+          LHAMO
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div 
@@ -24,18 +41,8 @@ export default function Logo({
         width={config.width}
         height={config.height}
         className="w-full h-full object-contain"
-        onError={(e) => {
-          // Fallback to a simple div if image fails to load
-          e.target.style.display = 'none'
-          e.target.nextSibling.style.display = 'block'
-        }}
+        onError={() => setImageError(true)}
       />
-      <div 
-        className="w-full h-full bg-red-600 border-2 border-black flex items-center justify-center text-white font-black text-xs"
-        style={{ display: 'none' }}
-      >
-        LHAMO
-      </div>
     </div>
   )
 }
